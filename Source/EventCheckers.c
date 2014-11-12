@@ -37,6 +37,7 @@
 // include our own prototypes to insure consistency between header & 
 // actual functionsdefinition
 #include "EventCheckers.h"
+#include "TapeSensor.h"
 
 
 /****************************************************************************
@@ -91,3 +92,21 @@ bool Check4Keystroke(void)
   }
   return false;
 }
+
+
+bool CheckTapeSensor(void) {
+	static bool lastState = false;
+	if (tapeSensorsCovered() && (lastState == false)) {
+		ES_Event ThisEvent;
+    ThisEvent.EventType = THREE_HANDS_ON ;
+    PostDisarmFSM( ThisEvent );
+		return true;
+	} else if (!(tapeSensorsCovered()) && (lastState == true)) {
+		ES_Event ThisEvent;
+    ThisEvent.EventType = THREE_HANDS_OFF ;
+    PostDisarmFSM( ThisEvent );
+		return true;
+	}
+	return false;
+}
+

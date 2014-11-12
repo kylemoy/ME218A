@@ -21,7 +21,7 @@
 static uint16_t key_servo_pos = ZERO_DEGREES;
 static uint16_t tower_servo_pos = ZERO_DEGREES;
 
-double PotRead(void) {
+double getPotValue(void) {
 	static double conversion = POT_HIGH / 4096; //Volts/point value
 	double Direct_pot = 0; //this variable will be used to store the direct readout value
 	double pot_val = 0; //the pot value converted to volts
@@ -111,7 +111,7 @@ int main(void)
 
   initializeServos();
 	while (true) {
-		//double potValue = PotRead();
+		//double potValue = getPotValue();
 		//uint16_t tower_servo_pos = (potValue - POT_LOW) / (POT_HIGH - POT_LOW) * (TOWER_HIGH - TOWER_LOW) + TOWER_LOW;\
 		//printf("\n\r Pot val: %lf, Tower servo pos: %d \r\n", potValue, tower_servo_pos);
 		//rotateServo(KEY_SERVO1, tower_servo_pos);

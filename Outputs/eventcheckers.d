@@ -16,3 +16,11 @@
 .\outputs\eventcheckers.o: .\Headers\bitdefs.h
 .\outputs\eventcheckers.o: .\Headers\Bin_Const.h
 .\outputs\eventcheckers.o: .\Headers\EventCheckers.h
+.\outputs\eventcheckers.o: .\Headers\TapeSensor.h
+.\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_memmap.h
+.\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_types.h
+.\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_gpio.h
+.\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_sysctl.h
+.\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h
+.\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/gpio.h
+.\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/interrupt.h

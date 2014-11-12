@@ -1,5 +1,5 @@
-#ifndef KEYHOLE_H
-#define KEYHOLE_H
+#ifndef SERVOS_H
+#define SERVOS_H
 #include <stdint.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -16,7 +16,7 @@
 
 #define clrScrn() 	printf("\x1b[2J")
 
-double PotRead (void);
+double getPotValue(void);
 void initializeServos(void);
 void rotateServo(uint8_t channel, uint16_t position);
 void rotateServoLeft(uint8_t channel);

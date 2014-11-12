@@ -18,3 +18,11 @@
 .\outputs\disarmfsm.o: .\Headers\ES_Events.h
 .\outputs\disarmfsm.o: .\Headers\ES_Timers.h
 .\outputs\disarmfsm.o: .\Headers\DisarmFSM.h
+.\outputs\disarmfsm.o: .\Headers\TapeSensor.h
+.\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_memmap.h
+.\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_types.h
+.\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_gpio.h
+.\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\inc/hw_sysctl.h
+.\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h
+.\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/gpio.h
+.\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/interrupt.h

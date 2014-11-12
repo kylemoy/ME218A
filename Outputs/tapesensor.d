@@ -1,4 +1,5 @@
 .\outputs\tapesensor.o: Source\TapeSensor.c
+.\outputs\tapesensor.o: .\Headers\TapeSensor.h
 .\outputs\tapesensor.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
 .\outputs\tapesensor.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
 .\outputs\tapesensor.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h

@@ -26,6 +26,7 @@
 #include "ES_Configure.h"
 #include "ES_Framework.h"
 #include "DisarmFSM.h"
+#include "TapeSensor.h"
 
 /*----------------------------- Module Defines ----------------------------*/
 
@@ -65,6 +66,9 @@ static uint8_t MyPriority;
 bool InitDisarmFSM ( uint8_t Priority )
 {
   ES_Event ThisEvent;
+	
+	// Initialize the Tape Sensors
+	initTapeSensors();
 
   MyPriority = Priority;
   CurrentState = Armed;
@@ -129,24 +133,25 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 				case ES_INIT :
 					printf("Arming...\r\n");
 					printf(" Turning vibration motor on...\r\n");
-					//vibrationMotorOn();
+					//setVibrationMotor(ON);
 					printf(" Setting all tower LEDS off...\r\n");
 					//setLED(1, OFF);
 					//...
 					//setLED(7, OFF);
 					printf(" Lowering flag...\r\n");
-					//lowerFlag();
+					//setFlag(LOWERED);
 					printf(" Raising ball and feather...\r\n");
 					//raiseBallAndFeather();
 					printf(" Setting tower to 0...\r\n\r\n");
-					printf("STATE: Armed\r\n\r\n");
 					//setTower(0);
+					printf("STATE: Armed\r\n\r\n");
+					
 					break;
         
 				case THREE_HANDS_ON :
 					printf("EVENT: Three hands detected.\r\n");
 					printf(" Turning  vibration motor off...\r\n");
-					//vibrationMotorOff();
+					//setVibrationMotor(OFF);
 					printf(" Setting Tower Tier 1 LED on...\r\n");
 					//setLED(1, ON);
 					printf(" Begin printing LCD passcode...\r\n");
@@ -187,7 +192,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 				case CORRECT_PASSWORD_ENTERED :
 					printf("EVENT: The correct password has been entered.\r\n");
 					printf(" Unlocking the keys\r\n");
-					//unlockKeys();
+					//setKeyhole(UNLOCKED);
 					printf(" Setting Tower Tier 2 LED on...\r\n");
 				  //setLED(2, ON);
 					printf(" Playing audio: Wahoo!...\r\n");
@@ -200,7 +205,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 				case INCORRECT_PASSWORD_ENTERED :
 					printf("EVENT: The incorrect password has been entered.\r\n");
 					printf(" Generating vibration pulse...\r\n\r\n");
-					//pulseVibrator();
+					//pulseVibration();
           break;
 
         default :
@@ -249,7 +254,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					printf(" Setting Tower Tier 3 LED on...\r\n");
 					//setLED(3, ON);
 					printf(" Setting Dial LED on...\r\n");
-					//setDialLED(on);
+					//setLED(DIAL_LED, ON);
 					printf(" Playing audio: Wahoo!...\r\n");
 					//playWahoo();
 					printf(" Transitioning to Stage3...\r\n\r\n");
@@ -275,9 +280,9 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 				case CORRECT_VALUE_DIALED :
 					printf("EVENT: The correct pot value has been dialed.\r\n");
 					printf(" Setting Tower Tier 4-7 LED on with delay...\r\n");
-					//setLED(4-7)
-					printf(" Lowering flag...\r\n");
-					//lowerFlag();
+					//trigger4567()
+					printf(" Raising the flag...\r\n");
+					//setFlag(RAISED);
 					printf(" Playing audio: victory song...\r\n");
 					//playVictorySong();
 					printf(" Starting 30s post-disarm timer...\r\n");
