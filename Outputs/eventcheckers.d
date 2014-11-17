@@ -24,3 +24,6 @@
 .\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h
 .\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/gpio.h
 .\outputs\eventcheckers.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/interrupt.h
+.\outputs\eventcheckers.o: .\Headers\Servos.h
+.\outputs\eventcheckers.o: .\Headers\PWMTiva.h
+.\outputs\eventcheckers.o: .\Headers\ADCSWTrigger.h

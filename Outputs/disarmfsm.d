@@ -26,3 +26,9 @@
 .\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h
 .\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/gpio.h
 .\outputs\disarmfsm.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/interrupt.h
+.\outputs\disarmfsm.o: .\Headers\DCmotors.h
+.\outputs\disarmfsm.o: .\Headers\LEDs.h
+.\outputs\disarmfsm.o: .\Headers\EnablePA25_PB23_PD7_PF0.h
+.\outputs\disarmfsm.o: .\Headers\Servos.h
+.\outputs\disarmfsm.o: .\Headers\PWMTiva.h
+.\outputs\disarmfsm.o: .\Headers\ADCSWTrigger.h

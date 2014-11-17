@@ -16,8 +16,21 @@
 
 #define clrScrn() 	printf("\x1b[2J")
 
+// Public functions
+void raiseFlag(void);
+void lowerFlag(void);
+void lockKeys(void);
+void unlockKeys(void);
+void setVictory(bool state);
+bool getVictory(void);
+void setPotZero(void);
+double getPotZero(void);
 double getPotValue(void);
 void initializeServos(void);
+void setTowerToZero(void);
+void moveTower(double potValue);
+
+// Private functions
 void rotateServo(uint8_t channel, uint16_t position);
 void rotateServoLeft(uint8_t channel);
 void rotateServoRight(uint8_t channel);

@@ -78,7 +78,7 @@ typedef enum {  ES_NO_EVENT = 0,
 
 /****************************************************************************/
 // This is the list of event checking functions 
-#define EVENT_CHECK_LIST Check4Keystroke
+#define EVENT_CHECK_LIST Check4Keystroke, CheckPot, //, CheckTapeSensor
 
 /****************************************************************************/
 // These are the definitions for the post functions to be executed when the
@@ -89,8 +89,8 @@ typedef enum {  ES_NO_EVENT = 0,
 #define TIMER_UNUSED ((pPostFunc)0)
 #define TIMER0_RESP_FUNC PostDisarmFSM
 #define TIMER1_RESP_FUNC PostDisarmFSM
-#define TIMER2_RESP_FUNC TIMER_UNUSED
-#define TIMER3_RESP_FUNC TIMER_UNUSED
+#define TIMER2_RESP_FUNC PostDisarmFSM
+#define TIMER3_RESP_FUNC PostDisarmFSM
 #define TIMER4_RESP_FUNC TIMER_UNUSED
 #define TIMER5_RESP_FUNC TIMER_UNUSED
 #define TIMER6_RESP_FUNC TIMER_UNUSED
@@ -113,5 +113,7 @@ typedef enum {  ES_NO_EVENT = 0,
 
 #define DISARM_TIMER 0
 #define POST_DISARM_TIMER 1
+#define VIBRATION_TIMER 2
+#define FAST_LEDS 3
 
 #endif /* CONFIGURE_H */

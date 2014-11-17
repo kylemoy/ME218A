@@ -7,26 +7,7 @@
 	 register data inputs, as well as the RCK/SCK clocks. It will take an ARRAY of 
 	 8 numbers, 0 or 1 that will correspond to the 8 LEDs
 ****************************************************************************/
-#include <stdio.h>
-#include <stdint.h>
-#include <stdbool.h>
-
-#include "inc/hw_memmap.h"
-#include "inc/hw_types.h"
-#include "inc/hw_gpio.h"
-#include "inc/hw_sysctl.h"
-#include "driverlib/sysctl.h"
-#include "ES_Port.h"
-#include "ES_Timers.h"
-#include "EnablePA25_PB23_PD7_PF0.h"
-#include "termio.h"
-
-// not as sure if these are absolutley needed
-#include "driverlib/gpio.h"
-#include "driverlib/interrupt.h"
-#include "utils/uartstdio.h"
-
-#define ALL_BITS (0xff <<2)
+#include "LEDs.h"
 //#define TEST
 
 /****************************************************************************
@@ -39,11 +20,7 @@
 #define SHIFT_SCK GPIO_PIN_3 // pin 3
 #define SHIFT_RCK GPIO_PIN_4 // pin 4
 
-void ShiftRegInit (void);
-void ShiftRegLED (char LEDs[8]);
-void SCKPulse (void); // transfer bit to shift register
-void RCKPulse (void); // transfer bits to the world
-void wait (int delay); // a wait function
+#define ALL_BITS (0xff <<2)
 
 void wait (int delay) {
 	int time_start = ES_Timer_GetTime(); 
@@ -55,7 +32,7 @@ void wait (int delay) {
 	}
 }
 
-void ShiftRegInit (void) {
+void LEDShiftRegInit (void) {
 	// initializes timer
 	_HW_Timer_Init(ES_Timer_RATE_1mS);
 	
@@ -92,7 +69,8 @@ void RCKPulse (void) {
 	
 }
 
-void ShiftRegLED (char LEDs[8]) {
+void setLED (char LEDs[8]) {
+	puts("\n\r LED:\r\n");
 	for (int i = 0; i < 8; i++) {
 		int bit = 0;
 		//clears data pin
@@ -108,9 +86,7 @@ void ShiftRegLED (char LEDs[8]) {
 			HWREG(SHIFT_PORT + GPIO_O_DATA + ALL_BITS) &= ~SHIFT_DATA;
 		}
 		
-		printf("\n\r for i counter %d\n\r", i);
-		printf("\n\r Shift Register Data input is %c \r\n", LEDs[i]);
-		printf("\n\r the bit was seen as %d \r\n", bit);
+		printf("%d", bit);
 		
 		// pulses SCK to send data to shift register
 		SCKPulse();
@@ -128,9 +104,9 @@ int main(void)
 	TERMIO_Init(); 
 	puts("\n\r in test harness for shift register\r\n");
 	
-	char test[8] =  {0,0,0,0,0,0,0,1};
+	char test[8] =  {0,1,0,1,0,1,0,1};
 
-	ShiftRegInit();
-	ShiftRegLED (test);
+	LEDShiftRegInit();
+	setLED (test);
 }
 #endif

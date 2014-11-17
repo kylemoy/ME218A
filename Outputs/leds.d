@@ -1,4 +1,5 @@
 .\outputs\leds.o: Source\LEDs.c
+.\outputs\leds.o: .\Headers\LEDs.h
 .\outputs\leds.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdio.h
 .\outputs\leds.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdint.h
 .\outputs\leds.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h

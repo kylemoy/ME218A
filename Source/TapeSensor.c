@@ -26,7 +26,7 @@ void initTapeSensors(void) {
 }
 
 bool tapeSensorsCovered(void) {
-	return (HWREG(TAPE_PORT+(GPIO_O_DATA + ALL_BITS)) & TAPE_PIN);
+	return !(HWREG(TAPE_PORT+(GPIO_O_DATA + ALL_BITS)) & TAPE_PIN);
 }
 
 #ifdef TEST 

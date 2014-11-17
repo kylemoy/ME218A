@@ -15,5 +15,8 @@
 .\outputs\dcmotors.o: .\Headers\bitdefs.h
 .\outputs\dcmotors.o: .\Headers\Bin_Const.h
 .\outputs\dcmotors.o: .\Headers\ES_Types.h
+.\outputs\dcmotors.o: .\Headers\ES_Timers.h
 .\outputs\dcmotors.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/gpio.h
 .\outputs\dcmotors.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/interrupt.h
+.\outputs\dcmotors.o: .\Headers\EnablePA25_PB23_PD7_PF0.h
+.\outputs\dcmotors.o: .\Headers\DCmotors.h

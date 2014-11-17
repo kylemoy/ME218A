@@ -38,6 +38,7 @@
 // actual functionsdefinition
 #include "EventCheckers.h"
 #include "TapeSensor.h"
+#include "Servos.h"
 
 
 /****************************************************************************
@@ -100,13 +101,50 @@ bool CheckTapeSensor(void) {
 		ES_Event ThisEvent;
     ThisEvent.EventType = THREE_HANDS_ON ;
     PostDisarmFSM( ThisEvent );
+		lastState = true;
 		return true;
 	} else if (!(tapeSensorsCovered()) && (lastState == true)) {
 		ES_Event ThisEvent;
     ThisEvent.EventType = THREE_HANDS_OFF ;
     PostDisarmFSM( ThisEvent );
+		lastState = false;
 		return true;
 	}
 	return false;
+}
+
+bool CheckPot(void) {
+	static double lastPotValue = -1;
+	double potZero = getPotZero();
+	double potValue = getPotValue();
+	bool victory = getVictory();
+	// If pot has not been initialized yet or if victory has been achieved, do nothing
+	if (potZero == -1 || victory) {
+		return false;
+		// Check victory condition for Game Type A
+	} else if (potZero > 1.5 && (potValue < (potZero - 1.45)) && (potValue > (potZero - 1.55))) {
+		printf("Pot Value: %f\r\n", potValue);
+		printf("Correct Value!\r\n");
+		ES_Event ThisEvent;
+    ThisEvent.EventType = CORRECT_VALUE_DIALED ;
+    PostDisarmFSM( ThisEvent );
+		setVictory(true);
+		return true;
+		// Check victory condition for Game Type B
+	} else if (potZero < 1.5 && (potValue < (potZero + 1.55)) && (potValue > (potZero + 1.45))) {
+		printf("Pot Value: %f\r\n", potValue);
+		printf("Correct Value!\r\n");
+		ES_Event ThisEvent;
+    ThisEvent.EventType = CORRECT_VALUE_DIALED ;
+    PostDisarmFSM( ThisEvent );
+		setVictory(true);
+		return true;
+	// Check for pot changes
+	} else if (potValue < (lastPotValue - 0.05) || potValue > (lastPotValue + 0.05)) {
+		moveTower(potValue);
+		lastPotValue = potValue;
+	}
+	return false;
+	
 }
 
