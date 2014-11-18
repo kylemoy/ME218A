@@ -33,3 +33,6 @@
 .\outputs\disarmfsm.o: .\Headers\Servos.h
 .\outputs\disarmfsm.o: .\Headers\PWMTiva.h
 .\outputs\disarmfsm.o: .\Headers\ADCSWTrigger.h
+.\outputs\disarmfsm.o: .\Headers\LCD.h
+.\outputs\disarmfsm.o: .\Headers\helperFunctions.h
+.\outputs\disarmfsm.o: .\Headers\passwordGenerator.h

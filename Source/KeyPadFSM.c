@@ -34,6 +34,8 @@
 #include "utils/uartstdio.h"
 #include "EnablePA25_PB23_PD7_PF0.h"
 #include "LCD.h"
+#include "passwordGenerator.h"
+#include "ES_ServiceHeaders.h"
 
 /*----------------------------- Module Defines ----------------------------*/
 #define BIT(x) >>(x-1)
@@ -45,6 +47,7 @@
 #define ALL_BITS (0xFF<<2)
 #define SCALE_DELAY (uint16_t)6
 #define KEYPAD_TIMER_DELAY 50
+#define MAX_PASS_SIZE 5
 
 /*---------------------------- Module Functions ---------------------------*/
 /* prototypes for private functions for this machine.They should be functions
@@ -58,14 +61,18 @@ bool CheckForKeyPadButtonPress(void);
 void setCol(int c, int dir);
 uint8_t readRow(int r);
 void setColsHigh(void);
+void GeneratePassword(void);
+void printCurrentInput(void);
 
 /*---------------------------- Module Variables ---------------------------*/
 // everybody needs a state variable, you may need others as well.
 // type of state variable should match htat of enum in header file
 static KeyPadFSMState_t CurrentState;
-static uint8_t prevButtonState = 0;
+static uint8_t prevButtonState = 255;
 static uint8_t Row = 255;
 static uint8_t Col = 255;
+static uint8_t passwordInput[MAX_PASS_SIZE];
+static uint8_t sizeOfInput = 0;
 
 // with the introduction of Gen2, we need a module level Priority var as well
 static uint8_t MyPriority;
@@ -96,10 +103,10 @@ bool InitKeyPadFSM ( uint8_t Priority )
 	InitKeyPadPortLines();
 	
   ES_Event ThisEvent;
-
   MyPriority = Priority;
   // put us into the Initial PseudoState
   CurrentState = InitPState;
+	
   // post the initial transition event
   ThisEvent.EventType = ES_INIT;
   if (ES_PostToService( MyPriority, ThisEvent) == true)
@@ -130,8 +137,24 @@ bool InitKeyPadFSM ( uint8_t Priority )
 ****************************************************************************/
 bool PostKeyPadFSM( ES_Event ThisEvent )
 {
-	puts("PostKeyPadFSM\n\r");
+	//puts("PostKeyPadFSM\n\r");
   return ES_PostToService( MyPriority, ThisEvent);
+}
+
+
+/*
+ * For debugging.
+ * Print current password input. 
+ */
+void printCurrentInput(void)
+{
+	// for debugging *******************
+			printf("Current Input: [");
+			for(int i=0; i<sizeOfInput; i++) 
+			{
+			printf("%i ", passwordInput[i]);
+			}
+			printf("]\n\r");
 }
 
 /****************************************************************************
@@ -159,10 +182,38 @@ ES_Event RunKeyPadFSM( ES_Event ThisEvent )
   ReturnEvent.EventType = ES_NO_EVENT; // assume no errors
 	if ((ThisEvent.EventType == ES_TIMEOUT) && (ThisEvent.EventParam == KEYPAD_TIMER))
 	{
-		uint8_t num = findNum();
-		if(num <= 12){
-			printf("%i\n\r", num);
-			LCDputchar((char)num);
+		uint8_t num = findNum(); // detect which key pad button was pressed
+		if(num == 12){ // 'Enter' is pressed
+			if(sizeOfInput != 0){ 
+				
+				printf("Checking if password ");
+				printCurrentInput();
+				printf(" is correct...\n\r");
+				if (checkPassword(passwordInput)) {
+					ES_Event ThisEvent;
+					ThisEvent.EventType = CORRECT_PASSWORD_ENTERED ;
+					PostDisarmFSM( ThisEvent );
+				} else {
+					ES_Event ThisEvent;
+					ThisEvent.EventType = INCORRECT_PASSWORD_ENTERED ;
+					PostDisarmFSM( ThisEvent );
+				}
+				sizeOfInput = 0;
+			}
+		} else if(sizeOfInput >= (MAX_PASS_SIZE)){ // reached limit of password length
+			if(num < 12) {
+				for (int i = 1; i < MAX_PASS_SIZE; i ++) {
+					passwordInput[i-1] = passwordInput[i];
+				}
+				passwordInput[MAX_PASS_SIZE - 1] = num;
+			}
+			printCurrentInput();
+			//printf("Password too long! Start Over.");
+				//sizeOfInput = 0;
+		}else if(num < 12){ // valid input
+				passwordInput[sizeOfInput] = num;
+				sizeOfInput++;
+				printCurrentInput();
 		}
 	}
 	
@@ -195,15 +246,17 @@ KeyPadFSMState_t QueryKeyPadFSM ( void )
  */
 bool CheckForKeyPadButtonPress(void)
 {
-	//puts("CheckForKeyPadButtonPress\n\r");
+	//printf("CheckForKeyPadButtonPress\n\r");
 	for (int r = 1; r <= NUM_ROWS ; r++){
 		for (int c = 1; c <= NUM_COLS; c++){
 			setColsHigh();
+			
 			setCol(c,0); // set column in question to Low
 			uint8_t thisRow = readRow(r);
-				if (thisRow && prevButtonState != 1)
+				if (thisRow && (prevButtonState != 1) && (prevButtonState != 255))
 				{
 					// One of the key pad buttons was pressed. 
+					//printf("Button Pressed! \n\r");
 					// Post Event ButtonPressed.
 					Row = r;
 					Col = c;
@@ -229,15 +282,15 @@ bool CheckForKeyPadButtonPress(void)
  *  *** EDIT HERE FOR SPECIFIC PIN ASSIGNMENTS **
  *
  * Initialize port lines for KeyPad
- * row/col#	|	KeyPad pin - Tiva Pin
+ * row/col#	|	Tiva Pin
  * ---------------------------
- *	col 1		|		pin3 		- 	PC4
- *	col 2		|		pin1		-	 	PC5
- *	col 3		|		pin5 		-	 	PC6		
- * 	row 1		|		pin2 		- 	PC7
- *	row 2		|		pin7 		- 	PD6
- *	row 3		|		pin6 		-	 	PD7
- *	row 4		|		pin4 		-	 	PF4
+ *	col 1		|	PB0
+ *	col 2		|	PB1
+ *	col 3		|	PE4
+ * 	row 1		|	PD0
+ *	row 2		|	PD1
+ *	row 3		|	PD2
+ *	row 4		|	PD3
  */
 void InitKeyPadPortLines(void)
 {
@@ -252,9 +305,9 @@ void InitKeyPadPortLines(void)
 	 * example: HWREG(SYSCTL_RCGCGPIO) |= BIT1HI; // Enable GPIO Port B
 	 */
 
-	HWREG(SYSCTL_RCGCGPIO) |= BIT2HI; // Enable GPIO Port C
+	HWREG(SYSCTL_RCGCGPIO) |= BIT1HI; // Enable GPIO Port B
 	HWREG(SYSCTL_RCGCGPIO) |= BIT3HI; // Enable GPIO Port D
-	HWREG(SYSCTL_RCGCGPIO) |= BIT5HI; // Enable GPIO Port F
+	HWREG(SYSCTL_RCGCGPIO) |= BIT4HI; // Enable GPIO Port E
 	
 	// wait a few	clock cycles after enabling clock
 	pause = HWREG(SYSCTL_RCGCGPIO); 
@@ -262,25 +315,19 @@ void InitKeyPadPortLines(void)
 	/* Set Port pins to digital or analog function
 	 * GPIO_O_DEN bit: 1 = Digital, 0 = Analog
 	 */
-	HWREG(GPIO_PORTC_BASE+GPIO_O_DEN) |= (GPIO_PIN_4)|(GPIO_PIN_5)|(GPIO_PIN_6)|(GPIO_PIN_7);// set Port C pins 4-7 to digital function
-	HWREG(GPIO_PORTD_BASE+GPIO_O_DEN) |= (GPIO_PIN_6)|(GPIO_PIN_7);// set Port D pins 6,7 to digital function
-	HWREG(GPIO_PORTF_BASE+GPIO_O_DEN) |= (GPIO_PIN_4);// set Port F pin 4 to digital function
+	HWREG(GPIO_PORTB_BASE+GPIO_O_DEN) |= (GPIO_PIN_1)|(GPIO_PIN_0);// set Port B pins 0,1 to digital function
+	HWREG(GPIO_PORTD_BASE+GPIO_O_DEN) |= (GPIO_PIN_3)|(GPIO_PIN_2)|(GPIO_PIN_1)|(GPIO_PIN_0);// set Port D pins 0-3 to digital function
+	HWREG(GPIO_PORTE_BASE+GPIO_O_DEN) |= (GPIO_PIN_4);// set Port E pin 4 to digital function
 	
 	/* Set pin directions to Intput or Output
 	 * GPIO_O_DIR bit: 1 = Output, 0 = Input
 	 */
 	 //rows as inputs
-	HWREG(GPIO_PORTC_BASE+GPIO_O_DIR) &= ~(GPIO_PIN_7);// set Port C pin 7 to input
-	HWREG(GPIO_PORTD_BASE+GPIO_O_DIR) &= ~((GPIO_PIN_6)|(GPIO_PIN_7));// set Port D pin 6,7 to input
-	HWREG(GPIO_PORTF_BASE+GPIO_O_DIR) &= ~(GPIO_PIN_4);// set Port F pin 4 to input
+	HWREG(GPIO_PORTD_BASE+GPIO_O_DIR) &= ~((GPIO_PIN_3)|(GPIO_PIN_2)|(GPIO_PIN_1)|(GPIO_PIN_0)); // set Port D pins 0-3 to input
 	
 	// columns as outputs
-	HWREG(GPIO_PORTC_BASE+GPIO_O_DIR) |= ((GPIO_PIN_4)|(GPIO_PIN_5)|(GPIO_PIN_6));// set Port C pins 4-6 to output
-
-	// Enable pull-up resistors on all rows (NOTE: Not valid on input pins)
-	//HWREG(GPIO_PORTC_BASE + GPIO_O_PUR) |= (GPIO_PIN_7);
-	//HWREG(GPIO_PORTD_BASE + GPIO_O_PUR) |= ((GPIO_PIN_6)|(GPIO_PIN_7));
-	//HWREG(GPIO_PORTF_BASE + GPIO_O_PUR) |= (GPIO_PIN_4);
+	HWREG(GPIO_PORTB_BASE+GPIO_O_DIR) |= ((GPIO_PIN_1)|(GPIO_PIN_0));// set Port B pins 0,1 to output
+	HWREG(GPIO_PORTE_BASE+GPIO_O_DIR) |= (GPIO_PIN_4);// set Port E pin 4 to output
 
 	setColsHigh();
 
@@ -297,23 +344,23 @@ void setCol(int c, int dir) // sets column C as HI (dir ==1) or Lo.
 	{
 		case 1: // column 1
 			if (dir == 1)
-				HWREG(GPIO_PORTC_BASE+(GPIO_O_DATA + ALL_BITS)) |= (GPIO_PIN_4);
+				HWREG(GPIO_PORTB_BASE+(GPIO_O_DATA + ALL_BITS)) |= (GPIO_PIN_0);
 			else 
-				HWREG(GPIO_PORTC_BASE+(GPIO_O_DATA + ALL_BITS)) &= ~(GPIO_PIN_4);
+				HWREG(GPIO_PORTB_BASE+(GPIO_O_DATA + ALL_BITS)) &= ~(GPIO_PIN_0);
 			break;
 		
 		case 2: // column 2
 			if (dir == 1)
-				HWREG(GPIO_PORTC_BASE+(GPIO_O_DATA + ALL_BITS)) |= (GPIO_PIN_5);
+				HWREG(GPIO_PORTB_BASE+(GPIO_O_DATA + ALL_BITS)) |= (GPIO_PIN_1);
 			else
-				HWREG(GPIO_PORTC_BASE+(GPIO_O_DATA + ALL_BITS)) &= ~(GPIO_PIN_5);
+				HWREG(GPIO_PORTB_BASE+(GPIO_O_DATA + ALL_BITS)) &= ~(GPIO_PIN_1);
 			break;
 			
 		case 3: // column 3
 			if (dir == 1)
-				HWREG(GPIO_PORTC_BASE+(GPIO_O_DATA + ALL_BITS)) |= (GPIO_PIN_6);
+				HWREG(GPIO_PORTE_BASE+(GPIO_O_DATA + ALL_BITS)) |= (GPIO_PIN_4);
 			else
-				HWREG(GPIO_PORTC_BASE+(GPIO_O_DATA + ALL_BITS)) &= ~(GPIO_PIN_6);
+				HWREG(GPIO_PORTE_BASE+(GPIO_O_DATA + ALL_BITS)) &= ~(GPIO_PIN_4);
 			break;
 			
 		default:
@@ -333,25 +380,25 @@ uint8_t readRow(int r)
 	switch (r)
 	{
 		case 1: // row 1
-			if ((HWREG(GPIO_PORTC_BASE+(GPIO_O_DATA + ALL_BITS)) &= (GPIO_PIN_7)) == 0) ///basicalyl if port C7 is low, then it is true
+			if ((HWREG(GPIO_PORTD_BASE+(GPIO_O_DATA + ALL_BITS)) &= (GPIO_PIN_0)) == 0) 
 				return 1;
 			else 
 				return 0;
 	
 		case 2: // row 2
-			if ((HWREG(GPIO_PORTD_BASE+(GPIO_O_DATA + ALL_BITS)) &= (GPIO_PIN_6)) == 0)
+			if ((HWREG(GPIO_PORTD_BASE+(GPIO_O_DATA + ALL_BITS)) &= (GPIO_PIN_1)) == 0)
 				return 1;
 			else 
 				return 0;
 	
 		case 3: // row 3
-			if ((HWREG(GPIO_PORTD_BASE+(GPIO_O_DATA + ALL_BITS)) &= (GPIO_PIN_7)) == 0)
+			if ((HWREG(GPIO_PORTD_BASE+(GPIO_O_DATA + ALL_BITS)) &= (GPIO_PIN_2)) == 0)
 				return 1;
 			else 
 				return 0;
 	
 		case 4: // row 4 
-			if ((HWREG(GPIO_PORTF_BASE+(GPIO_O_DATA + ALL_BITS)) &= (GPIO_PIN_4)) == 0)
+			if ((HWREG(GPIO_PORTD_BASE+(GPIO_O_DATA + ALL_BITS)) &= (GPIO_PIN_3)) == 0)
 				return 1;
 			else 
 				return 0;
@@ -360,7 +407,7 @@ uint8_t readRow(int r)
 			return 0;
 	}
 }
-
+ 
 /*
  * Function takes a Row and Column 
  * and returns the value of the number at the 
@@ -372,7 +419,7 @@ uint8_t findNum(void)
 	uint8_t num = (Row-1)*NUM_COLS + Col;
 		if (num == 11)
 			return 0;
-		else if ((num >= 1) && (num <= 9))
+		else if ((num >= 1) && (num <= 12))
 			return num;
 		else
 			return 255;
@@ -436,15 +483,11 @@ int main(void)
 	// When doing testing, it is useful to announce just which program
 	// is running.
 	puts("\rStarting Test Harness for \r");
-	printf("the 2nd Generation Events & Services Framework V2.2\r\n");
-	printf("%s %s\n",__TIME__, __DATE__);
-	printf("\n\r\n");
-	printf("Press any key to post key-stroke events to Service 0\n\r");
-	printf("Press 'd' to test event deferral \n\r");
-	printf("Press 'r' to test event recall \n\r");
-
+	printf("KeyPadFSM\r\n");
 	// Your hardware initialization function calls go here
 
+	//LCDInit(); // INITIALIZE LCD FOR TESTING
+	
 	// now initialize the Events and Services Framework and start it running
 	ErrorType = ES_Initialize(ES_Timer_RATE_1mS);
 	if ( ErrorType == Success ) {

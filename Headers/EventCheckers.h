@@ -16,7 +16,7 @@
 #include "KeyPadFSM.h"
 
 // prototypes for event checkers
-
+bool CheckForKeyPadButtonPress( void );
 bool Check4Keystroke(void);
 bool CheckTapeSensor(void);
 bool CheckPot(void);

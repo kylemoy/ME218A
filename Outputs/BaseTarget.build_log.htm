@@ -3,11 +3,12 @@
 <pre>
 <h1>µVision Build Log</h1>
 <h2>Project:</h2>
-U:\kmoy\ME218A Project\Project Edit Nov 17\ProjectFramework.uvproj
+\\testarossa\Desktops$\kmoy\Desktop\Project Edit Nov 18\ProjectFramework.uvproj
 Project File Date:  11/17/2014
 
 <h2>Output:</h2>
 Rebuild target 'BaseFrameworkTarget'
+compiling main.c...
 compiling EventCheckers.c...
 compiling DisarmFSM.c...
 compiling EnablePA25_PB23_PD7_PF0.c...
@@ -22,6 +23,7 @@ compiling KeyPadSM.c...
 compiling LCD.c...
 compiling KeyPadFSM.c...
 compiling helperFunctions.c...
+compiling passwordGenerator.c...
 assembling startup_rvmdk.S...
 compiling ES_CheckEvents.c...
 compiling ES_DeferRecall.c...
@@ -35,84 +37,46 @@ compiling retarget.c...
 compiling termio.c...
 compiling uartstdio.c...
 linking...
-Program Size: Code=3788 RO-data=668 RW-data=20 ZI-data=2148  
+Program Size: Code=19896 RO-data=1464 RW-data=148 ZI-data=2452  
 After Build - User command #1: fromelf --bin --output .\Outputs\BaseTarget.bin .\Outputs\BaseTarget.axf
 ".\Outputs\BaseTarget.axf" - 0 Error(s), 0 Warning(s).
-ype "ES_Event (*)(ES_Event)" cannot be used to initialize an entity of type "const pPostFunc"
-                                                TIMER15_RESP_FUNC
-Source\ES_Timers.c: 1 warning, 0 errors
-compiling retarget.c...
-compiling termio.c...
-compiling uartstdio.c...
-linking...
-Program Size: Code=3788 RO-data=668 RW-data=20 ZI-data=2148  
-After Build - User command #1: fromelf --bin --output .\Outputs\BaseTarget.bin .\Outputs\BaseTarget.axf
-".\Outputs\BaseTarget.axf" - 0 Error(s), 2 Warning(s).
-ed
-identifier "uint32_t" is undefined
-  extern uint32_t SysCtlFlashSizeGet(void);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(584): error:  #20: identifier "uint32_t" is undefined
-  extern uint32_t SysCtlFlashSectorSizeGet(void);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(585): error:  #20: identifier "uint32_t" is undefined
-  extern bool SysCtlPeripheralPresent(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(586): error:  #20: identifier "uint32_t" is undefined
-  extern bool SysCtlPeripheralReady(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(587): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlPeripheralPowerOn(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(588): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlPeripheralPowerOff(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(589): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlPeripheralReset(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(590): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlPeripheralEnable(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(591): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlPeripheralDisable(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(592): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlPeripheralSleepEnable(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(593): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlPeripheralSleepDisable(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(594): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlPeripheralDeepSleepEnable(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(595): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlPeripheralDeepSleepDisable(uint32_t ui32Peripheral);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(599): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlIntEnable(uint32_t ui32Ints);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(600): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlIntDisable(uint32_t ui32Ints);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(601): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlIntClear(uint32_t ui32Ints);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(602): error:  #20: identifier "uint32_t" is undefined
-  extern uint32_t SysCtlIntStatus(bool bMasked);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(603): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlLDOSleepSet(uint32_t ui32Voltage);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(604): error:  #20: identifier "uint32_t" is undefined
-  extern uint32_t SysCtlLDOSleepGet(void);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(605): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlLDODeepSleepSet(uint32_t ui32Voltage);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(606): error:  #20: identifier "uint32_t" is undefined
-  extern uint32_t SysCtlLDODeepSleepGet(void);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(607): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlSleepPowerSet(uint32_t ui32Config);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(608): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlDeepSleepPowerSet(uint32_t ui32Config);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(612): error:  #20: identifier "uint32_t" is undefined
-  extern uint32_t SysCtlResetCauseGet(void);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(613): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlResetCauseClear(uint32_t ui32Causes);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(614): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlBrownOutConfigSet(uint32_t ui32Config,
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(615): error:  #20: identifier "uint32_t" is undefined
-                                      uint32_t ui32Delay);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(616): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlDelay(uint32_t ui32Count);
-C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/sysctl.h(617): error:  #20: identifier "uint32_t" is undefined
-  extern void SysCtlMOSCConfigSet(uint32_t ui32Config);
-Source\helperFunctions.c: 1 warning, 30 errors
+Load "\\\\testarossa\\Desktops$\\kmoy\\Desktop\\Project Edit Nov 18\\Outputs\\BaseTarget.axf" 
+Connecting: Mode=JTAG, Speed=1000000Hz
+Erase Done.
+Programming Done.
+Verify OK.
+Load "\\\\testarossa\\Desktops$\\kmoy\\Desktop\\Project Edit Nov 18\\Outputs\\BaseTarget.axf" 
+Connecting: Mode=JTAG, Speed=1000000Hz
+Erase Done.
+Programming Done.
+Verify OK.
+</pre>
+</body>
+</html>
+ogramming Done.
+Verify OK.
+uts\BaseTarget.bin .\Outputs\BaseTarget.axf
+".\Outputs\BaseTarget.axf" - 0 Error(s), 3 Warning(s).
+        return false;
+Source\passwordGenerator.c(55): error:  #20: identifier "false" is undefined
+                                return false;
+Source\passwordGenerator.c(57): error:  #20: identifier "true" is undefined
+                return true;
+Source\passwordGenerator.c(61): error:  #20: identifier "bool" is undefined
+  bool checkPassword(int *guess) {
+Source\passwordGenerator.c(65): error:  #20: identifier "true" is undefined
+                                return true;
+Source\passwordGenerator.c(69): error:  #20: identifier "true" is undefined
+                                return true;
+Source\passwordGenerator.c(73): error:  #20: identifier "true" is undefined
+                                return true;
+Source\passwordGenerator.c(77): error:  #20: identifier "true" is undefined
+                                return true;
+Source\passwordGenerator.c(80): error:  #20: identifier "false" is undefined
+        return false;
+Source\passwordGenerator.c: 6 warnings, 11 errors
 assembling startup_rvmdk.S...
 compiling ES_CheckEvents.c...
-Source\ES_CheckEvents.c(23): warning:  #14-D: extra text after expected end of preprocessing directive
-  #include EVENT_CHECK_HEADER
-Source\ES_CheckEvents.c: 1 warning, 0 errors
 compiling ES_DeferRecall.c...
 compiling ES_Framework.c...
 compiling ES_LookupTables.c...
@@ -120,11 +84,59 @@ compiling ES_Port.c...
 compiling ES_PostList.c...
 compiling ES_Queue.c...
 compiling ES_Timers.c...
-Source\ES_Timers.c(109): warning:  #144-D: a value of type "ES_Event (*)(ES_Event)" cannot be used to initialize an entity of type "const pPostFunc"
-                                                TIMER15_RESP_FUNC
-Source\ES_Timers.c: 1 warning, 0 errors
 compiling retarget.c...
 compiling termio.c...
 compiling uartstdio.c...
-".\Outputs\BaseTarget.axf" - 30 Error(s), 7 Warning(s).
+".\Outputs\BaseTarget.axf" - 11 Error(s), 6 Warning(s).
+Target not created
+r( c[getPassword(4)[2]]);
+Source\LCD.c(439): error:  #142: expression must have pointer-to-object type
+                        LCDputchar( c[getPassword(4)[3]]);
+Source\LCD.c(440): error:  #142: expression must have pointer-to-object type
+                        LCDputchar( c[getPassword(4)[4]]);
+Source\LCD.c: 1 warning, 20 errors
+compiling KeyPadFSM.c...
+compiling helperFunctions.c...
+compiling passwordGenerator.c...
+Source\passwordGenerator.c(24): warning:  #223-D: function "time" declared implicitly
+        srand(time(NULL));
+Source\passwordGenerator.c: 1 warning, 0 errors
+assembling startup_rvmdk.S...
+compiling ES_CheckEvents.c...
+compiling ES_DeferRecall.c...
+compiling ES_Framework.c...
+compiling ES_LookupTables.c...
+compiling ES_Port.c...
+compiling ES_PostList.c...
+compiling ES_Queue.c...
+compiling ES_Timers.c...
+compiling retarget.c...
+compiling termio.c...
+compiling uartstdio.c...
+".\Outputs\BaseTarget.axf" - 20 Error(s), 2 Warning(s).
+Target not created
+)
+            variable "c" (declared at line 429)
+        switch (messageNumber) {
+        ^
+Source\LCD.c: 2 warnings, 23 errors
+compiling KeyPadFSM.c...
+compiling helperFunctions.c...
+compiling passwordGenerator.c...
+Source\passwordGenerator.c(24): warning:  #223-D: function "time" declared implicitly
+        srand(time(NULL));
+Source\passwordGenerator.c: 1 warning, 0 errors
+assembling startup_rvmdk.S...
+compiling ES_CheckEvents.c...
+compiling ES_DeferRecall.c...
+compiling ES_Framework.c...
+compiling ES_LookupTables.c...
+compiling ES_Port.c...
+compiling ES_PostList.c...
+compiling ES_Queue.c...
+compiling ES_Timers.c...
+compiling retarget.c...
+compiling termio.c...
+compiling uartstdio.c...
+".\Outputs\BaseTarget.axf" - 23 Error(s), 3 Warning(s).
 Target not created

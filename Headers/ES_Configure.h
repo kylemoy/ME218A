@@ -104,7 +104,7 @@ typedef enum {  ES_NO_EVENT = 0,
 #define TIMER1_RESP_FUNC PostDisarmFSM
 #define TIMER2_RESP_FUNC PostDisarmFSM
 #define TIMER3_RESP_FUNC PostDisarmFSM
-#define TIMER4_RESP_FUNC TIMER_UNUSED
+#define TIMER4_RESP_FUNC PostDisarmFSM
 #define TIMER5_RESP_FUNC TIMER_UNUSED
 #define TIMER6_RESP_FUNC TIMER_UNUSED
 #define TIMER7_RESP_FUNC TIMER_UNUSED
@@ -128,6 +128,7 @@ typedef enum {  ES_NO_EVENT = 0,
 #define POST_DISARM_TIMER 1
 #define VIBRATION_TIMER 2
 #define FAST_LEDS 3
+#define MESSAGE_TIMER 4
 #define KEYPAD_TIMER 15
 
 #endif /* CONFIGURE_H */

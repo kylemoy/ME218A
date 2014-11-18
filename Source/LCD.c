@@ -10,7 +10,7 @@
 	 pulse the shift register to send this to the LCD, then pulse the shift
 	 reigster again, in quick succession with E being set low and hi.
 ****************************************************************************/
-#define TEST
+//#define TEST
 
 #include <stdio.h>
 #include <stdint.h>
@@ -25,6 +25,7 @@
 #include "ES_Timers.h"
 #include "termio.h"
 #include "LCD.h"
+#include "passwordGenerator.h"
 
 // not as sure if these are absolutley needed
 #include "driverlib/gpio.h"
@@ -67,6 +68,7 @@
 #define LCD_RCK GPIO_PIN_6 // pin 6
 
 char LCD;
+static uint8_t messageNumber = 0;
 
 // shift register functions
 // probably want to make SCKPulse and RCKPulse take an input of
@@ -264,12 +266,26 @@ void LCDInit (void) {
 	
 }
 
+void clearLCD(void) {
+	/*
+	 * Display clear
+	*/
+	//sending 000000
+	LCD = 0;
+	sendToLCD(LCD);
+	//wait (2);
+	//sending 0001
+	LCD |= D4_HI;
+	sendToLCD(LCD);
+	wait (1);
+}
+
 // * LCD = D4-D5-D6-D7-RS-RW-E-empty
 void LCDputchar (char letter) {
-	puts("\n\r in LCDputchar p\r\n");
+	//puts("\n\r in LCDputchar p\r\n");
 	
-	printf("\n\r Lower Nibble is : %#x \n\r", letter & 0x0f);// & 0xF0);
-	printf("\n\r Upper Nibble is : %#x \n\r", (letter>>4) & 0x0f);// & 0xF0);
+	//printf("\n\r Lower Nibble is : %#x \n\r", letter & 0x0f);// & 0xF0);
+	//printf("\n\r Upper Nibble is : %#x \n\r", (letter>>4) & 0x0f);// & 0xF0);
 
 	uint8_t char_bits[8] = {0, 0, 0, 0, 0, 0 ,0 ,0};
 	for (uint8_t i = 0; i < 8; i++) {
@@ -279,7 +295,7 @@ void LCDputchar (char letter) {
 	}
 	
 	for (uint8_t i = 0; i < 8; i++) {
-		printf("Bit %d is %d\r\n", i, char_bits[i]);
+		//printf("Bit %d is %d\r\n", i, char_bits[i]);
 	}
 	
 	// Clears the data pin bits of LCD but keeps RS, RW, etc.
@@ -297,7 +313,7 @@ void LCDputchar (char letter) {
 		LCD |= (0x20); // Set 0010000
 	if (char_bits[7])
 		LCD |= (0x10); // Set 0001000
-	printf("\n\r Upper Nibble Reversed is: %#x \n\r", LCD);// & 0xF0);
+	//printf("\n\r Upper Nibble Reversed is: %#x \n\r", LCD);// & 0xF0);
 	sendToLCD (LCD); //sends upper 4 bits
 	wait(1);
 	
@@ -315,9 +331,189 @@ void LCDputchar (char letter) {
 		LCD |= (0x20); // Set 0010000
 	if (char_bits[3])
 		LCD |= (0x10); // Set 0001000
-	printf("\n\r Lower Nibble Reversed is: %#x \n\r", LCD);// & 0xF0);
+	//printf("\n\r Lower Nibble Reversed is: %#x \n\r", LCD);// & 0xF0);
 	sendToLCD (LCD); //sends upper 4 bits
 	wait(1);
+}
+
+void resetLCDmessage(void) {
+	messageNumber = 1;
+}
+
+void printLCDmessage(void) {
+	char c[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	switch (messageNumber) {
+		case 1:
+			clearLCD();
+			LCDputchar('W');
+			LCDputchar('e');
+			LCDputchar('l');
+			LCDputchar('c');
+			LCDputchar('o');
+			LCDputchar('m');
+			LCDputchar('e');
+			LCDputchar(' ');
+			LCDputchar('D');
+			LCDputchar('r');
+			LCDputchar('E');
+			LCDputchar('d');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			
+			messageNumber = 2;
+			break;
+		
+		case 2:
+			clearLCD();
+			LCDputchar('P');
+			LCDputchar('a');
+			LCDputchar('s');
+			LCDputchar('s');
+			LCDputchar('c');
+			LCDputchar('o');
+			LCDputchar('d');
+			LCDputchar('e');
+			LCDputchar('s');
+			LCDputchar('.');
+			LCDputchar('.');
+			LCDputchar('.');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			messageNumber = 3;
+			break;
+		
+		case 3:
+			clearLCD();
+			LCDputchar( c[getPassword(1)[0]]);
+			LCDputchar( c[getPassword(1)[1]]);
+			LCDputchar( c[getPassword(1)[2]]);
+			LCDputchar( c[getPassword(1)[3]]);
+			LCDputchar( c[getPassword(1)[4]]);
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			messageNumber = 4;
+			break;
+			
+		case 4:
+			clearLCD();
+			LCDputchar( c[getPassword(2)[0]]);
+			LCDputchar( c[getPassword(2)[1]]);
+			LCDputchar( c[getPassword(2)[2]]);
+			LCDputchar( c[getPassword(2)[3]]);
+			LCDputchar( c[getPassword(2)[4]]);
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			messageNumber = 5;
+			break;
+		
+		case 5:
+			clearLCD();
+			LCDputchar( c[getPassword(3)[0]]);
+			LCDputchar( c[getPassword(3)[1]]);
+			LCDputchar( c[getPassword(3)[2]]);
+			LCDputchar( c[getPassword(3)[3]]);
+			LCDputchar( c[getPassword(3)[4]]);
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			messageNumber = 6;
+			break;
+			
+		case 6:
+			clearLCD();
+			LCDputchar( c[getPassword(4)[0]]);
+			LCDputchar( c[getPassword(4)[1]]);
+			LCDputchar( c[getPassword(4)[2]]);
+			LCDputchar( c[getPassword(4)[3]]);
+			LCDputchar( c[getPassword(4)[4]]);
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			messageNumber = 1;
+			break;
+	}
+}
+
+void printAuthorizedMessage(void) {
+			clearLCD();
+			LCDputchar('A');
+			LCDputchar('u');
+			LCDputchar('t');
+			LCDputchar('h');
+			LCDputchar('o');
+			LCDputchar('r');
+			LCDputchar('i');
+			LCDputchar('z');
+			LCDputchar('e');
+			LCDputchar('d');
+			LCDputchar('!');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+}
+
+
+void printIncorrectMessage(void) {
+			clearLCD();
+			LCDputchar('I');
+			LCDputchar('n');
+			LCDputchar('c');
+			LCDputchar('o');
+			LCDputchar('r');
+			LCDputchar('r');
+			LCDputchar('e');
+			LCDputchar('c');
+			LCDputchar('t');
+			LCDputchar('.');
+			LCDputchar('.');
+			LCDputchar('.');
+}
+
+void printArmedMessage(void) {
+			clearLCD();
+			LCDputchar('A');
+			LCDputchar('r');
+			LCDputchar('m');
+			LCDputchar('e');
+			LCDputchar('d');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
 }
 
 #ifdef TEST 
@@ -340,11 +536,6 @@ int main(void)
 	LCDputchar(' ');
 	LCDputchar('D');
 	LCDputchar('r');
-	LCDputchar('E');
-	LCDputchar('d');
-	LCDputchar('.');
-	LCDputchar('.');
-	LCDputchar('.');
 	//LCDputchar('3');
 	return 0;
 }

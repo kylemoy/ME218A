@@ -61,7 +61,7 @@ void RCKPulse (void) {
 }
 
 void setLED (char LEDs[8]) {
-	puts("\n\r LED:\r\n");
+	printf(" LED: ");
 	for (int i = 0; i < 8; i++) {
 		int bit = 0;
 		//clears data pin
@@ -82,6 +82,7 @@ void setLED (char LEDs[8]) {
 		// pulses SCK to send data to shift register
 		SCKPulse();
 	}
+	printf("\r\n");
 	
 	// leaving the loop means it has gone through all 8
 	RCKPulse();

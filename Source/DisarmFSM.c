@@ -30,6 +30,9 @@
 #include "DCmotors.h"
 #include "LEDs.h"
 #include "Servos.h"
+#include "LCD.h"
+#include "passwordGenerator.h"
+#include "ES_Timers.h"
 
 /*----------------------------- Module Defines ----------------------------*/
 #define ON 1
@@ -87,6 +90,7 @@ bool InitDisarmFSM ( uint8_t Priority )
 	initMotors();
 	initializeServos();
 	LEDShiftRegInit();
+	LCDInit();
 	
   MyPriority = Priority;
   CurrentState = Armed;
@@ -152,6 +156,9 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 			switch ( ThisEvent.EventType ) {
 				case ES_INIT :
 					printf("Arming...\r\n");
+					printf(" Generating random passwords...\r\n");
+					randomizePasswords();
+					printArmedMessage();
 				
 					printf(" Turning vibration motor on...\r\n");
 					vibrationMotorOn(); // turns vibration motor ON
@@ -181,13 +188,19 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					setLED(LEDs);
 				
 					printf(" Begin printing LCD passcode...\r\n");
-					//printLCDmessage();
-					printf(" Starting 60s disarm timer...\r\n");
-					
-					//the timer can only go up to 32000, so we need to set the new timer rate to 2ms
+					resetLCDmessage();
+					printLCDmessage();
 					ES_Timer_Init(ES_Timer_RATE_2mS);
+					ES_Timer_InitTimer(MESSAGE_TIMER, 1000);
+					ES_Timer_StartTimer(MESSAGE_TIMER);
+
+					printf(" Starting 60s disarm timer...\r\n");
+					//the timer can only go up to 32000, so we need to set the new timer rate to 2ms
+					
 					ES_Timer_InitTimer(DISARM_TIMER, 30000);
 					ES_Timer_StartTimer(DISARM_TIMER);
+
+					
 					
 					printf(" Transitioning to Stage 1...\r\n\r\n");
 					CurrentState = Stage1;
@@ -211,14 +224,20 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					}
 					
 					if (ThisEvent.EventParam == VIBRATION_TIMER) {
-						printf(" Turnnign off vibration pulse...\r\n\r\n");
+						printf(" Turning off vibration pulse...\r\n\r\n");
 						vibrationMotorOff();
+					}
+					if (ThisEvent.EventParam == MESSAGE_TIMER) {
+						printf("EVENT: Printing out the next message...\r\n");
+						printLCDmessage();
+						ES_Timer_InitTimer(MESSAGE_TIMER, 1000);
+						ES_Timer_StartTimer(MESSAGE_TIMER);
 					}
           break;
 				case THREE_HANDS_OFF :
 					printf("EVENT: One or more hands have been released.\r\n");
 					printf(" Clearing the LCD screen\r\n");
-					//clearLCD();
+					printArmedMessage();
 					printf(" Setting Tower Tier 1 LED off...\r\n");
 					LEDs[Tier1] = 0;
 				  setLED(LEDs);
@@ -232,6 +251,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					printf("EVENT: The correct password has been entered.\r\n");
 					printf(" Unlocking the keys\r\n");
 					unlockKeys();
+					printAuthorizedMessage();
 				
 					printf(" Setting Tower Tier 2 LED on...\r\n");
 					LEDs[Tier2] = 1;
@@ -246,10 +266,11 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 				
 				case INCORRECT_PASSWORD_ENTERED :
 					printf("EVENT: The incorrect password has been entered.\r\n");
-					printf(" Generating vibration pulse...\r\n\r\n");
+					printf(" Generating vibration pulse...\r\n");
 					vibrationMotorOn();
 					ES_Timer_InitTimer(VIBRATION_TIMER, 350);
 					ES_Timer_StartTimer(VIBRATION_TIMER);
+					printIncorrectMessage();
           break;
 
         default :
@@ -275,9 +296,14 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					printf(" Setting Tower Tier 1 LED on...\r\n");
 					LEDs[Tier1] = 1;
 					setLED(LEDs);
+				
 					
 					printf(" Begin printing LCD passcode...\r\n");
-					//printLCDmessage();
+					resetLCDmessage();
+					printLCDmessage();
+					ES_Timer_InitTimer(MESSAGE_TIMER, 1000);
+					ES_Timer_StartTimer(MESSAGE_TIMER);
+
 					printf(" Transitioning to Stage1...\r\n\r\n");
 					CurrentState = Stage1;
 					printf("STATE: Stage1\r\n\r\n");
