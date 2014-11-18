@@ -7,3 +7,4 @@
 .\outputs\es_checkevents.o: .\Headers\ES_General.h
 .\outputs\es_checkevents.o: .\Headers\ES_CheckEvents.h
 .\outputs\es_checkevents.o: .\Headers\EventCheckers.h
+.\outputs\es_checkevents.o: .\Headers\KeyPadFSM.h

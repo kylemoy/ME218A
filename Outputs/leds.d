@@ -18,5 +18,6 @@
 .\outputs\leds.o: .\Headers\ES_Types.h
 .\outputs\leds.o: .\Headers\ES_Timers.h
 .\outputs\leds.o: .\Headers\EnablePA25_PB23_PD7_PF0.h
+.\outputs\leds.o: .\Headers\helperFunctions.h
 .\outputs\leds.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/gpio.h
 .\outputs\leds.o: C:\ti\TivaWare_C_Series-2.1.0.12573\driverlib/interrupt.h

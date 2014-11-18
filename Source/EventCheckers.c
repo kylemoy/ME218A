@@ -39,6 +39,8 @@
 #include "EventCheckers.h"
 #include "TapeSensor.h"
 #include "Servos.h"
+#include "SlotDetector.h"
+
 
 
 /****************************************************************************
@@ -107,6 +109,27 @@ bool CheckTapeSensor(void) {
 		ES_Event ThisEvent;
     ThisEvent.EventType = THREE_HANDS_OFF ;
     PostDisarmFSM( ThisEvent );
+		lastState = false;
+		return true;
+	}
+	return false;
+}
+
+bool CheckSlotDetector(void) {
+	int keyInSlotDefault = getKeyInSlotDefault();
+	if (keyInSlotDefault == 0)
+		setKeyInSlotDefault();
+
+	bool lastState = false;
+	bool keyInSlot = isKeyInSlot();
+
+	if (keyInSlot && (lastState == false)) {
+		printf("Key has been placed.");
+		lastState = true;
+		return true;
+
+	} else if (!keyInSlot && (lastState == true)) {
+		printf("Key has been removed.");
 		lastState = false;
 		return true;
 	}

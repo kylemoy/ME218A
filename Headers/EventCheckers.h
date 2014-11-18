@@ -13,6 +13,7 @@
 
 #ifndef EventCheckers_H
 #define EventCheckers_H
+#include "KeyPadFSM.h"
 
 // prototypes for event checkers
 

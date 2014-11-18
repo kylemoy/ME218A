@@ -22,15 +22,6 @@
 
 #define ALL_BITS (0xff <<2)
 
-void wait (int delay) {
-	int time_start = ES_Timer_GetTime(); 
-	int time = ES_Timer_GetTime();
-	
-	while (time < time_start + delay) {
-		HWREG(SYSCTL_RCGCGPIO);
-		time = ES_Timer_GetTime();
-	}
-}
 
 void LEDShiftRegInit (void) {
 	// initializes timer

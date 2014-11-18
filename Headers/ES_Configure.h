@@ -29,7 +29,7 @@
 /****************************************************************************/
 // This macro determines that nuber of services that are *actually* used in
 // a particular application. It will vary in value from 1 to MAX_NUM_SERVICES
-#define NUM_SERVICES 1
+#define NUM_SERVICES 2
 
 /****************************************************************************/
 // These are the definitions for Service 0, the lowest priority service.
@@ -44,6 +44,16 @@
 #define SERV_0_RUN RunDisarmFSM
 // How big should this services Queue be?
 #define SERV_0_QUEUE_SIZE 5
+
+#if NUM_SERVICES > 1
+#define SERV_1_HEADER "KeyPadFSM.h"
+// the name of the Init function
+#define SERV_1_INIT InitKeyPadFSM
+// the name of the run function
+#define SERV_1_RUN RunKeyPadFSM
+// How big should this services Queue be?
+#define SERV_1_QUEUE_SIZE 5
+#endif
 
 
 /****************************************************************************/
@@ -67,10 +77,13 @@ typedef enum {  ES_NO_EVENT = 0,
 // These are the definitions for the Distribution lists. Each definition
 // should be a comma separated list of post functions to indicate which
 // services are on that distribution list.
-#define NUM_DIST_LISTS 1
+#define NUM_DIST_LISTS 2
 #if NUM_DIST_LISTS > 0 
 #define DIST_LIST0 PostDisarmFSM
 #endif
+#if NUM_DIST_LISTS > 1 
+#define DIST_LIST1 PostKeyPadFSM
+#endif		
 
 /****************************************************************************/
 // This are the name of the Event checking funcion header file. 
@@ -78,7 +91,7 @@ typedef enum {  ES_NO_EVENT = 0,
 
 /****************************************************************************/
 // This is the list of event checking functions 
-#define EVENT_CHECK_LIST Check4Keystroke, CheckPot, //, CheckTapeSensor
+#define EVENT_CHECK_LIST CheckForKeyPadButtonPress, Check4Keystroke, CheckPot, CheckTapeSensor
 
 /****************************************************************************/
 // These are the definitions for the post functions to be executed when the
@@ -102,7 +115,7 @@ typedef enum {  ES_NO_EVENT = 0,
 #define TIMER12_RESP_FUNC TIMER_UNUSED
 #define TIMER13_RESP_FUNC TIMER_UNUSED
 #define TIMER14_RESP_FUNC TIMER_UNUSED
-#define TIMER15_RESP_FUNC TIMER_UNUSED
+#define TIMER15_RESP_FUNC PostKeyPadFSM
 
 /****************************************************************************/
 // Give the timer numbers symbolc names to make it easier to move them
@@ -115,5 +128,6 @@ typedef enum {  ES_NO_EVENT = 0,
 #define POST_DISARM_TIMER 1
 #define VIBRATION_TIMER 2
 #define FAST_LEDS 3
+#define KEYPAD_TIMER 15
 
 #endif /* CONFIGURE_H */

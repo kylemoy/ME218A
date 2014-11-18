@@ -16,3 +16,4 @@
 .\outputs\es_postlist.o: .\Headers\ES_Events.h
 .\outputs\es_postlist.o: .\Headers\ES_ServiceHeaders.h
 .\outputs\es_postlist.o: .\Headers\DisarmFSM.h
+.\outputs\es_postlist.o: .\Headers\KeyPadFSM.h

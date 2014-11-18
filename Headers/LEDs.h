@@ -14,6 +14,7 @@
 #include "ES_Timers.h"
 #include "EnablePA25_PB23_PD7_PF0.h"
 #include "termio.h"
+#include "helperFunctions.h"
 
 // not as sure if these are absolutley needed
 #include "driverlib/gpio.h"
