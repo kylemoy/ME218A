@@ -91,7 +91,7 @@ typedef enum {  ES_NO_EVENT = 0,
 
 /****************************************************************************/
 // This is the list of event checking functions 
-#define EVENT_CHECK_LIST CheckForKeyPadButtonPress, Check4Keystroke, CheckPot, CheckTapeSensor
+#define EVENT_CHECK_LIST CheckForKeyPadButtonPress, Check4Keystroke, CheckPot, CheckSlotDetector, CheckTapeSensor
 
 /****************************************************************************/
 // These are the definitions for the post functions to be executed when the

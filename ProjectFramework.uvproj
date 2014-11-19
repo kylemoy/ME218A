@@ -578,6 +578,11 @@
               <FileType>1</FileType>
               <FilePath>.\Source\passwordGenerator.c</FilePath>
             </File>
+            <File>
+              <FileName>AudioControl.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\AudioControl.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -737,6 +742,11 @@
               <FileName>passwordGenerator.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Headers\passwordGenerator.h</FilePath>
+            </File>
+            <File>
+              <FileName>AudioControl.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Headers\AudioControl.h</FilePath>
             </File>
           </Files>
         </Group>

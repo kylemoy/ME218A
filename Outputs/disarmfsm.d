@@ -36,3 +36,6 @@
 .\outputs\disarmfsm.o: .\Headers\LCD.h
 .\outputs\disarmfsm.o: .\Headers\helperFunctions.h
 .\outputs\disarmfsm.o: .\Headers\passwordGenerator.h
+.\outputs\disarmfsm.o: .\Headers\AudioControl.h
+.\outputs\disarmfsm.o: .\Headers\SlotDetector.h
+.\outputs\disarmfsm.o: .\Headers\ArmedLine.h

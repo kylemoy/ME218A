@@ -7,9 +7,9 @@
 #define POT_HIGH 3.3 // High on Pot
 #define POT_LOW 0 // Low on Pot
 
-#define TOWER_HIGH 1500
-#define TOWER_ZERO_DEGREES 			1400
-#define TOWER_LOW 1350
+#define TOWER_HIGH 1540
+#define TOWER_ZERO_DEGREES 			1440
+#define TOWER_LOW 1390
 
 #define KEY_LOCK	920
 #define KEY_UNLOCK	2020

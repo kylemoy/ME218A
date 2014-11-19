@@ -19,6 +19,7 @@
 bool CheckForKeyPadButtonPress( void );
 bool Check4Keystroke(void);
 bool CheckTapeSensor(void);
+bool CheckSlotDetector(void);
 bool CheckPot(void);
 
 

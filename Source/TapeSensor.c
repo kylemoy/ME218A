@@ -10,14 +10,12 @@
 ****************************************************************************/
 #include "TapeSensor.h"
 
-/****************************************************************************
-  Change these values if port F 2,3,4 is not used for the tape reading
-****************************************************************************/
+
 #define ALL_BITS (0xff <<2)
-#define TAPE_PORT_DEC SYSCTL_RCGCGPIO_R5 //port F
-#define TAPE_PORT GPIO_PORTF_BASE // port F base
-#define TAPE_PIN GPIO_PIN_4 // pin 4
-#define TAPE_HI BIT4HI
+#define TAPE_PORT_DEC SYSCTL_RCGCGPIO_R3 //port D
+#define TAPE_PORT GPIO_PORTD_BASE // port D base
+#define TAPE_PIN GPIO_PIN_7 // pin 7
+#define TAPE_HI BIT7HI
 
 void initTapeSensors(void) {
 	// Initialization of tape sensor port

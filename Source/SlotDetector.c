@@ -16,7 +16,7 @@
 #define PHOTOTRANS_PIN GPIO_PIN_2 // pin 2
 #define PHOTOTRANS_HI BIT2HI
 
-int keyInSlotDefault = 0;
+static int keyInSlotDefault = -1;
 
 
 void setKeyInSlotDefault(void) {
@@ -34,7 +34,7 @@ void initPhototransistor(void) {
 }
 
 bool isKeyInSlot(void) {
-	return !(HWREG(PHOTOTRANS_PORT+(GPIO_O_DATA + ALL_BITS)) & PHOTOTRANS_HI);
+	return (HWREG(PHOTOTRANS_PORT+(GPIO_O_DATA + ALL_BITS)) & PHOTOTRANS_HI);
 }
 
 
@@ -44,7 +44,7 @@ int main(void)
 { 
 	TERMIO_Init(); 
 	printf("\n\rIn Test Harness for Slot Detector\r\n");
-	initTapeSensors();
+	initPhototransistor();
 	while(true){
 		if (isKeyInSlot()) {
 			printf("Slot is covered.\r\n");
@@ -52,6 +52,5 @@ int main(void)
 			printf("Slot is not.\r\n");
 		}
 	}
-	break;
 }
 #endif

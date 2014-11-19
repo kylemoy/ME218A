@@ -36,17 +36,23 @@ Section Cross References
     eventcheckers.o(i.CheckPot) refers to servos.o(i.moveTower) for moveTower
     eventcheckers.o(i.CheckPot) refers to eventcheckers.o(.data) for .data
     eventcheckers.o(i.CheckSlotDetector) refers to slotdetector.o(i.getKeyInSlotDefault) for getKeyInSlotDefault
+    eventcheckers.o(i.CheckSlotDetector) refers to noretval__2printf.o(.text) for __2printf
     eventcheckers.o(i.CheckSlotDetector) refers to slotdetector.o(i.setKeyInSlotDefault) for setKeyInSlotDefault
     eventcheckers.o(i.CheckSlotDetector) refers to slotdetector.o(i.isKeyInSlot) for isKeyInSlot
-    eventcheckers.o(i.CheckSlotDetector) refers to noretval__2printf.o(.text) for __2printf
+    eventcheckers.o(i.CheckSlotDetector) refers to disarmfsm.o(i.PostDisarmFSM) for PostDisarmFSM
+    eventcheckers.o(i.CheckSlotDetector) refers to eventcheckers.o(.data) for .data
     eventcheckers.o(i.CheckTapeSensor) refers to tapesensor.o(i.tapeSensorsCovered) for tapeSensorsCovered
     eventcheckers.o(i.CheckTapeSensor) refers to disarmfsm.o(i.PostDisarmFSM) for PostDisarmFSM
     eventcheckers.o(i.CheckTapeSensor) refers to eventcheckers.o(.data) for .data
+    disarmfsm.o(i.InitDisarmFSM) refers to enablepa25_pb23_pd7_pf0.o(i.PortFunctionInit) for PortFunctionInit
     disarmfsm.o(i.InitDisarmFSM) refers to tapesensor.o(i.initTapeSensors) for initTapeSensors
+    disarmfsm.o(i.InitDisarmFSM) refers to slotdetector.o(i.initPhototransistor) for initPhototransistor
     disarmfsm.o(i.InitDisarmFSM) refers to dcmotors.o(i.initMotors) for initMotors
     disarmfsm.o(i.InitDisarmFSM) refers to servos.o(i.initializeServos) for initializeServos
     disarmfsm.o(i.InitDisarmFSM) refers to leds.o(i.LEDShiftRegInit) for LEDShiftRegInit
     disarmfsm.o(i.InitDisarmFSM) refers to lcd.o(i.LCDInit) for LCDInit
+    disarmfsm.o(i.InitDisarmFSM) refers to audiocontrol.o(i.AudioInit) for AudioInit
+    disarmfsm.o(i.InitDisarmFSM) refers to armedline.o(i.initArmedLine) for initArmedLine
     disarmfsm.o(i.InitDisarmFSM) refers to es_framework.o(i.ES_PostToService) for ES_PostToService
     disarmfsm.o(i.InitDisarmFSM) refers to disarmfsm.o(.data) for .data
     disarmfsm.o(i.PostDisarmFSM) refers to es_framework.o(i.ES_PostToService) for ES_PostToService
@@ -56,10 +62,12 @@ Section Cross References
     disarmfsm.o(i.RunDisarmFSM) refers to _printf_d.o(.ARM.Collect$$_printf_percent$$00000009) for _printf_d
     disarmfsm.o(i.RunDisarmFSM) refers to _printf_dec.o(.text) for _printf_int_dec
     disarmfsm.o(i.RunDisarmFSM) refers to noretval__2printf.o(.text) for __2printf
+    disarmfsm.o(i.RunDisarmFSM) refers to armedline.o(i.setArmed) for setArmed
+    disarmfsm.o(i.RunDisarmFSM) refers to leds.o(i.LEDShiftRegInit) for LEDShiftRegInit
+    disarmfsm.o(i.RunDisarmFSM) refers to leds.o(i.setLED) for setLED
     disarmfsm.o(i.RunDisarmFSM) refers to passwordgenerator.o(i.randomizePasswords) for randomizePasswords
     disarmfsm.o(i.RunDisarmFSM) refers to lcd.o(i.printArmedMessage) for printArmedMessage
     disarmfsm.o(i.RunDisarmFSM) refers to dcmotors.o(i.vibrationMotorOn) for vibrationMotorOn
-    disarmfsm.o(i.RunDisarmFSM) refers to leds.o(i.setLED) for setLED
     disarmfsm.o(i.RunDisarmFSM) refers to servos.o(i.lowerFlag) for lowerFlag
     disarmfsm.o(i.RunDisarmFSM) refers to servos.o(i.lockKeys) for lockKeys
     disarmfsm.o(i.RunDisarmFSM) refers to dcmotors.o(i.unwindTimingMotor) for unwindTimingMotor
@@ -70,13 +78,19 @@ Section Cross References
     disarmfsm.o(i.RunDisarmFSM) refers to es_timers.o(i.ES_Timer_Init) for ES_Timer_Init
     disarmfsm.o(i.RunDisarmFSM) refers to es_timers.o(i.ES_Timer_InitTimer) for ES_Timer_InitTimer
     disarmfsm.o(i.RunDisarmFSM) refers to es_timers.o(i.ES_Timer_StartTimer) for ES_Timer_StartTimer
+    disarmfsm.o(i.RunDisarmFSM) refers to lcd.o(i.printTimeUp) for printTimeUp
+    disarmfsm.o(i.RunDisarmFSM) refers to audiocontrol.o(i.PlayGameOver) for PlayGameOver
     disarmfsm.o(i.RunDisarmFSM) refers to servos.o(i.unlockKeys) for unlockKeys
     disarmfsm.o(i.RunDisarmFSM) refers to lcd.o(i.printAuthorizedMessage) for printAuthorizedMessage
+    disarmfsm.o(i.RunDisarmFSM) refers to audiocontrol.o(i.PlayWohoo) for PlayWohoo
     disarmfsm.o(i.RunDisarmFSM) refers to lcd.o(i.printIncorrectMessage) for printIncorrectMessage
     disarmfsm.o(i.RunDisarmFSM) refers to disarmfsm.o(.data) for .data
     disarmfsm.o(i.RunDisarmFSM) refers to servos.o(i.setPotZero) for setPotZero
     disarmfsm.o(i.RunDisarmFSM) refers to disarmfsm.o(i.PostDisarmFSM) for PostDisarmFSM
+    disarmfsm.o(i.RunDisarmFSM) refers to armedline.o(i.setUnarmed) for setUnarmed
     disarmfsm.o(i.RunDisarmFSM) refers to servos.o(i.raiseFlag) for raiseFlag
+    disarmfsm.o(i.RunDisarmFSM) refers to audiocontrol.o(i.PlaySuccessFinish) for PlaySuccessFinish
+    disarmfsm.o(i.RunDisarmFSM) refers to dcmotors.o(i.rewindTimingMotor) for rewindTimingMotor
     enablepa25_pb23_pd7_pf0.o(i.PortFunctionInit) refers to sysctl.o(i.SysCtlPeripheralEnable) for SysCtlPeripheralEnable
     enablepa25_pb23_pd7_pf0.o(i.PortFunctionInit) refers to gpio.o(i.GPIOPinTypeGPIOInput) for GPIOPinTypeGPIOInput
     pwmtiva.o(i.PWM_TIVA_Init) refers to sysctl.o(i.SysCtlPWMClockSet) for SysCtlPWMClockSet
@@ -154,7 +168,6 @@ Section Cross References
     dcmotors.o(i.vibrationMotorOff) refers to dcmotors.o(i.setMotor) for setMotor
     dcmotors.o(i.vibrationMotorOn) refers to dcmotors.o(i.setMotor) for setMotor
     leds.o(i.LEDShiftRegInit) refers to es_port.o(i._HW_Timer_Init) for _HW_Timer_Init
-    leds.o(i.LEDShiftRegInit) refers to enablepa25_pb23_pd7_pf0.o(i.PortFunctionInit) for PortFunctionInit
     leds.o(i.LEDShiftRegInit) refers to puts.o(.text) for puts
     leds.o(i.LEDShiftRegInit) refers to leds.o(.conststring) for .conststring
     leds.o(i.RCKPulse) refers to helperfunctions.o(i.wait) for wait
@@ -196,6 +209,8 @@ Section Cross References
     lcd.o(i.printLCDmessage) refers to lcd.o(i.LCDputchar) for LCDputchar
     lcd.o(i.printLCDmessage) refers to passwordgenerator.o(i.getPassword) for getPassword
     lcd.o(i.printLCDmessage) refers to lcd.o(.data) for .data
+    lcd.o(i.printTimeUp) refers to lcd.o(i.clearLCD) for clearLCD
+    lcd.o(i.printTimeUp) refers to lcd.o(i.LCDputchar) for LCDputchar
     lcd.o(i.resetLCDmessage) refers to lcd.o(.data) for .data
     lcd.o(i.sendToLCD) refers to lcd.o(i.sendToShiftReg) for sendToShiftReg
     lcd.o(i.sendToLCD) refers to helperfunctions.o(i.wait) for wait
@@ -245,6 +260,40 @@ Section Cross References
     passwordgenerator.o(i.randomizePasswords) refers to passwordgenerator.o(i.generateRandomPassword) for generateRandomPassword
     passwordgenerator.o(i.randomizePasswords) refers to rand.o(.emb_text) for rand
     passwordgenerator.o(i.randomizePasswords) refers to passwordgenerator.o(.data) for .data
+    audiocontrol.o(i.AudioInit) refers to audiocontrol.o(i.InitAudioPortLine) for InitAudioPortLine
+    audiocontrol.o(i.AudioInit) refers to noretval__2printf.o(.text) for __2printf
+    audiocontrol.o(i.InitAudioPortLine) refers to enablepa25_pb23_pd7_pf0.o(i.PortFunctionInit) for PortFunctionInit
+    audiocontrol.o(i.Pause) refers to audiocontrol.o(i.pulse) for pulse
+    audiocontrol.o(i.PlayGameOver) refers to audiocontrol.o(i.moveToTrack) for moveToTrack
+    audiocontrol.o(i.PlayGameOver) refers to audiocontrol.o(i.delayLongAudio) for delayLongAudio
+    audiocontrol.o(i.PlayGameOver) refers to audiocontrol.o(i.pulse) for pulse
+    audiocontrol.o(i.PlayGameOver) refers to audiocontrol.o(.data) for .data
+    audiocontrol.o(i.PlayMamaMia) refers to audiocontrol.o(i.moveToTrack) for moveToTrack
+    audiocontrol.o(i.PlayMamaMia) refers to audiocontrol.o(i.delayLongAudio) for delayLongAudio
+    audiocontrol.o(i.PlayMamaMia) refers to audiocontrol.o(i.pulse) for pulse
+    audiocontrol.o(i.PlayMamaMia) refers to audiocontrol.o(.data) for .data
+    audiocontrol.o(i.PlaySuccessFinish) refers to audiocontrol.o(i.moveToTrack) for moveToTrack
+    audiocontrol.o(i.PlaySuccessFinish) refers to audiocontrol.o(i.delayLongAudio) for delayLongAudio
+    audiocontrol.o(i.PlaySuccessFinish) refers to audiocontrol.o(i.pulse) for pulse
+    audiocontrol.o(i.PlaySuccessFinish) refers to audiocontrol.o(.data) for .data
+    audiocontrol.o(i.PlayWohoo) refers to audiocontrol.o(i.moveToTrack) for moveToTrack
+    audiocontrol.o(i.PlayWohoo) refers to audiocontrol.o(i.delayLongAudio) for delayLongAudio
+    audiocontrol.o(i.PlayWohoo) refers to audiocontrol.o(i.pulse) for pulse
+    audiocontrol.o(i.PlayWohoo) refers to audiocontrol.o(.data) for .data
+    audiocontrol.o(i.delayLongAudio) refers to es_timers.o(i.ES_Timer_GetTime) for ES_Timer_GetTime
+    audiocontrol.o(i.moveBackward) refers to audiocontrol.o(i.pulse) for pulse
+    audiocontrol.o(i.moveBackward) refers to audiocontrol.o(i.delayLongAudio) for delayLongAudio
+    audiocontrol.o(i.moveForward) refers to audiocontrol.o(i.pulse) for pulse
+    audiocontrol.o(i.moveForward) refers to audiocontrol.o(i.delayLongAudio) for delayLongAudio
+    audiocontrol.o(i.moveToTrack) refers to _printf_percent.o(.ARM.Collect$$_printf_percent$$00000000) for _printf_percent
+    audiocontrol.o(i.moveToTrack) refers to _printf_i.o(.ARM.Collect$$_printf_percent$$00000008) for _printf_i
+    audiocontrol.o(i.moveToTrack) refers to _printf_dec.o(.text) for _printf_int_dec
+    audiocontrol.o(i.moveToTrack) refers to noretval__2printf.o(.text) for __2printf
+    audiocontrol.o(i.moveToTrack) refers to audiocontrol.o(i.moveBackward) for moveBackward
+    audiocontrol.o(i.moveToTrack) refers to audiocontrol.o(i.delayLongAudio) for delayLongAudio
+    audiocontrol.o(i.moveToTrack) refers to audiocontrol.o(i.moveForward) for moveForward
+    audiocontrol.o(i.moveToTrack) refers to audiocontrol.o(.data) for .data
+    audiocontrol.o(i.pulse) refers to audiocontrol.o(i.delayLongAudio) for delayLongAudio
     startup_rvmdk.o(STACK) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_rvmdk.o(HEAP) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
     startup_rvmdk.o(RESET) refers (Special) to heapauxi.o(.text) for __use_two_region_memory
@@ -258,6 +307,7 @@ Section Cross References
     es_checkevents.o(.constdata) refers to keypadfsm.o(i.CheckForKeyPadButtonPress) for CheckForKeyPadButtonPress
     es_checkevents.o(.constdata) refers to eventcheckers.o(i.Check4Keystroke) for Check4Keystroke
     es_checkevents.o(.constdata) refers to eventcheckers.o(i.CheckPot) for CheckPot
+    es_checkevents.o(.constdata) refers to eventcheckers.o(i.CheckSlotDetector) for CheckSlotDetector
     es_checkevents.o(.constdata) refers to eventcheckers.o(i.CheckTapeSensor) for CheckTapeSensor
     es_deferrecall.o(i.ES_RecallEvents) refers to es_queue.o(i.ES_DeQueue) for ES_DeQueue
     es_deferrecall.o(i.ES_RecallEvents) refers to es_framework.o(i.ES_PostToServiceLIFO) for ES_PostToServiceLIFO
@@ -714,7 +764,6 @@ Section Cross References
 
 Removing Unused input sections from the image.
 
-    Removing eventcheckers.o(i.CheckSlotDetector), (56 bytes).
     Removing disarmfsm.o(i.QueryDisarmFSM), (12 bytes).
     Removing pwmtiva.o(i.PWM_TIVA_SetPeriod), (80 bytes).
     Removing servos.o(i.rotateServoLeft), (96 bytes).
@@ -725,19 +774,15 @@ Removing Unused input sections from the image.
     Removing adcswtrigger.o(i.ADC0_InitAllTriggerSeq3), (736 bytes).
     Removing adcswtrigger.o(i.ADC0_InitSWTriggerSeq3_Ch9), (204 bytes).
     Removing dcmotors.o(i.getMotorState), (60 bytes).
-    Removing dcmotors.o(i.rewindTimingMotor), (22 bytes).
     Removing dcmotors.o(i.stopTimingMotor), (22 bytes).
-    Removing slotdetector.o(i.getKeyInSlotDefault), (12 bytes).
-    Removing slotdetector.o(i.initPhototransistor), (32 bytes).
-    Removing slotdetector.o(i.isKeyInSlot), (20 bytes).
-    Removing slotdetector.o(i.setKeyInSlotDefault), (16 bytes).
-    Removing slotdetector.o(.data), (4 bytes).
     Removing keypadsm.o(i.KeyPadSM), (560 bytes).
     Removing keypadsm.o(.data), (1 bytes).
     Removing keypadfsm.o(i.QueryKeyPadFSM), (12 bytes).
     Removing keypadfsm.o(i.delayLong), (32 bytes).
     Removing keypadfsm.o(i.delayShort), (32 bytes).
     Removing passwordgenerator.o(i.printPassword), (40 bytes).
+    Removing audiocontrol.o(i.Pause), (4 bytes).
+    Removing audiocontrol.o(i.PlayMamaMia), (52 bytes).
     Removing es_deferrecall.o(i.ES_RecallEvents), (44 bytes).
     Removing es_framework.o(i.ES_PostAll), (72 bytes).
     Removing es_framework.o(i.ES_PostToServiceLIFO), (56 bytes).
@@ -951,7 +996,7 @@ Removing Unused input sections from the image.
     Removing es_port.o(i.CPUgetFAULTMASK_cpsid), (8 bytes).
     Removing es_port.o(i.CPUsetFAULTMASK), (6 bytes).
 
-236 unused section(s) (total 10221 bytes) removed from the image.
+231 unused section(s) (total 10115 bytes) removed from the image.
 
 ==============================================================================
 
@@ -962,31 +1007,31 @@ Image Symbol Table
     Symbol Name                              Value     Ov Type        Size  Object(Section)
 
     RESET                                    0x00000000   Section      648  startup_rvmdk.o(RESET)
-    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit3.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit2.o ABSOLUTE
+    ../clib/angel/boardlib.s                 0x00000000   Number         0  boardinit1.o ABSOLUTE
     ../clib/angel/boardlib.s                 0x00000000   Number         0  boardshut.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_copy.o ABSOLUTE
     ../clib/angel/handlers.s                 0x00000000   Number         0  __scatter_zi.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtentry2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit2.o ABSOLUTE
-    ../clib/angel/kernel.s                   0x00000000   Number         0  rtentry4.o ABSOLUTE
     ../clib/angel/kernel.s                   0x00000000   Number         0  rtentry.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale_intlibspace.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtentry4.o ABSOLUTE
+    ../clib/angel/kernel.s                   0x00000000   Number         0  rtexit.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale.o ABSOLUTE
     ../clib/angel/rt.s                       0x00000000   Number         0  rt_ctype_table.o ABSOLUTE
-    ../clib/angel/rt.s                       0x00000000   Number         0  rt_raise.o ABSOLUTE
+    ../clib/angel/rt.s                       0x00000000   Number         0  rt_locale_intlibspace.o ABSOLUTE
     ../clib/angel/scatter.s                  0x00000000   Number         0  __scatter.o ABSOLUTE
     ../clib/angel/startup.s                  0x00000000   Number         0  __main.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  libspace.o ABSOLUTE
-    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
     ../clib/angel/sys.s                      0x00000000   Number         0  sys_stackheap_outer.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  indicate_semi.o ABSOLUTE
+    ../clib/angel/sys.s                      0x00000000   Number         0  use_no_semi.o ABSOLUTE
     ../clib/angel/sysapp.c                   0x00000000   Number         0  sys_command.o ABSOLUTE
-    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  _get_argv_nomalloc.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  no_argv.o ABSOLUTE
+    ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/armsys.c                         0x00000000   Number         0  argv_veneer.o ABSOLUTE
     ../clib/bigflt.c                         0x00000000   Number         0  bigflt0.o ABSOLUTE
     ../clib/btod.s                           0x00000000   Number         0  btod.o ABSOLUTE
@@ -997,62 +1042,62 @@ Image Symbol Table
     ../clib/libinit.s                        0x00000000   Number         0  libshutdown2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit2.o ABSOLUTE
     ../clib/libinit.s                        0x00000000   Number         0  libinit.o ABSOLUTE
-    ../clib/locale.s                         0x00000000   Number         0  lc_numeric_c.o ABSOLUTE
     ../clib/locale.s                         0x00000000   Number         0  lc_ctype_c.o ABSOLUTE
+    ../clib/locale.s                         0x00000000   Number         0  lc_numeric_c.o ABSOLUTE
     ../clib/longlong.s                       0x00000000   Number         0  lludiv10.o ABSOLUTE
     ../clib/memcpset.s                       0x00000000   Number         0  strcmpv7m.o ABSOLUTE
     ../clib/misc.s                           0x00000000   Number         0  printf_stubs.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char_file.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __2printf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  noretval__2printf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_str.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_ss.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_dec.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_char_file.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_char.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_flags_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_infnan.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_intcommon.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_flags.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_str.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_char_common.o ABSOLUTE
     ../clib/printf.c                         0x00000000   Number         0  __printf_ss_wp.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf_nopercent.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  __printf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  noretval__2printf.o ABSOLUTE
-    ../clib/printf.c                         0x00000000   Number         0  _printf_fp_dec.o ABSOLUTE
+    ../clib/printf.c                         0x00000000   Number         0  __printf_flags_ss_wp.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_d.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_f.o ABSOLUTE
+    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_s.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent.o ABSOLUTE
     ../clib/printf_percent.s                 0x00000000   Number         0  _printf_i.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_s.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_d.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_f.o ABSOLUTE
-    ../clib/printf_percent.s                 0x00000000   Number         0  _printf_percent_end.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  scanf_char.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  _chval.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  scanf_char_file.o ABSOLUTE
-    ../clib/scanf.c                          0x00000000   Number         0  __0scanf.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  _scanf_int.o ABSOLUTE
     ../clib/scanf.c                          0x00000000   Number         0  _scanf.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/scanf.c                          0x00000000   Number         0  __0scanf.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_general.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_fpe_inner.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_abrt_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  __raise.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_inner.o ABSOLUTE
-    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
     ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_outer.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtmem_formal.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_exit.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_stak_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_pvfn_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_cppl_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_segv_inner.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_other.o ABSOLUTE
+    ../clib/signal.c                         0x00000000   Number         0  defsig_rtred_inner.o ABSOLUTE
     ../clib/signal.s                         0x00000000   Number         0  defsig.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  puts.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  getc.o ABSOLUTE
-    ../clib/stdio.c                          0x00000000   Number         0  backspace_locked.o ABSOLUTE
     ../clib/stdio.c                          0x00000000   Number         0  ungetc.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  backspace_locked.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  getc.o ABSOLUTE
     ../clib/stdio.c                          0x00000000   Number         0  backspace.o ABSOLUTE
+    ../clib/stdio.c                          0x00000000   Number         0  puts.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  rand.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  rand.o ABSOLUTE
     ../clib/stdlib.c                         0x00000000   Number         0  exit.o ABSOLUTE
@@ -1073,6 +1118,8 @@ Image Symbol Table
     ../fplib/usenofp.s                       0x00000000   Number         0  usenofp.o ABSOLUTE
     ../mathlib/fpclassify.c                  0x00000000   Number         0  fpclassify.o ABSOLUTE
     Source\ADCSWTrigger.c                    0x00000000   Number         0  adcswtrigger.o ABSOLUTE
+    Source\ArmedLine.c                       0x00000000   Number         0  armedline.o ABSOLUTE
+    Source\AudioControl.c                    0x00000000   Number         0  audiocontrol.o ABSOLUTE
     Source\DCmotors.c                        0x00000000   Number         0  dcmotors.o ABSOLUTE
     Source\DisarmFSM.c                       0x00000000   Number         0  disarmfsm.o ABSOLUTE
     Source\ES_CheckEvents.c                  0x00000000   Number         0  es_checkevents.o ABSOLUTE
@@ -1207,256 +1254,282 @@ Image Symbol Table
     CL$$btod_mult_common                     0x0000132a   Section      580  btod.o(CL$$btod_mult_common)
     i.ADC0_InSeq3                            0x00001570   Section        0  adcswtrigger.o(i.ADC0_InSeq3)
     i.ADC0_InitSWTriggerSeq3                 0x0000158c   Section        0  adcswtrigger.o(i.ADC0_InitSWTriggerSeq3)
-    i.CPUgetPRIMASK_cpsid                    0x0000186c   Section        0  es_port.o(i.CPUgetPRIMASK_cpsid)
-    i.CPUsetPRIMASK                          0x00001874   Section        0  es_port.o(i.CPUsetPRIMASK)
-    i.Check4Keystroke                        0x0000187c   Section        0  eventcheckers.o(i.Check4Keystroke)
-    i.CheckForKeyPadButtonPress              0x000018dc   Section        0  keypadfsm.o(i.CheckForKeyPadButtonPress)
-    i.CheckPot                               0x00001930   Section        0  eventcheckers.o(i.CheckPot)
-    i.CheckTapeSensor                        0x00001ab4   Section        0  eventcheckers.o(i.CheckTapeSensor)
-    i.ES_CheckUserEvents                     0x00001af4   Section        0  es_checkevents.o(i.ES_CheckUserEvents)
-    i.ES_DeQueue                             0x00001b1c   Section        0  es_queue.o(i.ES_DeQueue)
-    i.ES_EnQueueFIFO                         0x00001b70   Section        0  es_queue.o(i.ES_EnQueueFIFO)
-    i.ES_GetMSBitSet                         0x00001bb8   Section        0  es_lookuptables.o(i.ES_GetMSBitSet)
-    i.ES_InitQueue                           0x00001bec   Section        0  es_queue.o(i.ES_InitQueue)
-    i.ES_Initialize                          0x00001bfc   Section        0  es_framework.o(i.ES_Initialize)
-    i.ES_PostToService                       0x00001c48   Section        0  es_framework.o(i.ES_PostToService)
-    i.ES_Run                                 0x00001c80   Section        0  es_framework.o(i.ES_Run)
-    i.ES_Timer_GetTime                       0x00001ce0   Section        0  es_timers.o(i.ES_Timer_GetTime)
-    i.ES_Timer_Init                          0x00001ce4   Section        0  es_timers.o(i.ES_Timer_Init)
-    i.ES_Timer_InitTimer                     0x00001ce8   Section        0  es_timers.o(i.ES_Timer_InitTimer)
-    i.ES_Timer_StartTimer                    0x00001d24   Section        0  es_timers.o(i.ES_Timer_StartTimer)
-    i.ES_Timer_Tick_Resp                     0x00001d54   Section        0  es_timers.o(i.ES_Timer_Tick_Resp)
-    i.GPIODirModeSet                         0x00001dc0   Section        0  gpio.o(i.GPIODirModeSet)
-    i.GPIOPadConfigSet                       0x00001de8   Section        0  gpio.o(i.GPIOPadConfigSet)
-    i.GPIOPinConfigure                       0x00001f24   Section        0  gpio.o(i.GPIOPinConfigure)
-    i.GPIOPinTypeGPIOInput                   0x00001f6c   Section        0  gpio.o(i.GPIOPinTypeGPIOInput)
-    i.GPIOPinTypePWM                         0x00001f88   Section        0  gpio.o(i.GPIOPinTypePWM)
-    i.GPIOPinTypeUART                        0x00001fa4   Section        0  gpio.o(i.GPIOPinTypeUART)
-    i.InitDisarmFSM                          0x00001fc0   Section        0  disarmfsm.o(i.InitDisarmFSM)
-    i.InitKeyPadFSM                          0x00001ffc   Section        0  keypadfsm.o(i.InitKeyPadFSM)
-    i.InitKeyPadPortLines                    0x0000203c   Section        0  keypadfsm.o(i.InitKeyPadPortLines)
-    i.IntMasterEnable                        0x000020f0   Section        0  interrupt.o(i.IntMasterEnable)
-    i.LCDInit                                0x00002100   Section        0  lcd.o(i.LCDInit)
-    i.LCDputchar                             0x00002224   Section        0  lcd.o(i.LCDputchar)
-    i.LEDShiftRegInit                        0x000022ec   Section        0  leds.o(i.LEDShiftRegInit)
-    i.PWMGenConfigure                        0x00002344   Section        0  pwm.o(i.PWMGenConfigure)
-    i.PWMGenEnable                           0x0000236a   Section        0  pwm.o(i.PWMGenEnable)
-    i.PWMGenPeriodSet                        0x00002374   Section        0  pwm.o(i.PWMGenPeriodSet)
-    i.PWMOutputState                         0x00002386   Section        0  pwm.o(i.PWMOutputState)
-    i.PWMPulseWidthSet                       0x00002396   Section        0  pwm.o(i.PWMPulseWidthSet)
-    i.PWM_TIVA_Init                          0x000023b8   Section        0  pwmtiva.o(i.PWM_TIVA_Init)
-    i.PWM_TIVA_SetDuty                       0x0000248c   Section        0  pwmtiva.o(i.PWM_TIVA_SetDuty)
-    i.PWM_TIVA_SetFreq                       0x000024e8   Section        0  pwmtiva.o(i.PWM_TIVA_SetFreq)
-    i.PWM_TIVA_SetPulseWidth                 0x0000254c   Section        0  pwmtiva.o(i.PWM_TIVA_SetPulseWidth)
-    i.PortFunctionInit                       0x0000259c   Section        0  enablepa25_pb23_pd7_pf0.o(i.PortFunctionInit)
-    i.PostDisarmFSM                          0x0000263c   Section        0  disarmfsm.o(i.PostDisarmFSM)
-    i.PostKeyPadFSM                          0x0000264c   Section        0  keypadfsm.o(i.PostKeyPadFSM)
-    i.RCKPulse                               0x0000265c   Section        0  leds.o(i.RCKPulse)
-    i.RCKPulseLCD                            0x00002684   Section        0  lcd.o(i.RCKPulseLCD)
-    i.RunDisarmFSM                           0x000026b4   Section        0  disarmfsm.o(i.RunDisarmFSM)
-    i.RunKeyPadFSM                           0x00003008   Section        0  keypadfsm.o(i.RunKeyPadFSM)
-    i.SCKPulse                               0x000030bc   Section        0  leds.o(i.SCKPulse)
-    i.SCKPulseLCD                            0x000030e4   Section        0  lcd.o(i.SCKPulseLCD)
-    i.SysCtlClockGet                         0x00003114   Section        0  sysctl.o(i.SysCtlClockGet)
-    i.SysCtlClockSet                         0x00003278   Section        0  sysctl.o(i.SysCtlClockSet)
-    i.SysCtlPWMClockSet                      0x00003398   Section        0  sysctl.o(i.SysCtlPWMClockSet)
-    i.SysCtlPeripheralEnable                 0x000033ac   Section        0  sysctl.o(i.SysCtlPeripheralEnable)
-    i.SysTickEnable                          0x000033d4   Section        0  systick.o(i.SysTickEnable)
-    i.SysTickIntEnable                       0x000033e2   Section        0  systick.o(i.SysTickIntEnable)
-    i.SysTickIntHandler                      0x000033f0   Section        0  es_port.o(i.SysTickIntHandler)
-    i.SysTickPeriodSet                       0x00003404   Section        0  systick.o(i.SysTickPeriodSet)
-    i.TERMIO_GetChar                         0x0000340e   Section        0  termio.o(i.TERMIO_GetChar)
-    i.TERMIO_Init                            0x00003414   Section        0  termio.o(i.TERMIO_Init)
-    i.TERMIO_PutChar                         0x00003464   Section        0  termio.o(i.TERMIO_PutChar)
-    i.UARTCharPut                            0x00003470   Section        0  uart.o(i.UARTCharPut)
-    i.UARTClockSourceSet                     0x0000347c   Section        0  uart.o(i.UARTClockSourceSet)
-    i.UARTStdioConfig                        0x00003484   Section        0  uartstdio.o(i.UARTStdioConfig)
-    i.UARTgetc                               0x000034e0   Section        0  uartstdio.o(i.UARTgetc)
-    i._HW_GetTickCount                       0x000034f8   Section        0  es_port.o(i._HW_GetTickCount)
-    i._HW_Process_Pending_Ints               0x00003504   Section        0  es_port.o(i._HW_Process_Pending_Ints)
-    i._HW_Timer_Init                         0x00003524   Section        0  es_port.o(i._HW_Timer_Init)
-    i.__ARM_fpclassify                       0x0000353a   Section        0  fpclassify.o(i.__ARM_fpclassify)
-    i._sys_exit                              0x0000356a   Section        0  retarget.o(i._sys_exit)
-    i.checkPassword                          0x0000356c   Section        0  passwordgenerator.o(i.checkPassword)
-    i.clearLCD                               0x000035b4   Section        0  lcd.o(i.clearLCD)
-    i.compareIntArrays                       0x000035dc   Section        0  passwordgenerator.o(i.compareIntArrays)
-    i.ferror                                 0x000035f8   Section        0  retarget.o(i.ferror)
-    i.fgetc                                  0x000035fe   Section        0  retarget.o(i.fgetc)
-    i.findNum                                0x00003604   Section        0  keypadfsm.o(i.findNum)
-    i.fputc                                  0x0000362c   Section        0  retarget.o(i.fputc)
-    i.generateRandomPassword                 0x0000363a   Section        0  passwordgenerator.o(i.generateRandomPassword)
-    i.getPassword                            0x0000365c   Section        0  passwordgenerator.o(i.getPassword)
-    i.getPotValue                            0x0000368c   Section        0  servos.o(i.getPotValue)
-    i.getPotZero                             0x000036b8   Section        0  servos.o(i.getPotZero)
-    i.getVictory                             0x000036c4   Section        0  servos.o(i.getVictory)
-    i.initMotors                             0x000036d0   Section        0  dcmotors.o(i.initMotors)
-    i.initTapeSensors                        0x00003714   Section        0  tapesensor.o(i.initTapeSensors)
-    i.initializeServos                       0x00003734   Section        0  servos.o(i.initializeServos)
-    i.kbhit                                  0x0000378c   Section        0  termio.o(i.kbhit)
-    i.lockKeys                               0x000037a0   Section        0  servos.o(i.lockKeys)
-    i.lowerFlag                              0x000037aa   Section        0  servos.o(i.lowerFlag)
-    i.main                                   0x000037b4   Section        0  main.o(i.main)
-    i.moveTower                              0x00003a24   Section        0  servos.o(i.moveTower)
-    i.printArmedMessage                      0x00003bb0   Section        0  lcd.o(i.printArmedMessage)
-    i.printAuthorizedMessage                 0x00003c1a   Section        0  lcd.o(i.printAuthorizedMessage)
-    i.printCurrentInput                      0x00003c78   Section        0  keypadfsm.o(i.printCurrentInput)
-    i.printIncorrectMessage                  0x00003cc4   Section        0  lcd.o(i.printIncorrectMessage)
-    i.printLCDmessage                        0x00003d18   Section        0  lcd.o(i.printLCDmessage)
-    i.raiseFlag                              0x00004020   Section        0  servos.o(i.raiseFlag)
-    i.randomizePasswords                     0x0000402c   Section        0  passwordgenerator.o(i.randomizePasswords)
-    i.readRow                                0x00004074   Section        0  keypadfsm.o(i.readRow)
-    i.resetLCDmessage                        0x000040c0   Section        0  lcd.o(i.resetLCDmessage)
-    i.rotateServo                            0x000040cc   Section        0  servos.o(i.rotateServo)
-    i.sendToLCD                              0x00004114   Section        0  lcd.o(i.sendToLCD)
-    i.sendToShiftReg                         0x00004138   Section        0  lcd.o(i.sendToShiftReg)
-    i.setCol                                 0x000041d8   Section        0  keypadfsm.o(i.setCol)
-    i.setColsHigh                            0x00004234   Section        0  keypadfsm.o(i.setColsHigh)
-    i.setLED                                 0x00004248   Section        0  leds.o(i.setLED)
-    i.setMotor                               0x000042b4   Section        0  dcmotors.o(i.setMotor)
-    i.setPotZero                             0x00004308   Section        0  servos.o(i.setPotZero)
-    i.setTowerToZero                         0x00004320   Section        0  servos.o(i.setTowerToZero)
-    i.setVictory                             0x0000432c   Section        0  servos.o(i.setVictory)
-    i.tapeSensorsCovered                     0x00004338   Section        0  tapesensor.o(i.tapeSensorsCovered)
-    i.unlockKeys                             0x0000434c   Section        0  servos.o(i.unlockKeys)
-    i.unwindTimingMotor                      0x00004356   Section        0  dcmotors.o(i.unwindTimingMotor)
-    i.vibrationMotorOff                      0x0000436c   Section        0  dcmotors.o(i.vibrationMotorOff)
-    i.vibrationMotorOn                       0x00004374   Section        0  dcmotors.o(i.vibrationMotorOn)
-    i.wait                                   0x0000437c   Section        0  helperfunctions.o(i.wait)
-    locale$$code                             0x000043a0   Section       44  lc_numeric_c.o(locale$$code)
-    x$fpl$dadd                               0x000043cc   Section      336  daddsub_clz.o(x$fpl$dadd)
-    $v0                                      0x000043cc   Number         0  daddsub_clz.o(x$fpl$dadd)
-    _dadd1                                   0x000043dd   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    x$fpl$dcmpinf                            0x0000451c   Section       24  dcmpi.o(x$fpl$dcmpinf)
-    $v0                                      0x0000451c   Number         0  dcmpi.o(x$fpl$dcmpinf)
-    x$fpl$ddiv                               0x00004534   Section      688  ddiv.o(x$fpl$ddiv)
-    $v0                                      0x00004534   Number         0  ddiv.o(x$fpl$ddiv)
-    ddiv_entry                               0x0000453b   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    x$fpl$deqf                               0x000047e4   Section      120  deqf.o(x$fpl$deqf)
-    $v0                                      0x000047e4   Number         0  deqf.o(x$fpl$deqf)
-    x$fpl$dfixu                              0x0000485c   Section       90  dfixu.o(x$fpl$dfixu)
-    $v0                                      0x0000485c   Number         0  dfixu.o(x$fpl$dfixu)
-    x$fpl$dfltu                              0x000048b6   Section       38  dflt_clz.o(x$fpl$dfltu)
-    $v0                                      0x000048b6   Number         0  dflt_clz.o(x$fpl$dfltu)
-    x$fpl$dleqf                              0x000048dc   Section      120  dleqf.o(x$fpl$dleqf)
-    $v0                                      0x000048dc   Number         0  dleqf.o(x$fpl$dleqf)
-    x$fpl$dmul                               0x00004954   Section      340  dmul.o(x$fpl$dmul)
-    $v0                                      0x00004954   Number         0  dmul.o(x$fpl$dmul)
-    x$fpl$dnaninf                            0x00004aa8   Section      156  dnaninf.o(x$fpl$dnaninf)
-    $v0                                      0x00004aa8   Number         0  dnaninf.o(x$fpl$dnaninf)
-    x$fpl$dretinf                            0x00004b44   Section       12  dretinf.o(x$fpl$dretinf)
-    $v0                                      0x00004b44   Number         0  dretinf.o(x$fpl$dretinf)
-    x$fpl$drleqf                             0x00004b50   Section      108  drleqf.o(x$fpl$drleqf)
-    $v0                                      0x00004b50   Number         0  drleqf.o(x$fpl$drleqf)
-    x$fpl$drsb                               0x00004bbc   Section       22  daddsub_clz.o(x$fpl$drsb)
-    $v0                                      0x00004bbc   Number         0  daddsub_clz.o(x$fpl$drsb)
-    x$fpl$dsub                               0x00004bd4   Section      468  daddsub_clz.o(x$fpl$dsub)
-    $v0                                      0x00004bd4   Number         0  daddsub_clz.o(x$fpl$dsub)
-    _dsub1                                   0x00004be5   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    x$fpl$fpinit                             0x00004da8   Section       10  fpinit.o(x$fpl$fpinit)
-    $v0                                      0x00004da8   Number         0  fpinit.o(x$fpl$fpinit)
-    x$fpl$printf1                            0x00004db2   Section        4  printf1.o(x$fpl$printf1)
-    $v0                                      0x00004db2   Number         0  printf1.o(x$fpl$printf1)
-    x$fpl$usenofp                            0x00004db6   Section        0  usenofp.o(x$fpl$usenofp)
-    .constdata                               0x00004db8   Section       16  es_checkevents.o(.constdata)
-    ES_EventList                             0x00004db8   Data          16  es_checkevents.o(.constdata)
-    .constdata                               0x00004dc8   Section       32  es_framework.o(.constdata)
-    ServDescList                             0x00004dc8   Data          16  es_framework.o(.constdata)
-    EventQueues                              0x00004dd8   Data          16  es_framework.o(.constdata)
-    .constdata                               0x00004de8   Section       32  es_lookuptables.o(.constdata)
-    .constdata                               0x00004e08   Section       15  es_lookuptables.o(.constdata)
-    .constdata                               0x00004e18   Section       64  es_timers.o(.constdata)
-    Timer2PostFunc                           0x00004e18   Data          64  es_timers.o(.constdata)
-    .constdata                               0x00004e58   Section       28  uartstdio.o(.constdata)
-    g_pcHex                                  0x00004e58   Data           4  uartstdio.o(.constdata)
-    g_ui32UARTBase                           0x00004e5c   Data          12  uartstdio.o(.constdata)
-    g_ui32UARTPeriph                         0x00004e68   Data          12  uartstdio.o(.constdata)
-    .constdata                               0x00004e74   Section      528  gpio.o(.constdata)
-    g_ppui32GPIOIntMapBlizzard               0x00004e74   Data         192  gpio.o(.constdata)
-    g_ppui32GPIOIntMapSnowflake              0x00004f34   Data         192  gpio.o(.constdata)
-    g_pui32GPIOBaseAddrs                     0x00004ff4   Data         144  gpio.o(.constdata)
-    .constdata                               0x00005084   Section      452  sysctl.o(.constdata)
-    g_pui32VCOFrequencies                    0x00005084   Data           8  sysctl.o(.constdata)
-    g_pui32Xtals                             0x0000508c   Data         108  sysctl.o(.constdata)
-    g_pppui32XTALtoVCO                       0x000050f8   Data         288  sysctl.o(.constdata)
-    g_sXTALtoMEMTIM                          0x00005218   Data          48  sysctl.o(.constdata)
-    .constdata                               0x00005248   Section      148  bigflt0.o(.constdata)
-    tenpwrs_x                                0x00005248   Data          60  bigflt0.o(.constdata)
-    tenpwrs_i                                0x00005284   Data          64  bigflt0.o(.constdata)
-    .conststring                             0x000052dc   Section       65  leds.o(.conststring)
-    .conststring                             0x00005320   Section       17  uartstdio.o(.conststring)
-    locale$$data                             0x00005354   Section       28  lc_numeric_c.o(locale$$data)
-    __lcnum_c_name                           0x00005358   Data           2  lc_numeric_c.o(locale$$data)
-    __lcnum_c_start                          0x00005360   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_point                          0x0000536c   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_thousands                      0x0000536e   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_grouping                       0x0000536f   Data           0  lc_numeric_c.o(locale$$data)
-    __lcnum_c_end                            0x00005370   Data           0  lc_numeric_c.o(locale$$data)
+    i.AudioInit                              0x0000186c   Section        0  audiocontrol.o(i.AudioInit)
+    i.CPUgetPRIMASK_cpsid                    0x00001898   Section        0  es_port.o(i.CPUgetPRIMASK_cpsid)
+    i.CPUsetPRIMASK                          0x000018a0   Section        0  es_port.o(i.CPUsetPRIMASK)
+    i.Check4Keystroke                        0x000018a8   Section        0  eventcheckers.o(i.Check4Keystroke)
+    i.CheckForKeyPadButtonPress              0x00001908   Section        0  keypadfsm.o(i.CheckForKeyPadButtonPress)
+    i.CheckPot                               0x0000195c   Section        0  eventcheckers.o(i.CheckPot)
+    i.CheckSlotDetector                      0x00001ae0   Section        0  eventcheckers.o(i.CheckSlotDetector)
+    i.CheckTapeSensor                        0x00001b90   Section        0  eventcheckers.o(i.CheckTapeSensor)
+    i.ES_CheckUserEvents                     0x00001bd0   Section        0  es_checkevents.o(i.ES_CheckUserEvents)
+    i.ES_DeQueue                             0x00001bf8   Section        0  es_queue.o(i.ES_DeQueue)
+    i.ES_EnQueueFIFO                         0x00001c4c   Section        0  es_queue.o(i.ES_EnQueueFIFO)
+    i.ES_GetMSBitSet                         0x00001c94   Section        0  es_lookuptables.o(i.ES_GetMSBitSet)
+    i.ES_InitQueue                           0x00001cc8   Section        0  es_queue.o(i.ES_InitQueue)
+    i.ES_Initialize                          0x00001cd8   Section        0  es_framework.o(i.ES_Initialize)
+    i.ES_PostToService                       0x00001d24   Section        0  es_framework.o(i.ES_PostToService)
+    i.ES_Run                                 0x00001d5c   Section        0  es_framework.o(i.ES_Run)
+    i.ES_Timer_GetTime                       0x00001dbc   Section        0  es_timers.o(i.ES_Timer_GetTime)
+    i.ES_Timer_Init                          0x00001dc0   Section        0  es_timers.o(i.ES_Timer_Init)
+    i.ES_Timer_InitTimer                     0x00001dc4   Section        0  es_timers.o(i.ES_Timer_InitTimer)
+    i.ES_Timer_StartTimer                    0x00001e00   Section        0  es_timers.o(i.ES_Timer_StartTimer)
+    i.ES_Timer_Tick_Resp                     0x00001e30   Section        0  es_timers.o(i.ES_Timer_Tick_Resp)
+    i.GPIODirModeSet                         0x00001e9c   Section        0  gpio.o(i.GPIODirModeSet)
+    i.GPIOPadConfigSet                       0x00001ec4   Section        0  gpio.o(i.GPIOPadConfigSet)
+    i.GPIOPinConfigure                       0x00002000   Section        0  gpio.o(i.GPIOPinConfigure)
+    i.GPIOPinTypeGPIOInput                   0x00002048   Section        0  gpio.o(i.GPIOPinTypeGPIOInput)
+    i.GPIOPinTypePWM                         0x00002064   Section        0  gpio.o(i.GPIOPinTypePWM)
+    i.GPIOPinTypeUART                        0x00002080   Section        0  gpio.o(i.GPIOPinTypeUART)
+    i.InitAudioPortLine                      0x0000209c   Section        0  audiocontrol.o(i.InitAudioPortLine)
+    i.InitDisarmFSM                          0x000020d4   Section        0  disarmfsm.o(i.InitDisarmFSM)
+    i.InitKeyPadFSM                          0x00002120   Section        0  keypadfsm.o(i.InitKeyPadFSM)
+    i.InitKeyPadPortLines                    0x00002160   Section        0  keypadfsm.o(i.InitKeyPadPortLines)
+    i.IntMasterEnable                        0x00002214   Section        0  interrupt.o(i.IntMasterEnable)
+    i.LCDInit                                0x00002224   Section        0  lcd.o(i.LCDInit)
+    i.LCDputchar                             0x0000234c   Section        0  lcd.o(i.LCDputchar)
+    i.LEDShiftRegInit                        0x00002414   Section        0  leds.o(i.LEDShiftRegInit)
+    i.PWMGenConfigure                        0x00002468   Section        0  pwm.o(i.PWMGenConfigure)
+    i.PWMGenEnable                           0x0000248e   Section        0  pwm.o(i.PWMGenEnable)
+    i.PWMGenPeriodSet                        0x00002498   Section        0  pwm.o(i.PWMGenPeriodSet)
+    i.PWMOutputState                         0x000024aa   Section        0  pwm.o(i.PWMOutputState)
+    i.PWMPulseWidthSet                       0x000024ba   Section        0  pwm.o(i.PWMPulseWidthSet)
+    i.PWM_TIVA_Init                          0x000024dc   Section        0  pwmtiva.o(i.PWM_TIVA_Init)
+    i.PWM_TIVA_SetDuty                       0x000025b0   Section        0  pwmtiva.o(i.PWM_TIVA_SetDuty)
+    i.PWM_TIVA_SetFreq                       0x0000260c   Section        0  pwmtiva.o(i.PWM_TIVA_SetFreq)
+    i.PWM_TIVA_SetPulseWidth                 0x00002670   Section        0  pwmtiva.o(i.PWM_TIVA_SetPulseWidth)
+    i.PlayGameOver                           0x000026c0   Section        0  audiocontrol.o(i.PlayGameOver)
+    i.PlaySuccessFinish                      0x000026f4   Section        0  audiocontrol.o(i.PlaySuccessFinish)
+    i.PlayWohoo                              0x00002728   Section        0  audiocontrol.o(i.PlayWohoo)
+    i.PortFunctionInit                       0x00002758   Section        0  enablepa25_pb23_pd7_pf0.o(i.PortFunctionInit)
+    i.PostDisarmFSM                          0x000027f8   Section        0  disarmfsm.o(i.PostDisarmFSM)
+    i.PostKeyPadFSM                          0x00002808   Section        0  keypadfsm.o(i.PostKeyPadFSM)
+    i.RCKPulse                               0x00002818   Section        0  leds.o(i.RCKPulse)
+    i.RCKPulseLCD                            0x00002840   Section        0  lcd.o(i.RCKPulseLCD)
+    i.RunDisarmFSM                           0x00002870   Section        0  disarmfsm.o(i.RunDisarmFSM)
+    i.RunKeyPadFSM                           0x00003238   Section        0  keypadfsm.o(i.RunKeyPadFSM)
+    i.SCKPulse                               0x000032ec   Section        0  leds.o(i.SCKPulse)
+    i.SCKPulseLCD                            0x00003314   Section        0  lcd.o(i.SCKPulseLCD)
+    i.SysCtlClockGet                         0x00003344   Section        0  sysctl.o(i.SysCtlClockGet)
+    i.SysCtlClockSet                         0x000034a8   Section        0  sysctl.o(i.SysCtlClockSet)
+    i.SysCtlPWMClockSet                      0x000035c8   Section        0  sysctl.o(i.SysCtlPWMClockSet)
+    i.SysCtlPeripheralEnable                 0x000035dc   Section        0  sysctl.o(i.SysCtlPeripheralEnable)
+    i.SysTickEnable                          0x00003604   Section        0  systick.o(i.SysTickEnable)
+    i.SysTickIntEnable                       0x00003612   Section        0  systick.o(i.SysTickIntEnable)
+    i.SysTickIntHandler                      0x00003620   Section        0  es_port.o(i.SysTickIntHandler)
+    i.SysTickPeriodSet                       0x00003634   Section        0  systick.o(i.SysTickPeriodSet)
+    i.TERMIO_GetChar                         0x0000363e   Section        0  termio.o(i.TERMIO_GetChar)
+    i.TERMIO_Init                            0x00003644   Section        0  termio.o(i.TERMIO_Init)
+    i.TERMIO_PutChar                         0x00003694   Section        0  termio.o(i.TERMIO_PutChar)
+    i.UARTCharPut                            0x000036a0   Section        0  uart.o(i.UARTCharPut)
+    i.UARTClockSourceSet                     0x000036ac   Section        0  uart.o(i.UARTClockSourceSet)
+    i.UARTStdioConfig                        0x000036b4   Section        0  uartstdio.o(i.UARTStdioConfig)
+    i.UARTgetc                               0x00003710   Section        0  uartstdio.o(i.UARTgetc)
+    i._HW_GetTickCount                       0x00003728   Section        0  es_port.o(i._HW_GetTickCount)
+    i._HW_Process_Pending_Ints               0x00003734   Section        0  es_port.o(i._HW_Process_Pending_Ints)
+    i._HW_Timer_Init                         0x00003754   Section        0  es_port.o(i._HW_Timer_Init)
+    i.__ARM_fpclassify                       0x0000376a   Section        0  fpclassify.o(i.__ARM_fpclassify)
+    i._sys_exit                              0x0000379a   Section        0  retarget.o(i._sys_exit)
+    i.checkPassword                          0x0000379c   Section        0  passwordgenerator.o(i.checkPassword)
+    i.clearLCD                               0x000037e4   Section        0  lcd.o(i.clearLCD)
+    i.compareIntArrays                       0x0000380c   Section        0  passwordgenerator.o(i.compareIntArrays)
+    i.delayLongAudio                         0x00003828   Section        0  audiocontrol.o(i.delayLongAudio)
+    i.ferror                                 0x00003848   Section        0  retarget.o(i.ferror)
+    i.fgetc                                  0x0000384e   Section        0  retarget.o(i.fgetc)
+    i.findNum                                0x00003854   Section        0  keypadfsm.o(i.findNum)
+    i.fputc                                  0x0000387c   Section        0  retarget.o(i.fputc)
+    i.generateRandomPassword                 0x0000388a   Section        0  passwordgenerator.o(i.generateRandomPassword)
+    i.getKeyInSlotDefault                    0x000038ac   Section        0  slotdetector.o(i.getKeyInSlotDefault)
+    i.getPassword                            0x000038b8   Section        0  passwordgenerator.o(i.getPassword)
+    i.getPotValue                            0x000038e8   Section        0  servos.o(i.getPotValue)
+    i.getPotZero                             0x00003914   Section        0  servos.o(i.getPotZero)
+    i.getVictory                             0x00003920   Section        0  servos.o(i.getVictory)
+    i.initArmedLine                          0x0000392c   Section        0  armedline.o(i.initArmedLine)
+    i.initMotors                             0x00003958   Section        0  dcmotors.o(i.initMotors)
+    i.initPhototransistor                    0x0000399c   Section        0  slotdetector.o(i.initPhototransistor)
+    i.initTapeSensors                        0x000039bc   Section        0  tapesensor.o(i.initTapeSensors)
+    i.initializeServos                       0x000039dc   Section        0  servos.o(i.initializeServos)
+    i.isKeyInSlot                            0x00003a34   Section        0  slotdetector.o(i.isKeyInSlot)
+    i.kbhit                                  0x00003a44   Section        0  termio.o(i.kbhit)
+    i.lockKeys                               0x00003a58   Section        0  servos.o(i.lockKeys)
+    i.lowerFlag                              0x00003a62   Section        0  servos.o(i.lowerFlag)
+    i.main                                   0x00003a6c   Section        0  main.o(i.main)
+    i.moveBackward                           0x00003cdc   Section        0  audiocontrol.o(i.moveBackward)
+    i.moveForward                            0x00003cfa   Section        0  audiocontrol.o(i.moveForward)
+    i.moveToTrack                            0x00003d10   Section        0  audiocontrol.o(i.moveToTrack)
+    i.moveTower                              0x00003dc0   Section        0  servos.o(i.moveTower)
+    i.printArmedMessage                      0x00003f4c   Section        0  lcd.o(i.printArmedMessage)
+    i.printAuthorizedMessage                 0x00003fb6   Section        0  lcd.o(i.printAuthorizedMessage)
+    i.printCurrentInput                      0x0000402c   Section        0  keypadfsm.o(i.printCurrentInput)
+    i.printIncorrectMessage                  0x00004078   Section        0  lcd.o(i.printIncorrectMessage)
+    i.printLCDmessage                        0x000040f0   Section        0  lcd.o(i.printLCDmessage)
+    i.printTimeUp                            0x00004488   Section        0  lcd.o(i.printTimeUp)
+    i.pulse                                  0x00004500   Section        0  audiocontrol.o(i.pulse)
+    i.raiseFlag                              0x00004528   Section        0  servos.o(i.raiseFlag)
+    i.randomizePasswords                     0x00004534   Section        0  passwordgenerator.o(i.randomizePasswords)
+    i.readRow                                0x0000457c   Section        0  keypadfsm.o(i.readRow)
+    i.resetLCDmessage                        0x000045c8   Section        0  lcd.o(i.resetLCDmessage)
+    i.rewindTimingMotor                      0x000045d4   Section        0  dcmotors.o(i.rewindTimingMotor)
+    i.rotateServo                            0x000045ec   Section        0  servos.o(i.rotateServo)
+    i.sendToLCD                              0x00004634   Section        0  lcd.o(i.sendToLCD)
+    i.sendToShiftReg                         0x00004658   Section        0  lcd.o(i.sendToShiftReg)
+    i.setArmed                               0x000046f8   Section        0  armedline.o(i.setArmed)
+    i.setCol                                 0x0000470c   Section        0  keypadfsm.o(i.setCol)
+    i.setColsHigh                            0x00004768   Section        0  keypadfsm.o(i.setColsHigh)
+    i.setKeyInSlotDefault                    0x0000477c   Section        0  slotdetector.o(i.setKeyInSlotDefault)
+    i.setLED                                 0x0000478c   Section        0  leds.o(i.setLED)
+    i.setMotor                               0x000047f8   Section        0  dcmotors.o(i.setMotor)
+    i.setPotZero                             0x0000484c   Section        0  servos.o(i.setPotZero)
+    i.setTowerToZero                         0x00004864   Section        0  servos.o(i.setTowerToZero)
+    i.setUnarmed                             0x00004870   Section        0  armedline.o(i.setUnarmed)
+    i.setVictory                             0x00004884   Section        0  servos.o(i.setVictory)
+    i.tapeSensorsCovered                     0x00004890   Section        0  tapesensor.o(i.tapeSensorsCovered)
+    i.unlockKeys                             0x000048a4   Section        0  servos.o(i.unlockKeys)
+    i.unwindTimingMotor                      0x000048ae   Section        0  dcmotors.o(i.unwindTimingMotor)
+    i.vibrationMotorOff                      0x000048c4   Section        0  dcmotors.o(i.vibrationMotorOff)
+    i.vibrationMotorOn                       0x000048cc   Section        0  dcmotors.o(i.vibrationMotorOn)
+    i.wait                                   0x000048d4   Section        0  helperfunctions.o(i.wait)
+    locale$$code                             0x000048f8   Section       44  lc_numeric_c.o(locale$$code)
+    x$fpl$dadd                               0x00004924   Section      336  daddsub_clz.o(x$fpl$dadd)
+    $v0                                      0x00004924   Number         0  daddsub_clz.o(x$fpl$dadd)
+    _dadd1                                   0x00004935   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    x$fpl$dcmpinf                            0x00004a74   Section       24  dcmpi.o(x$fpl$dcmpinf)
+    $v0                                      0x00004a74   Number         0  dcmpi.o(x$fpl$dcmpinf)
+    x$fpl$ddiv                               0x00004a8c   Section      688  ddiv.o(x$fpl$ddiv)
+    $v0                                      0x00004a8c   Number         0  ddiv.o(x$fpl$ddiv)
+    ddiv_entry                               0x00004a93   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    x$fpl$deqf                               0x00004d3c   Section      120  deqf.o(x$fpl$deqf)
+    $v0                                      0x00004d3c   Number         0  deqf.o(x$fpl$deqf)
+    x$fpl$dfixu                              0x00004db4   Section       90  dfixu.o(x$fpl$dfixu)
+    $v0                                      0x00004db4   Number         0  dfixu.o(x$fpl$dfixu)
+    x$fpl$dfltu                              0x00004e0e   Section       38  dflt_clz.o(x$fpl$dfltu)
+    $v0                                      0x00004e0e   Number         0  dflt_clz.o(x$fpl$dfltu)
+    x$fpl$dleqf                              0x00004e34   Section      120  dleqf.o(x$fpl$dleqf)
+    $v0                                      0x00004e34   Number         0  dleqf.o(x$fpl$dleqf)
+    x$fpl$dmul                               0x00004eac   Section      340  dmul.o(x$fpl$dmul)
+    $v0                                      0x00004eac   Number         0  dmul.o(x$fpl$dmul)
+    x$fpl$dnaninf                            0x00005000   Section      156  dnaninf.o(x$fpl$dnaninf)
+    $v0                                      0x00005000   Number         0  dnaninf.o(x$fpl$dnaninf)
+    x$fpl$dretinf                            0x0000509c   Section       12  dretinf.o(x$fpl$dretinf)
+    $v0                                      0x0000509c   Number         0  dretinf.o(x$fpl$dretinf)
+    x$fpl$drleqf                             0x000050a8   Section      108  drleqf.o(x$fpl$drleqf)
+    $v0                                      0x000050a8   Number         0  drleqf.o(x$fpl$drleqf)
+    x$fpl$drsb                               0x00005114   Section       22  daddsub_clz.o(x$fpl$drsb)
+    $v0                                      0x00005114   Number         0  daddsub_clz.o(x$fpl$drsb)
+    x$fpl$dsub                               0x0000512c   Section      468  daddsub_clz.o(x$fpl$dsub)
+    $v0                                      0x0000512c   Number         0  daddsub_clz.o(x$fpl$dsub)
+    _dsub1                                   0x0000513d   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    x$fpl$fpinit                             0x00005300   Section       10  fpinit.o(x$fpl$fpinit)
+    $v0                                      0x00005300   Number         0  fpinit.o(x$fpl$fpinit)
+    x$fpl$printf1                            0x0000530a   Section        4  printf1.o(x$fpl$printf1)
+    $v0                                      0x0000530a   Number         0  printf1.o(x$fpl$printf1)
+    x$fpl$usenofp                            0x0000530e   Section        0  usenofp.o(x$fpl$usenofp)
+    .constdata                               0x00005310   Section       20  es_checkevents.o(.constdata)
+    ES_EventList                             0x00005310   Data          20  es_checkevents.o(.constdata)
+    .constdata                               0x00005324   Section       32  es_framework.o(.constdata)
+    ServDescList                             0x00005324   Data          16  es_framework.o(.constdata)
+    EventQueues                              0x00005334   Data          16  es_framework.o(.constdata)
+    .constdata                               0x00005344   Section       32  es_lookuptables.o(.constdata)
+    .constdata                               0x00005364   Section       15  es_lookuptables.o(.constdata)
+    .constdata                               0x00005374   Section       64  es_timers.o(.constdata)
+    Timer2PostFunc                           0x00005374   Data          64  es_timers.o(.constdata)
+    .constdata                               0x000053b4   Section       28  uartstdio.o(.constdata)
+    g_pcHex                                  0x000053b4   Data           4  uartstdio.o(.constdata)
+    g_ui32UARTBase                           0x000053b8   Data          12  uartstdio.o(.constdata)
+    g_ui32UARTPeriph                         0x000053c4   Data          12  uartstdio.o(.constdata)
+    .constdata                               0x000053d0   Section      528  gpio.o(.constdata)
+    g_ppui32GPIOIntMapBlizzard               0x000053d0   Data         192  gpio.o(.constdata)
+    g_ppui32GPIOIntMapSnowflake              0x00005490   Data         192  gpio.o(.constdata)
+    g_pui32GPIOBaseAddrs                     0x00005550   Data         144  gpio.o(.constdata)
+    .constdata                               0x000055e0   Section      452  sysctl.o(.constdata)
+    g_pui32VCOFrequencies                    0x000055e0   Data           8  sysctl.o(.constdata)
+    g_pui32Xtals                             0x000055e8   Data         108  sysctl.o(.constdata)
+    g_pppui32XTALtoVCO                       0x00005654   Data         288  sysctl.o(.constdata)
+    g_sXTALtoMEMTIM                          0x00005774   Data          48  sysctl.o(.constdata)
+    .constdata                               0x000057a4   Section      148  bigflt0.o(.constdata)
+    tenpwrs_x                                0x000057a4   Data          60  bigflt0.o(.constdata)
+    tenpwrs_i                                0x000057e0   Data          64  bigflt0.o(.constdata)
+    .conststring                             0x00005838   Section       65  leds.o(.conststring)
+    .conststring                             0x0000587c   Section       17  uartstdio.o(.conststring)
+    locale$$data                             0x000058b0   Section       28  lc_numeric_c.o(locale$$data)
+    __lcnum_c_name                           0x000058b4   Data           2  lc_numeric_c.o(locale$$data)
+    __lcnum_c_start                          0x000058bc   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_point                          0x000058c8   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_thousands                      0x000058ca   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_grouping                       0x000058cb   Data           0  lc_numeric_c.o(locale$$data)
+    __lcnum_c_end                            0x000058cc   Data           0  lc_numeric_c.o(locale$$data)
     .data                                    0x20000000   Section       16  eventcheckers.o(.data)
     lastState                                0x20000000   Data           1  eventcheckers.o(.data)
+    lastState                                0x20000001   Data           1  eventcheckers.o(.data)
     lastPotValue                             0x20000008   Data           8  eventcheckers.o(.data)
-    .data                                    0x20000010   Section        8  disarmfsm.o(.data)
+    .data                                    0x20000010   Section       16  disarmfsm.o(.data)
     CurrentState                             0x20000010   Data           1  disarmfsm.o(.data)
     MyPriority                               0x20000011   Data           1  disarmfsm.o(.data)
     i                                        0x20000014   Data           4  disarmfsm.o(.data)
-    .data                                    0x20000018   Section       12  pwmtiva.o(.data)
-    duty0                                    0x20000018   Data           1  pwmtiva.o(.data)
-    duty1                                    0x20000019   Data           1  pwmtiva.o(.data)
-    duty2                                    0x2000001a   Data           1  pwmtiva.o(.data)
-    duty3                                    0x2000001b   Data           1  pwmtiva.o(.data)
-    ulPeriod0                                0x2000001c   Data           4  pwmtiva.o(.data)
-    ulPeriod1                                0x20000020   Data           4  pwmtiva.o(.data)
-    .data                                    0x20000028   Section       32  servos.o(.data)
-    victory                                  0x20000028   Data           1  servos.o(.data)
-    key_servo_pos                            0x2000002a   Data           2  servos.o(.data)
-    tower_servo_pos                          0x2000002c   Data           2  servos.o(.data)
-    tower_rotate_servo_pos                   0x2000002e   Data           2  servos.o(.data)
-    flag_servo_pos                           0x20000030   Data           2  servos.o(.data)
-    potZero                                  0x20000038   Data           8  servos.o(.data)
-    conversion                               0x20000040   Data           8  servos.o(.data)
-    .data                                    0x20000048   Section        2  lcd.o(.data)
-    messageNumber                            0x20000048   Data           1  lcd.o(.data)
-    .data                                    0x2000004a   Section       11  keypadfsm.o(.data)
-    prevButtonState                          0x2000004a   Data           1  keypadfsm.o(.data)
-    Row                                      0x2000004b   Data           1  keypadfsm.o(.data)
-    Col                                      0x2000004c   Data           1  keypadfsm.o(.data)
-    sizeOfInput                              0x2000004d   Data           1  keypadfsm.o(.data)
-    CurrentState                             0x2000004e   Data           1  keypadfsm.o(.data)
-    MyPriority                               0x2000004f   Data           1  keypadfsm.o(.data)
-    passwordInput                            0x20000050   Data           5  keypadfsm.o(.data)
-    .data                                    0x20000055   Section       21  passwordgenerator.o(.data)
-    correctPassword                          0x20000055   Data           1  passwordgenerator.o(.data)
-    password1                                0x20000056   Data           5  passwordgenerator.o(.data)
-    password2                                0x2000005b   Data           5  passwordgenerator.o(.data)
-    password3                                0x20000060   Data           5  passwordgenerator.o(.data)
-    password4                                0x20000065   Data           5  passwordgenerator.o(.data)
-    .data                                    0x2000006a   Section        6  es_framework.o(.data)
-    ThisEvent                                0x2000006c   Data           4  es_framework.o(.data)
-    .data                                    0x20000070   Section        4  es_port.o(.data)
-    TickCount                                0x20000070   Data           1  es_port.o(.data)
-    SysTickCounter                           0x20000072   Data           2  es_port.o(.data)
-    .data                                    0x20000074   Section        4  es_queue.o(.data)
-    .data                                    0x20000078   Section       10  es_timers.o(.data)
-    NextTimer2Process                        0x20000078   Data           1  es_timers.o(.data)
-    NeedsProcessing                          0x2000007a   Data           2  es_timers.o(.data)
-    TMR_ActiveFlags                          0x2000007c   Data           2  es_timers.o(.data)
-    NewEvent                                 0x2000007e   Data           4  es_timers.o(.data)
-    .data                                    0x20000084   Section        4  retarget.o(.data)
-    .data                                    0x20000088   Section        4  retarget.o(.data)
-    .data                                    0x2000008c   Section        8  uartstdio.o(.data)
-    bLastWasCR                               0x2000008c   Data           1  uartstdio.o(.data)
-    g_ui32Base                               0x20000090   Data           4  uartstdio.o(.data)
-    .bss                                     0x20000094   Section       24  es_framework.o(.bss)
-    Queue0                                   0x20000094   Data          24  es_framework.o(.bss)
-    .bss                                     0x200000ac   Section       24  es_framework.o(.bss)
-    Queue1                                   0x200000ac   Data          24  es_framework.o(.bss)
-    .bss                                     0x200000c4   Section       32  es_timers.o(.bss)
-    TMR_TimerArray                           0x200000c4   Data          32  es_timers.o(.bss)
-    .bss                                     0x200000e4   Section      228  rand.o(.bss)
-    .bss                                     0x200001c8   Section       96  libspace.o(.bss)
-    HEAP                                     0x20000228   Section        0  startup_rvmdk.o(HEAP)
-    STACK                                    0x20000228   Section     2048  startup_rvmdk.o(STACK)
-    HeapMem                                  0x20000228   Data           0  startup_rvmdk.o(HEAP)
-    StackMem                                 0x20000228   Data           0  startup_rvmdk.o(STACK)
+    LEDs                                     0x20000018   Data           8  disarmfsm.o(.data)
+    .data                                    0x20000020   Section       12  pwmtiva.o(.data)
+    duty0                                    0x20000020   Data           1  pwmtiva.o(.data)
+    duty1                                    0x20000021   Data           1  pwmtiva.o(.data)
+    duty2                                    0x20000022   Data           1  pwmtiva.o(.data)
+    duty3                                    0x20000023   Data           1  pwmtiva.o(.data)
+    ulPeriod0                                0x20000024   Data           4  pwmtiva.o(.data)
+    ulPeriod1                                0x20000028   Data           4  pwmtiva.o(.data)
+    .data                                    0x20000030   Section       32  servos.o(.data)
+    victory                                  0x20000030   Data           1  servos.o(.data)
+    key_servo_pos                            0x20000032   Data           2  servos.o(.data)
+    tower_servo_pos                          0x20000034   Data           2  servos.o(.data)
+    tower_rotate_servo_pos                   0x20000036   Data           2  servos.o(.data)
+    flag_servo_pos                           0x20000038   Data           2  servos.o(.data)
+    potZero                                  0x20000040   Data           8  servos.o(.data)
+    conversion                               0x20000048   Data           8  servos.o(.data)
+    .data                                    0x20000050   Section        4  slotdetector.o(.data)
+    keyInSlotDefault                         0x20000050   Data           4  slotdetector.o(.data)
+    .data                                    0x20000054   Section        2  lcd.o(.data)
+    messageNumber                            0x20000054   Data           1  lcd.o(.data)
+    .data                                    0x20000056   Section       11  keypadfsm.o(.data)
+    prevButtonState                          0x20000056   Data           1  keypadfsm.o(.data)
+    Row                                      0x20000057   Data           1  keypadfsm.o(.data)
+    Col                                      0x20000058   Data           1  keypadfsm.o(.data)
+    sizeOfInput                              0x20000059   Data           1  keypadfsm.o(.data)
+    CurrentState                             0x2000005a   Data           1  keypadfsm.o(.data)
+    MyPriority                               0x2000005b   Data           1  keypadfsm.o(.data)
+    passwordInput                            0x2000005c   Data           5  keypadfsm.o(.data)
+    .data                                    0x20000061   Section       21  passwordgenerator.o(.data)
+    correctPassword                          0x20000061   Data           1  passwordgenerator.o(.data)
+    password1                                0x20000062   Data           5  passwordgenerator.o(.data)
+    password2                                0x20000067   Data           5  passwordgenerator.o(.data)
+    password3                                0x2000006c   Data           5  passwordgenerator.o(.data)
+    password4                                0x20000071   Data           5  passwordgenerator.o(.data)
+    .data                                    0x20000076   Section        1  audiocontrol.o(.data)
+    lastTrack                                0x20000076   Data           1  audiocontrol.o(.data)
+    .data                                    0x20000078   Section        6  es_framework.o(.data)
+    ThisEvent                                0x2000007a   Data           4  es_framework.o(.data)
+    .data                                    0x2000007e   Section        4  es_port.o(.data)
+    TickCount                                0x2000007e   Data           1  es_port.o(.data)
+    SysTickCounter                           0x20000080   Data           2  es_port.o(.data)
+    .data                                    0x20000084   Section        4  es_queue.o(.data)
+    .data                                    0x20000088   Section       10  es_timers.o(.data)
+    NextTimer2Process                        0x20000088   Data           1  es_timers.o(.data)
+    NeedsProcessing                          0x2000008a   Data           2  es_timers.o(.data)
+    TMR_ActiveFlags                          0x2000008c   Data           2  es_timers.o(.data)
+    NewEvent                                 0x2000008e   Data           4  es_timers.o(.data)
+    .data                                    0x20000094   Section        4  retarget.o(.data)
+    .data                                    0x20000098   Section        4  retarget.o(.data)
+    .data                                    0x2000009c   Section        8  uartstdio.o(.data)
+    bLastWasCR                               0x2000009c   Data           1  uartstdio.o(.data)
+    g_ui32Base                               0x200000a0   Data           4  uartstdio.o(.data)
+    .bss                                     0x200000a4   Section       24  es_framework.o(.bss)
+    Queue0                                   0x200000a4   Data          24  es_framework.o(.bss)
+    .bss                                     0x200000bc   Section       24  es_framework.o(.bss)
+    Queue1                                   0x200000bc   Data          24  es_framework.o(.bss)
+    .bss                                     0x200000d4   Section       32  es_timers.o(.bss)
+    TMR_TimerArray                           0x200000d4   Data          32  es_timers.o(.bss)
+    .bss                                     0x200000f4   Section      228  rand.o(.bss)
+    .bss                                     0x200001d8   Section       96  libspace.o(.bss)
+    HEAP                                     0x20000238   Section        0  startup_rvmdk.o(HEAP)
+    STACK                                    0x20000238   Section     2048  startup_rvmdk.o(STACK)
+    HeapMem                                  0x20000238   Data           0  startup_rvmdk.o(HEAP)
+    StackMem                                 0x20000238   Data           0  startup_rvmdk.o(STACK)
 
     Global Symbols
 
@@ -1611,163 +1684,183 @@ Image Symbol Table
     __btod_mult_common                       0x0000132b   Thumb Code   580  btod.o(CL$$btod_mult_common)
     ADC0_InSeq3                              0x00001571   Thumb Code    24  adcswtrigger.o(i.ADC0_InSeq3)
     ADC0_InitSWTriggerSeq3                   0x0000158d   Thumb Code   696  adcswtrigger.o(i.ADC0_InitSWTriggerSeq3)
-    CPUgetPRIMASK_cpsid                      0x0000186d   Thumb Code     8  es_port.o(i.CPUgetPRIMASK_cpsid)
-    CPUsetPRIMASK                            0x00001875   Thumb Code     6  es_port.o(i.CPUsetPRIMASK)
-    Check4Keystroke                          0x0000187d   Thumb Code    92  eventcheckers.o(i.Check4Keystroke)
-    CheckForKeyPadButtonPress                0x000018dd   Thumb Code    80  keypadfsm.o(i.CheckForKeyPadButtonPress)
-    CheckPot                                 0x00001931   Thumb Code   306  eventcheckers.o(i.CheckPot)
-    CheckTapeSensor                          0x00001ab5   Thumb Code    60  eventcheckers.o(i.CheckTapeSensor)
-    ES_CheckUserEvents                       0x00001af5   Thumb Code    34  es_checkevents.o(i.ES_CheckUserEvents)
-    ES_DeQueue                               0x00001b1d   Thumb Code    80  es_queue.o(i.ES_DeQueue)
-    ES_EnQueueFIFO                           0x00001b71   Thumb Code    66  es_queue.o(i.ES_EnQueueFIFO)
-    ES_GetMSBitSet                           0x00001bb9   Thumb Code    48  es_lookuptables.o(i.ES_GetMSBitSet)
-    ES_InitQueue                             0x00001bed   Thumb Code    16  es_queue.o(i.ES_InitQueue)
-    ES_Initialize                            0x00001bfd   Thumb Code    72  es_framework.o(i.ES_Initialize)
-    ES_PostToService                         0x00001c49   Thumb Code    42  es_framework.o(i.ES_PostToService)
-    ES_Run                                   0x00001c81   Thumb Code    84  es_framework.o(i.ES_Run)
-    ES_Timer_GetTime                         0x00001ce1   Thumb Code     4  es_timers.o(i.ES_Timer_GetTime)
-    ES_Timer_Init                            0x00001ce5   Thumb Code     4  es_timers.o(i.ES_Timer_Init)
-    ES_Timer_InitTimer                       0x00001ce9   Thumb Code    44  es_timers.o(i.ES_Timer_InitTimer)
-    ES_Timer_StartTimer                      0x00001d25   Thumb Code    36  es_timers.o(i.ES_Timer_StartTimer)
-    ES_Timer_Tick_Resp                       0x00001d55   Thumb Code    90  es_timers.o(i.ES_Timer_Tick_Resp)
-    GPIODirModeSet                           0x00001dc1   Thumb Code    40  gpio.o(i.GPIODirModeSet)
-    GPIOPadConfigSet                         0x00001de9   Thumb Code   314  gpio.o(i.GPIOPadConfigSet)
-    GPIOPinConfigure                         0x00001f25   Thumb Code    64  gpio.o(i.GPIOPinConfigure)
-    GPIOPinTypeGPIOInput                     0x00001f6d   Thumb Code    28  gpio.o(i.GPIOPinTypeGPIOInput)
-    GPIOPinTypePWM                           0x00001f89   Thumb Code    28  gpio.o(i.GPIOPinTypePWM)
-    GPIOPinTypeUART                          0x00001fa5   Thumb Code    28  gpio.o(i.GPIOPinTypeUART)
-    InitDisarmFSM                            0x00001fc1   Thumb Code    54  disarmfsm.o(i.InitDisarmFSM)
-    InitKeyPadFSM                            0x00001ffd   Thumb Code    44  keypadfsm.o(i.InitKeyPadFSM)
-    InitKeyPadPortLines                      0x0000203d   Thumb Code   110  keypadfsm.o(i.InitKeyPadPortLines)
-    IntMasterEnable                          0x000020f1   Thumb Code    14  interrupt.o(i.IntMasterEnable)
-    LCDInit                                  0x00002101   Thumb Code   276  lcd.o(i.LCDInit)
-    LCDputchar                               0x00002225   Thumb Code   194  lcd.o(i.LCDputchar)
-    LEDShiftRegInit                          0x000022ed   Thumb Code    70  leds.o(i.LEDShiftRegInit)
-    PWMGenConfigure                          0x00002345   Thumb Code    38  pwm.o(i.PWMGenConfigure)
-    PWMGenEnable                             0x0000236b   Thumb Code    10  pwm.o(i.PWMGenEnable)
-    PWMGenPeriodSet                          0x00002375   Thumb Code    18  pwm.o(i.PWMGenPeriodSet)
-    PWMOutputState                           0x00002387   Thumb Code    16  pwm.o(i.PWMOutputState)
-    PWMPulseWidthSet                         0x00002397   Thumb Code    32  pwm.o(i.PWMPulseWidthSet)
-    PWM_TIVA_Init                            0x000023b9   Thumb Code   176  pwmtiva.o(i.PWM_TIVA_Init)
-    PWM_TIVA_SetDuty                         0x0000248d   Thumb Code    82  pwmtiva.o(i.PWM_TIVA_SetDuty)
-    PWM_TIVA_SetFreq                         0x000024e9   Thumb Code    90  pwmtiva.o(i.PWM_TIVA_SetFreq)
-    PWM_TIVA_SetPulseWidth                   0x0000254d   Thumb Code    70  pwmtiva.o(i.PWM_TIVA_SetPulseWidth)
-    PortFunctionInit                         0x0000259d   Thumb Code   132  enablepa25_pb23_pd7_pf0.o(i.PortFunctionInit)
-    PostDisarmFSM                            0x0000263d   Thumb Code    10  disarmfsm.o(i.PostDisarmFSM)
-    PostKeyPadFSM                            0x0000264d   Thumb Code    10  keypadfsm.o(i.PostKeyPadFSM)
-    RCKPulse                                 0x0000265d   Thumb Code    38  leds.o(i.RCKPulse)
-    RCKPulseLCD                              0x00002685   Thumb Code    40  lcd.o(i.RCKPulseLCD)
-    RunDisarmFSM                             0x000026b5   Thumb Code  1804  disarmfsm.o(i.RunDisarmFSM)
-    RunKeyPadFSM                             0x00003009   Thumb Code   130  keypadfsm.o(i.RunKeyPadFSM)
-    SCKPulse                                 0x000030bd   Thumb Code    38  leds.o(i.SCKPulse)
-    SCKPulseLCD                              0x000030e5   Thumb Code    40  lcd.o(i.SCKPulseLCD)
-    SysCtlClockGet                           0x00003115   Thumb Code   314  sysctl.o(i.SysCtlClockGet)
-    SysCtlClockSet                           0x00003279   Thumb Code   270  sysctl.o(i.SysCtlClockSet)
-    SysCtlPWMClockSet                        0x00003399   Thumb Code    14  sysctl.o(i.SysCtlPWMClockSet)
-    SysCtlPeripheralEnable                   0x000033ad   Thumb Code    36  sysctl.o(i.SysCtlPeripheralEnable)
-    SysTickEnable                            0x000033d5   Thumb Code    14  systick.o(i.SysTickEnable)
-    SysTickIntEnable                         0x000033e3   Thumb Code    14  systick.o(i.SysTickIntEnable)
-    SysTickIntHandler                        0x000033f1   Thumb Code    16  es_port.o(i.SysTickIntHandler)
-    SysTickPeriodSet                         0x00003405   Thumb Code    10  systick.o(i.SysTickPeriodSet)
-    TERMIO_GetChar                           0x0000340f   Thumb Code     4  termio.o(i.TERMIO_GetChar)
-    TERMIO_Init                              0x00003415   Thumb Code    62  termio.o(i.TERMIO_Init)
-    TERMIO_PutChar                           0x00003465   Thumb Code     8  termio.o(i.TERMIO_PutChar)
-    UARTCharPut                              0x00003471   Thumb Code    12  uart.o(i.UARTCharPut)
-    UARTClockSourceSet                       0x0000347d   Thumb Code     6  uart.o(i.UARTClockSourceSet)
-    UARTStdioConfig                          0x00003485   Thumb Code    82  uartstdio.o(i.UARTStdioConfig)
-    UARTgetc                                 0x000034e1   Thumb Code    20  uartstdio.o(i.UARTgetc)
-    _HW_GetTickCount                         0x000034f9   Thumb Code     6  es_port.o(i._HW_GetTickCount)
-    _HW_Process_Pending_Ints                 0x00003505   Thumb Code    26  es_port.o(i._HW_Process_Pending_Ints)
-    _HW_Timer_Init                           0x00003525   Thumb Code    22  es_port.o(i._HW_Timer_Init)
-    __ARM_fpclassify                         0x0000353b   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
-    _sys_exit                                0x0000356b   Thumb Code     2  retarget.o(i._sys_exit)
-    checkPassword                            0x0000356d   Thumb Code    68  passwordgenerator.o(i.checkPassword)
-    clearLCD                                 0x000035b5   Thumb Code    34  lcd.o(i.clearLCD)
-    compareIntArrays                         0x000035dd   Thumb Code    28  passwordgenerator.o(i.compareIntArrays)
-    ferror                                   0x000035f9   Thumb Code     6  retarget.o(i.ferror)
-    fgetc                                    0x000035ff   Thumb Code     4  retarget.o(i.fgetc)
-    findNum                                  0x00003605   Thumb Code    34  keypadfsm.o(i.findNum)
-    fputc                                    0x0000362d   Thumb Code    14  retarget.o(i.fputc)
-    generateRandomPassword                   0x0000363b   Thumb Code    32  passwordgenerator.o(i.generateRandomPassword)
-    getPassword                              0x0000365d   Thumb Code    42  passwordgenerator.o(i.getPassword)
-    getPotValue                              0x0000368d   Thumb Code    38  servos.o(i.getPotValue)
-    getPotZero                               0x000036b9   Thumb Code     8  servos.o(i.getPotZero)
-    getVictory                               0x000036c5   Thumb Code     6  servos.o(i.getVictory)
-    initMotors                               0x000036d1   Thumb Code    52  dcmotors.o(i.initMotors)
-    initTapeSensors                          0x00003715   Thumb Code    22  tapesensor.o(i.initTapeSensors)
-    initializeServos                         0x00003735   Thumb Code    80  servos.o(i.initializeServos)
-    kbhit                                    0x0000378d   Thumb Code    16  termio.o(i.kbhit)
-    lockKeys                                 0x000037a1   Thumb Code    10  servos.o(i.lockKeys)
-    lowerFlag                                0x000037ab   Thumb Code    10  servos.o(i.lowerFlag)
-    main                                     0x000037b5   Thumb Code   120  main.o(i.main)
-    moveTower                                0x00003a25   Thumb Code   236  servos.o(i.moveTower)
-    printArmedMessage                        0x00003bb1   Thumb Code   106  lcd.o(i.printArmedMessage)
-    printAuthorizedMessage                   0x00003c1b   Thumb Code    94  lcd.o(i.printAuthorizedMessage)
-    printCurrentInput                        0x00003c79   Thumb Code    42  keypadfsm.o(i.printCurrentInput)
-    printIncorrectMessage                    0x00003cc5   Thumb Code    82  lcd.o(i.printIncorrectMessage)
-    printLCDmessage                          0x00003d19   Thumb Code   758  lcd.o(i.printLCDmessage)
-    raiseFlag                                0x00004021   Thumb Code    10  servos.o(i.raiseFlag)
-    randomizePasswords                       0x0000402d   Thumb Code    66  passwordgenerator.o(i.randomizePasswords)
-    readRow                                  0x00004075   Thumb Code    72  keypadfsm.o(i.readRow)
-    resetLCDmessage                          0x000040c1   Thumb Code     8  lcd.o(i.resetLCDmessage)
-    rotateServo                              0x000040cd   Thumb Code    66  servos.o(i.rotateServo)
-    sendToLCD                                0x00004115   Thumb Code    36  lcd.o(i.sendToLCD)
-    sendToShiftReg                           0x00004139   Thumb Code    74  lcd.o(i.sendToShiftReg)
-    setCol                                   0x000041d9   Thumb Code    84  keypadfsm.o(i.setCol)
-    setColsHigh                              0x00004235   Thumb Code    20  keypadfsm.o(i.setColsHigh)
-    setLED                                   0x00004249   Thumb Code    90  leds.o(i.setLED)
-    setMotor                                 0x000042b5   Thumb Code    78  dcmotors.o(i.setMotor)
-    setPotZero                               0x00004309   Thumb Code    18  servos.o(i.setPotZero)
-    setTowerToZero                           0x00004321   Thumb Code    10  servos.o(i.setTowerToZero)
-    setVictory                               0x0000432d   Thumb Code     6  servos.o(i.setVictory)
-    tapeSensorsCovered                       0x00004339   Thumb Code    14  tapesensor.o(i.tapeSensorsCovered)
-    unlockKeys                               0x0000434d   Thumb Code    10  servos.o(i.unlockKeys)
-    unwindTimingMotor                        0x00004357   Thumb Code    22  dcmotors.o(i.unwindTimingMotor)
-    vibrationMotorOff                        0x0000436d   Thumb Code     8  dcmotors.o(i.vibrationMotorOff)
-    vibrationMotorOn                         0x00004375   Thumb Code     8  dcmotors.o(i.vibrationMotorOn)
-    wait                                     0x0000437d   Thumb Code    32  helperfunctions.o(i.wait)
-    _get_lc_numeric                          0x000043a1   Thumb Code    44  lc_numeric_c.o(locale$$code)
-    __aeabi_dadd                             0x000043cd   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
-    _dadd                                    0x000043cd   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
-    __fpl_dcmp_Inf                           0x0000451d   Thumb Code    24  dcmpi.o(x$fpl$dcmpinf)
-    __aeabi_ddiv                             0x00004535   Thumb Code     0  ddiv.o(x$fpl$ddiv)
-    _ddiv                                    0x00004535   Thumb Code   552  ddiv.o(x$fpl$ddiv)
-    __aeabi_cdcmpeq                          0x000047e5   Thumb Code     0  deqf.o(x$fpl$deqf)
-    _dcmpeq                                  0x000047e5   Thumb Code   120  deqf.o(x$fpl$deqf)
-    __aeabi_d2uiz                            0x0000485d   Thumb Code     0  dfixu.o(x$fpl$dfixu)
-    _dfixu                                   0x0000485d   Thumb Code    90  dfixu.o(x$fpl$dfixu)
-    __aeabi_ui2d                             0x000048b7   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
-    _dfltu                                   0x000048b7   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
-    __aeabi_cdcmple                          0x000048dd   Thumb Code     0  dleqf.o(x$fpl$dleqf)
-    _dcmple                                  0x000048dd   Thumb Code   120  dleqf.o(x$fpl$dleqf)
-    __fpl_dcmple_InfNaN                      0x0000493f   Thumb Code     0  dleqf.o(x$fpl$dleqf)
-    __aeabi_dmul                             0x00004955   Thumb Code     0  dmul.o(x$fpl$dmul)
-    _dmul                                    0x00004955   Thumb Code   332  dmul.o(x$fpl$dmul)
-    __fpl_dnaninf                            0x00004aa9   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
-    __fpl_dretinf                            0x00004b45   Thumb Code    12  dretinf.o(x$fpl$dretinf)
-    __aeabi_cdrcmple                         0x00004b51   Thumb Code     0  drleqf.o(x$fpl$drleqf)
-    _drcmple                                 0x00004b51   Thumb Code   108  drleqf.o(x$fpl$drleqf)
-    __aeabi_drsub                            0x00004bbd   Thumb Code     0  daddsub_clz.o(x$fpl$drsb)
-    _drsb                                    0x00004bbd   Thumb Code    22  daddsub_clz.o(x$fpl$drsb)
-    __aeabi_dsub                             0x00004bd5   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
-    _dsub                                    0x00004bd5   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
-    _fp_init                                 0x00004da9   Thumb Code    10  fpinit.o(x$fpl$fpinit)
-    __fplib_config_fpu_vfp                   0x00004db1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    __fplib_config_pureend_doubles           0x00004db1   Thumb Code     0  fpinit.o(x$fpl$fpinit)
-    _printf_fp_dec                           0x00004db3   Thumb Code     4  printf1.o(x$fpl$printf1)
-    __I$use$fp                               0x00004db6   Number         0  usenofp.o(x$fpl$usenofp)
-    BitNum2SetMask                           0x00004de8   Data          32  es_lookuptables.o(.constdata)
-    Nybble2MSBitNum                          0x00004e08   Data          15  es_lookuptables.o(.constdata)
-    Region$$Table$$Base                      0x00005334   Number         0  anon$$obj.o(Region$$Table)
-    Region$$Table$$Limit                     0x00005354   Number         0  anon$$obj.o(Region$$Table)
-    LCD                                      0x20000049   Data           1  lcd.o(.data)
-    Ready                                    0x2000006a   Data           2  es_framework.o(.data)
-    _PRIMASK_temp                            0x20000074   Data           4  es_queue.o(.data)
-    __stdout                                 0x20000084   Data           4  retarget.o(.data)
-    __stdin                                  0x20000088   Data           4  retarget.o(.data)
-    _random_number_data                      0x200000e4   Data         228  rand.o(.bss)
-    __libspace_start                         0x200001c8   Data          96  libspace.o(.bss)
-    __temporary_stack_top$libspace           0x20000228   Data           0  libspace.o(.bss)
+    AudioInit                                0x0000186d   Thumb Code    16  audiocontrol.o(i.AudioInit)
+    CPUgetPRIMASK_cpsid                      0x00001899   Thumb Code     8  es_port.o(i.CPUgetPRIMASK_cpsid)
+    CPUsetPRIMASK                            0x000018a1   Thumb Code     6  es_port.o(i.CPUsetPRIMASK)
+    Check4Keystroke                          0x000018a9   Thumb Code    92  eventcheckers.o(i.Check4Keystroke)
+    CheckForKeyPadButtonPress                0x00001909   Thumb Code    80  keypadfsm.o(i.CheckForKeyPadButtonPress)
+    CheckPot                                 0x0000195d   Thumb Code   306  eventcheckers.o(i.CheckPot)
+    CheckSlotDetector                        0x00001ae1   Thumb Code    92  eventcheckers.o(i.CheckSlotDetector)
+    CheckTapeSensor                          0x00001b91   Thumb Code    60  eventcheckers.o(i.CheckTapeSensor)
+    ES_CheckUserEvents                       0x00001bd1   Thumb Code    34  es_checkevents.o(i.ES_CheckUserEvents)
+    ES_DeQueue                               0x00001bf9   Thumb Code    80  es_queue.o(i.ES_DeQueue)
+    ES_EnQueueFIFO                           0x00001c4d   Thumb Code    66  es_queue.o(i.ES_EnQueueFIFO)
+    ES_GetMSBitSet                           0x00001c95   Thumb Code    48  es_lookuptables.o(i.ES_GetMSBitSet)
+    ES_InitQueue                             0x00001cc9   Thumb Code    16  es_queue.o(i.ES_InitQueue)
+    ES_Initialize                            0x00001cd9   Thumb Code    72  es_framework.o(i.ES_Initialize)
+    ES_PostToService                         0x00001d25   Thumb Code    42  es_framework.o(i.ES_PostToService)
+    ES_Run                                   0x00001d5d   Thumb Code    84  es_framework.o(i.ES_Run)
+    ES_Timer_GetTime                         0x00001dbd   Thumb Code     4  es_timers.o(i.ES_Timer_GetTime)
+    ES_Timer_Init                            0x00001dc1   Thumb Code     4  es_timers.o(i.ES_Timer_Init)
+    ES_Timer_InitTimer                       0x00001dc5   Thumb Code    44  es_timers.o(i.ES_Timer_InitTimer)
+    ES_Timer_StartTimer                      0x00001e01   Thumb Code    36  es_timers.o(i.ES_Timer_StartTimer)
+    ES_Timer_Tick_Resp                       0x00001e31   Thumb Code    90  es_timers.o(i.ES_Timer_Tick_Resp)
+    GPIODirModeSet                           0x00001e9d   Thumb Code    40  gpio.o(i.GPIODirModeSet)
+    GPIOPadConfigSet                         0x00001ec5   Thumb Code   314  gpio.o(i.GPIOPadConfigSet)
+    GPIOPinConfigure                         0x00002001   Thumb Code    64  gpio.o(i.GPIOPinConfigure)
+    GPIOPinTypeGPIOInput                     0x00002049   Thumb Code    28  gpio.o(i.GPIOPinTypeGPIOInput)
+    GPIOPinTypePWM                           0x00002065   Thumb Code    28  gpio.o(i.GPIOPinTypePWM)
+    GPIOPinTypeUART                          0x00002081   Thumb Code    28  gpio.o(i.GPIOPinTypeUART)
+    InitAudioPortLine                        0x0000209d   Thumb Code    42  audiocontrol.o(i.InitAudioPortLine)
+    InitDisarmFSM                            0x000020d5   Thumb Code    70  disarmfsm.o(i.InitDisarmFSM)
+    InitKeyPadFSM                            0x00002121   Thumb Code    44  keypadfsm.o(i.InitKeyPadFSM)
+    InitKeyPadPortLines                      0x00002161   Thumb Code   110  keypadfsm.o(i.InitKeyPadPortLines)
+    IntMasterEnable                          0x00002215   Thumb Code    14  interrupt.o(i.IntMasterEnable)
+    LCDInit                                  0x00002225   Thumb Code   274  lcd.o(i.LCDInit)
+    LCDputchar                               0x0000234d   Thumb Code   194  lcd.o(i.LCDputchar)
+    LEDShiftRegInit                          0x00002415   Thumb Code    66  leds.o(i.LEDShiftRegInit)
+    PWMGenConfigure                          0x00002469   Thumb Code    38  pwm.o(i.PWMGenConfigure)
+    PWMGenEnable                             0x0000248f   Thumb Code    10  pwm.o(i.PWMGenEnable)
+    PWMGenPeriodSet                          0x00002499   Thumb Code    18  pwm.o(i.PWMGenPeriodSet)
+    PWMOutputState                           0x000024ab   Thumb Code    16  pwm.o(i.PWMOutputState)
+    PWMPulseWidthSet                         0x000024bb   Thumb Code    32  pwm.o(i.PWMPulseWidthSet)
+    PWM_TIVA_Init                            0x000024dd   Thumb Code   176  pwmtiva.o(i.PWM_TIVA_Init)
+    PWM_TIVA_SetDuty                         0x000025b1   Thumb Code    82  pwmtiva.o(i.PWM_TIVA_SetDuty)
+    PWM_TIVA_SetFreq                         0x0000260d   Thumb Code    90  pwmtiva.o(i.PWM_TIVA_SetFreq)
+    PWM_TIVA_SetPulseWidth                   0x00002671   Thumb Code    70  pwmtiva.o(i.PWM_TIVA_SetPulseWidth)
+    PlayGameOver                             0x000026c1   Thumb Code    46  audiocontrol.o(i.PlayGameOver)
+    PlaySuccessFinish                        0x000026f5   Thumb Code    46  audiocontrol.o(i.PlaySuccessFinish)
+    PlayWohoo                                0x00002729   Thumb Code    44  audiocontrol.o(i.PlayWohoo)
+    PortFunctionInit                         0x00002759   Thumb Code   132  enablepa25_pb23_pd7_pf0.o(i.PortFunctionInit)
+    PostDisarmFSM                            0x000027f9   Thumb Code    10  disarmfsm.o(i.PostDisarmFSM)
+    PostKeyPadFSM                            0x00002809   Thumb Code    10  keypadfsm.o(i.PostKeyPadFSM)
+    RCKPulse                                 0x00002819   Thumb Code    38  leds.o(i.RCKPulse)
+    RCKPulseLCD                              0x00002841   Thumb Code    40  lcd.o(i.RCKPulseLCD)
+    RunDisarmFSM                             0x00002871   Thumb Code  1874  disarmfsm.o(i.RunDisarmFSM)
+    RunKeyPadFSM                             0x00003239   Thumb Code   130  keypadfsm.o(i.RunKeyPadFSM)
+    SCKPulse                                 0x000032ed   Thumb Code    38  leds.o(i.SCKPulse)
+    SCKPulseLCD                              0x00003315   Thumb Code    40  lcd.o(i.SCKPulseLCD)
+    SysCtlClockGet                           0x00003345   Thumb Code   314  sysctl.o(i.SysCtlClockGet)
+    SysCtlClockSet                           0x000034a9   Thumb Code   270  sysctl.o(i.SysCtlClockSet)
+    SysCtlPWMClockSet                        0x000035c9   Thumb Code    14  sysctl.o(i.SysCtlPWMClockSet)
+    SysCtlPeripheralEnable                   0x000035dd   Thumb Code    36  sysctl.o(i.SysCtlPeripheralEnable)
+    SysTickEnable                            0x00003605   Thumb Code    14  systick.o(i.SysTickEnable)
+    SysTickIntEnable                         0x00003613   Thumb Code    14  systick.o(i.SysTickIntEnable)
+    SysTickIntHandler                        0x00003621   Thumb Code    16  es_port.o(i.SysTickIntHandler)
+    SysTickPeriodSet                         0x00003635   Thumb Code    10  systick.o(i.SysTickPeriodSet)
+    TERMIO_GetChar                           0x0000363f   Thumb Code     4  termio.o(i.TERMIO_GetChar)
+    TERMIO_Init                              0x00003645   Thumb Code    62  termio.o(i.TERMIO_Init)
+    TERMIO_PutChar                           0x00003695   Thumb Code     8  termio.o(i.TERMIO_PutChar)
+    UARTCharPut                              0x000036a1   Thumb Code    12  uart.o(i.UARTCharPut)
+    UARTClockSourceSet                       0x000036ad   Thumb Code     6  uart.o(i.UARTClockSourceSet)
+    UARTStdioConfig                          0x000036b5   Thumb Code    82  uartstdio.o(i.UARTStdioConfig)
+    UARTgetc                                 0x00003711   Thumb Code    20  uartstdio.o(i.UARTgetc)
+    _HW_GetTickCount                         0x00003729   Thumb Code     6  es_port.o(i._HW_GetTickCount)
+    _HW_Process_Pending_Ints                 0x00003735   Thumb Code    26  es_port.o(i._HW_Process_Pending_Ints)
+    _HW_Timer_Init                           0x00003755   Thumb Code    22  es_port.o(i._HW_Timer_Init)
+    __ARM_fpclassify                         0x0000376b   Thumb Code    48  fpclassify.o(i.__ARM_fpclassify)
+    _sys_exit                                0x0000379b   Thumb Code     2  retarget.o(i._sys_exit)
+    checkPassword                            0x0000379d   Thumb Code    68  passwordgenerator.o(i.checkPassword)
+    clearLCD                                 0x000037e5   Thumb Code    34  lcd.o(i.clearLCD)
+    compareIntArrays                         0x0000380d   Thumb Code    28  passwordgenerator.o(i.compareIntArrays)
+    delayLongAudio                           0x00003829   Thumb Code    32  audiocontrol.o(i.delayLongAudio)
+    ferror                                   0x00003849   Thumb Code     6  retarget.o(i.ferror)
+    fgetc                                    0x0000384f   Thumb Code     4  retarget.o(i.fgetc)
+    findNum                                  0x00003855   Thumb Code    34  keypadfsm.o(i.findNum)
+    fputc                                    0x0000387d   Thumb Code    14  retarget.o(i.fputc)
+    generateRandomPassword                   0x0000388b   Thumb Code    32  passwordgenerator.o(i.generateRandomPassword)
+    getKeyInSlotDefault                      0x000038ad   Thumb Code     6  slotdetector.o(i.getKeyInSlotDefault)
+    getPassword                              0x000038b9   Thumb Code    42  passwordgenerator.o(i.getPassword)
+    getPotValue                              0x000038e9   Thumb Code    38  servos.o(i.getPotValue)
+    getPotZero                               0x00003915   Thumb Code     8  servos.o(i.getPotZero)
+    getVictory                               0x00003921   Thumb Code     6  servos.o(i.getVictory)
+    initArmedLine                            0x0000392d   Thumb Code    32  armedline.o(i.initArmedLine)
+    initMotors                               0x00003959   Thumb Code    52  dcmotors.o(i.initMotors)
+    initPhototransistor                      0x0000399d   Thumb Code    22  slotdetector.o(i.initPhototransistor)
+    initTapeSensors                          0x000039bd   Thumb Code    22  tapesensor.o(i.initTapeSensors)
+    initializeServos                         0x000039dd   Thumb Code    80  servos.o(i.initializeServos)
+    isKeyInSlot                              0x00003a35   Thumb Code    12  slotdetector.o(i.isKeyInSlot)
+    kbhit                                    0x00003a45   Thumb Code    16  termio.o(i.kbhit)
+    lockKeys                                 0x00003a59   Thumb Code    10  servos.o(i.lockKeys)
+    lowerFlag                                0x00003a63   Thumb Code    10  servos.o(i.lowerFlag)
+    main                                     0x00003a6d   Thumb Code   120  main.o(i.main)
+    moveBackward                             0x00003cdd   Thumb Code    30  audiocontrol.o(i.moveBackward)
+    moveForward                              0x00003cfb   Thumb Code    20  audiocontrol.o(i.moveForward)
+    moveToTrack                              0x00003d11   Thumb Code   106  audiocontrol.o(i.moveToTrack)
+    moveTower                                0x00003dc1   Thumb Code   236  servos.o(i.moveTower)
+    printArmedMessage                        0x00003f4d   Thumb Code   106  lcd.o(i.printArmedMessage)
+    printAuthorizedMessage                   0x00003fb7   Thumb Code   118  lcd.o(i.printAuthorizedMessage)
+    printCurrentInput                        0x0000402d   Thumb Code    42  keypadfsm.o(i.printCurrentInput)
+    printIncorrectMessage                    0x00004079   Thumb Code   118  lcd.o(i.printIncorrectMessage)
+    printLCDmessage                          0x000040f1   Thumb Code   904  lcd.o(i.printLCDmessage)
+    printTimeUp                              0x00004489   Thumb Code   118  lcd.o(i.printTimeUp)
+    pulse                                    0x00004501   Thumb Code    36  audiocontrol.o(i.pulse)
+    raiseFlag                                0x00004529   Thumb Code    10  servos.o(i.raiseFlag)
+    randomizePasswords                       0x00004535   Thumb Code    66  passwordgenerator.o(i.randomizePasswords)
+    readRow                                  0x0000457d   Thumb Code    72  keypadfsm.o(i.readRow)
+    resetLCDmessage                          0x000045c9   Thumb Code     8  lcd.o(i.resetLCDmessage)
+    rewindTimingMotor                        0x000045d5   Thumb Code    22  dcmotors.o(i.rewindTimingMotor)
+    rotateServo                              0x000045ed   Thumb Code    66  servos.o(i.rotateServo)
+    sendToLCD                                0x00004635   Thumb Code    36  lcd.o(i.sendToLCD)
+    sendToShiftReg                           0x00004659   Thumb Code    74  lcd.o(i.sendToShiftReg)
+    setArmed                                 0x000046f9   Thumb Code    16  armedline.o(i.setArmed)
+    setCol                                   0x0000470d   Thumb Code    84  keypadfsm.o(i.setCol)
+    setColsHigh                              0x00004769   Thumb Code    20  keypadfsm.o(i.setColsHigh)
+    setKeyInSlotDefault                      0x0000477d   Thumb Code    12  slotdetector.o(i.setKeyInSlotDefault)
+    setLED                                   0x0000478d   Thumb Code    90  leds.o(i.setLED)
+    setMotor                                 0x000047f9   Thumb Code    78  dcmotors.o(i.setMotor)
+    setPotZero                               0x0000484d   Thumb Code    18  servos.o(i.setPotZero)
+    setTowerToZero                           0x00004865   Thumb Code    10  servos.o(i.setTowerToZero)
+    setUnarmed                               0x00004871   Thumb Code    16  armedline.o(i.setUnarmed)
+    setVictory                               0x00004885   Thumb Code     6  servos.o(i.setVictory)
+    tapeSensorsCovered                       0x00004891   Thumb Code    14  tapesensor.o(i.tapeSensorsCovered)
+    unlockKeys                               0x000048a5   Thumb Code    10  servos.o(i.unlockKeys)
+    unwindTimingMotor                        0x000048af   Thumb Code    22  dcmotors.o(i.unwindTimingMotor)
+    vibrationMotorOff                        0x000048c5   Thumb Code     8  dcmotors.o(i.vibrationMotorOff)
+    vibrationMotorOn                         0x000048cd   Thumb Code     8  dcmotors.o(i.vibrationMotorOn)
+    wait                                     0x000048d5   Thumb Code    32  helperfunctions.o(i.wait)
+    _get_lc_numeric                          0x000048f9   Thumb Code    44  lc_numeric_c.o(locale$$code)
+    __aeabi_dadd                             0x00004925   Thumb Code     0  daddsub_clz.o(x$fpl$dadd)
+    _dadd                                    0x00004925   Thumb Code   332  daddsub_clz.o(x$fpl$dadd)
+    __fpl_dcmp_Inf                           0x00004a75   Thumb Code    24  dcmpi.o(x$fpl$dcmpinf)
+    __aeabi_ddiv                             0x00004a8d   Thumb Code     0  ddiv.o(x$fpl$ddiv)
+    _ddiv                                    0x00004a8d   Thumb Code   552  ddiv.o(x$fpl$ddiv)
+    __aeabi_cdcmpeq                          0x00004d3d   Thumb Code     0  deqf.o(x$fpl$deqf)
+    _dcmpeq                                  0x00004d3d   Thumb Code   120  deqf.o(x$fpl$deqf)
+    __aeabi_d2uiz                            0x00004db5   Thumb Code     0  dfixu.o(x$fpl$dfixu)
+    _dfixu                                   0x00004db5   Thumb Code    90  dfixu.o(x$fpl$dfixu)
+    __aeabi_ui2d                             0x00004e0f   Thumb Code     0  dflt_clz.o(x$fpl$dfltu)
+    _dfltu                                   0x00004e0f   Thumb Code    38  dflt_clz.o(x$fpl$dfltu)
+    __aeabi_cdcmple                          0x00004e35   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    _dcmple                                  0x00004e35   Thumb Code   120  dleqf.o(x$fpl$dleqf)
+    __fpl_dcmple_InfNaN                      0x00004e97   Thumb Code     0  dleqf.o(x$fpl$dleqf)
+    __aeabi_dmul                             0x00004ead   Thumb Code     0  dmul.o(x$fpl$dmul)
+    _dmul                                    0x00004ead   Thumb Code   332  dmul.o(x$fpl$dmul)
+    __fpl_dnaninf                            0x00005001   Thumb Code   156  dnaninf.o(x$fpl$dnaninf)
+    __fpl_dretinf                            0x0000509d   Thumb Code    12  dretinf.o(x$fpl$dretinf)
+    __aeabi_cdrcmple                         0x000050a9   Thumb Code     0  drleqf.o(x$fpl$drleqf)
+    _drcmple                                 0x000050a9   Thumb Code   108  drleqf.o(x$fpl$drleqf)
+    __aeabi_drsub                            0x00005115   Thumb Code     0  daddsub_clz.o(x$fpl$drsb)
+    _drsb                                    0x00005115   Thumb Code    22  daddsub_clz.o(x$fpl$drsb)
+    __aeabi_dsub                             0x0000512d   Thumb Code     0  daddsub_clz.o(x$fpl$dsub)
+    _dsub                                    0x0000512d   Thumb Code   464  daddsub_clz.o(x$fpl$dsub)
+    _fp_init                                 0x00005301   Thumb Code    10  fpinit.o(x$fpl$fpinit)
+    __fplib_config_fpu_vfp                   0x00005309   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    __fplib_config_pureend_doubles           0x00005309   Thumb Code     0  fpinit.o(x$fpl$fpinit)
+    _printf_fp_dec                           0x0000530b   Thumb Code     4  printf1.o(x$fpl$printf1)
+    __I$use$fp                               0x0000530e   Number         0  usenofp.o(x$fpl$usenofp)
+    BitNum2SetMask                           0x00005344   Data          32  es_lookuptables.o(.constdata)
+    Nybble2MSBitNum                          0x00005364   Data          15  es_lookuptables.o(.constdata)
+    Region$$Table$$Base                      0x00005890   Number         0  anon$$obj.o(Region$$Table)
+    Region$$Table$$Limit                     0x000058b0   Number         0  anon$$obj.o(Region$$Table)
+    LCD                                      0x20000055   Data           1  lcd.o(.data)
+    Ready                                    0x20000078   Data           2  es_framework.o(.data)
+    _PRIMASK_temp                            0x20000084   Data           4  es_queue.o(.data)
+    __stdout                                 0x20000094   Data           4  retarget.o(.data)
+    __stdin                                  0x20000098   Data           4  retarget.o(.data)
+    _random_number_data                      0x200000f4   Data         228  rand.o(.bss)
+    __libspace_start                         0x200001d8   Data          96  libspace.o(.bss)
+    __temporary_stack_top$libspace           0x20000238   Data           0  libspace.o(.bss)
 
 
 
@@ -1777,303 +1870,330 @@ Memory Map of the image
 
   Image Entry point : 0x0000026d
 
-  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00005404, Max: 0x00040000, ABSOLUTE)
+  Load Region LR_IROM1 (Base: 0x00000000, Size: 0x00005970, Max: 0x00040000, ABSOLUTE)
 
-    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x00005370, Max: 0x00040000, ABSOLUTE)
+    Execution Region ER_IROM1 (Base: 0x00000000, Size: 0x000058cc, Max: 0x00040000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x00000000   0x00000288   Code   RO          779  * RESET               startup_rvmdk.o
-    0x00000288   0x00000008   Code   RO         2649  * !!!main             c_w.l(__main.o)
-    0x00000290   0x00000034   Code   RO         2911    !!!scatter          c_w.l(__scatter.o)
-    0x000002c4   0x0000001a   Code   RO         2913    !!handler_copy      c_w.l(__scatter_copy.o)
+    0x00000000   0x00000288   Code   RO          891  * RESET               startup_rvmdk.o
+    0x00000288   0x00000008   Code   RO         2761  * !!!main             c_w.l(__main.o)
+    0x00000290   0x00000034   Code   RO         3023    !!!scatter          c_w.l(__scatter.o)
+    0x000002c4   0x0000001a   Code   RO         3025    !!handler_copy      c_w.l(__scatter_copy.o)
     0x000002de   0x00000002   PAD
-    0x000002e0   0x0000001c   Code   RO         2915    !!handler_zi        c_w.l(__scatter_zi.o)
-    0x000002fc   0x00000000   Code   RO         2633    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
-    0x000002fc   0x00000006   Code   RO         2632    .ARM.Collect$$_printf_percent$$00000003  c_w.l(_printf_f.o)
-    0x00000302   0x00000006   Code   RO         2630    .ARM.Collect$$_printf_percent$$00000008  c_w.l(_printf_i.o)
-    0x00000308   0x00000006   Code   RO         2631    .ARM.Collect$$_printf_percent$$00000009  c_w.l(_printf_d.o)
-    0x0000030e   0x00000006   Code   RO         2629    .ARM.Collect$$_printf_percent$$00000014  c_w.l(_printf_s.o)
-    0x00000314   0x00000004   Code   RO         2690    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
-    0x00000318   0x00000002   Code   RO         2839    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
-    0x0000031a   0x00000004   Code   RO         2695    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
-    0x0000031e   0x00000000   Code   RO         2699    .ARM.Collect$$libinit$$00000008  c_w.l(libinit2.o)
-    0x0000031e   0x00000000   Code   RO         2701    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
-    0x0000031e   0x00000004   Code   RO         2702    .ARM.Collect$$libinit$$0000000B  c_w.l(libinit2.o)
-    0x00000322   0x00000000   Code   RO         2703    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
-    0x00000322   0x00000006   Code   RO         2704    .ARM.Collect$$libinit$$0000000D  c_w.l(libinit2.o)
-    0x00000328   0x00000000   Code   RO         2706    .ARM.Collect$$libinit$$0000000F  c_w.l(libinit2.o)
-    0x00000328   0x00000000   Code   RO         2708    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
-    0x00000328   0x00000000   Code   RO         2710    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
-    0x00000328   0x0000000a   Code   RO         2711    .ARM.Collect$$libinit$$00000014  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2712    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2714    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2716    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2718    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2720    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2722    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2724    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2726    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2730    .ARM.Collect$$libinit$$0000002A  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2732    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2734    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
-    0x00000332   0x00000000   Code   RO         2736    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
-    0x00000332   0x00000002   Code   RO         2737    .ARM.Collect$$libinit$$00000031  c_w.l(libinit2.o)
-    0x00000334   0x00000002   Code   RO         2875    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
-    0x00000336   0x00000000   Code   RO         2880    .ARM.Collect$$libshutdown$$00000003  c_w.l(libshutdown2.o)
-    0x00000336   0x00000000   Code   RO         2883    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
-    0x00000336   0x00000000   Code   RO         2886    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
-    0x00000336   0x00000000   Code   RO         2888    .ARM.Collect$$libshutdown$$0000000B  c_w.l(libshutdown2.o)
-    0x00000336   0x00000000   Code   RO         2891    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
-    0x00000336   0x00000002   Code   RO         2892    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
-    0x00000338   0x00000000   Code   RO         2681    .ARM.Collect$$rtentry$$00000000  c_w.l(rtentry.o)
-    0x00000338   0x00000000   Code   RO         2746    .ARM.Collect$$rtentry$$00000002  c_w.l(rtentry2.o)
-    0x00000338   0x00000006   Code   RO         2758    .ARM.Collect$$rtentry$$00000004  c_w.l(rtentry4.o)
-    0x0000033e   0x00000000   Code   RO         2748    .ARM.Collect$$rtentry$$00000009  c_w.l(rtentry2.o)
-    0x0000033e   0x00000004   Code   RO         2749    .ARM.Collect$$rtentry$$0000000A  c_w.l(rtentry2.o)
-    0x00000342   0x00000000   Code   RO         2751    .ARM.Collect$$rtentry$$0000000C  c_w.l(rtentry2.o)
-    0x00000342   0x00000008   Code   RO         2752    .ARM.Collect$$rtentry$$0000000D  c_w.l(rtentry2.o)
-    0x0000034a   0x00000002   Code   RO         2842    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
-    0x0000034c   0x00000000   Code   RO         2854    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
-    0x0000034c   0x00000004   Code   RO         2855    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
-    0x00000350   0x00000006   Code   RO         2856    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
+    0x000002e0   0x0000001c   Code   RO         3027    !!handler_zi        c_w.l(__scatter_zi.o)
+    0x000002fc   0x00000000   Code   RO         2745    .ARM.Collect$$_printf_percent$$00000000  c_w.l(_printf_percent.o)
+    0x000002fc   0x00000006   Code   RO         2744    .ARM.Collect$$_printf_percent$$00000003  c_w.l(_printf_f.o)
+    0x00000302   0x00000006   Code   RO         2742    .ARM.Collect$$_printf_percent$$00000008  c_w.l(_printf_i.o)
+    0x00000308   0x00000006   Code   RO         2743    .ARM.Collect$$_printf_percent$$00000009  c_w.l(_printf_d.o)
+    0x0000030e   0x00000006   Code   RO         2741    .ARM.Collect$$_printf_percent$$00000014  c_w.l(_printf_s.o)
+    0x00000314   0x00000004   Code   RO         2802    .ARM.Collect$$_printf_percent$$00000017  c_w.l(_printf_percent_end.o)
+    0x00000318   0x00000002   Code   RO         2951    .ARM.Collect$$libinit$$00000000  c_w.l(libinit.o)
+    0x0000031a   0x00000004   Code   RO         2807    .ARM.Collect$$libinit$$00000001  c_w.l(libinit2.o)
+    0x0000031e   0x00000000   Code   RO         2811    .ARM.Collect$$libinit$$00000008  c_w.l(libinit2.o)
+    0x0000031e   0x00000000   Code   RO         2813    .ARM.Collect$$libinit$$0000000A  c_w.l(libinit2.o)
+    0x0000031e   0x00000004   Code   RO         2814    .ARM.Collect$$libinit$$0000000B  c_w.l(libinit2.o)
+    0x00000322   0x00000000   Code   RO         2815    .ARM.Collect$$libinit$$0000000C  c_w.l(libinit2.o)
+    0x00000322   0x00000006   Code   RO         2816    .ARM.Collect$$libinit$$0000000D  c_w.l(libinit2.o)
+    0x00000328   0x00000000   Code   RO         2818    .ARM.Collect$$libinit$$0000000F  c_w.l(libinit2.o)
+    0x00000328   0x00000000   Code   RO         2820    .ARM.Collect$$libinit$$00000011  c_w.l(libinit2.o)
+    0x00000328   0x00000000   Code   RO         2822    .ARM.Collect$$libinit$$00000013  c_w.l(libinit2.o)
+    0x00000328   0x0000000a   Code   RO         2823    .ARM.Collect$$libinit$$00000014  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2824    .ARM.Collect$$libinit$$00000015  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2826    .ARM.Collect$$libinit$$00000017  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2828    .ARM.Collect$$libinit$$00000019  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2830    .ARM.Collect$$libinit$$0000001B  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2832    .ARM.Collect$$libinit$$0000001D  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2834    .ARM.Collect$$libinit$$0000001F  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2836    .ARM.Collect$$libinit$$00000021  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2838    .ARM.Collect$$libinit$$00000023  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2842    .ARM.Collect$$libinit$$0000002A  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2844    .ARM.Collect$$libinit$$0000002C  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2846    .ARM.Collect$$libinit$$0000002E  c_w.l(libinit2.o)
+    0x00000332   0x00000000   Code   RO         2848    .ARM.Collect$$libinit$$00000030  c_w.l(libinit2.o)
+    0x00000332   0x00000002   Code   RO         2849    .ARM.Collect$$libinit$$00000031  c_w.l(libinit2.o)
+    0x00000334   0x00000002   Code   RO         2987    .ARM.Collect$$libshutdown$$00000000  c_w.l(libshutdown.o)
+    0x00000336   0x00000000   Code   RO         2992    .ARM.Collect$$libshutdown$$00000003  c_w.l(libshutdown2.o)
+    0x00000336   0x00000000   Code   RO         2995    .ARM.Collect$$libshutdown$$00000006  c_w.l(libshutdown2.o)
+    0x00000336   0x00000000   Code   RO         2998    .ARM.Collect$$libshutdown$$00000009  c_w.l(libshutdown2.o)
+    0x00000336   0x00000000   Code   RO         3000    .ARM.Collect$$libshutdown$$0000000B  c_w.l(libshutdown2.o)
+    0x00000336   0x00000000   Code   RO         3003    .ARM.Collect$$libshutdown$$0000000E  c_w.l(libshutdown2.o)
+    0x00000336   0x00000002   Code   RO         3004    .ARM.Collect$$libshutdown$$0000000F  c_w.l(libshutdown2.o)
+    0x00000338   0x00000000   Code   RO         2793    .ARM.Collect$$rtentry$$00000000  c_w.l(rtentry.o)
+    0x00000338   0x00000000   Code   RO         2858    .ARM.Collect$$rtentry$$00000002  c_w.l(rtentry2.o)
+    0x00000338   0x00000006   Code   RO         2870    .ARM.Collect$$rtentry$$00000004  c_w.l(rtentry4.o)
+    0x0000033e   0x00000000   Code   RO         2860    .ARM.Collect$$rtentry$$00000009  c_w.l(rtentry2.o)
+    0x0000033e   0x00000004   Code   RO         2861    .ARM.Collect$$rtentry$$0000000A  c_w.l(rtentry2.o)
+    0x00000342   0x00000000   Code   RO         2863    .ARM.Collect$$rtentry$$0000000C  c_w.l(rtentry2.o)
+    0x00000342   0x00000008   Code   RO         2864    .ARM.Collect$$rtentry$$0000000D  c_w.l(rtentry2.o)
+    0x0000034a   0x00000002   Code   RO         2954    .ARM.Collect$$rtexit$$00000000  c_w.l(rtexit.o)
+    0x0000034c   0x00000000   Code   RO         2966    .ARM.Collect$$rtexit$$00000002  c_w.l(rtexit2.o)
+    0x0000034c   0x00000004   Code   RO         2967    .ARM.Collect$$rtexit$$00000003  c_w.l(rtexit2.o)
+    0x00000350   0x00000006   Code   RO         2968    .ARM.Collect$$rtexit$$00000004  c_w.l(rtexit2.o)
     0x00000356   0x00000002   PAD
-    0x00000358   0x00000006   Code   RO         1891    .emb_text           driverlib.lib(sysctl.o)
+    0x00000358   0x00000006   Code   RO         2003    .emb_text           driverlib.lib(sysctl.o)
     0x0000035e   0x00000002   PAD
-    0x00000360   0x00000026   Code   RO         2585    .emb_text           driverlib.lib(cpu.o)
+    0x00000360   0x00000026   Code   RO         2697    .emb_text           driverlib.lib(cpu.o)
     0x00000386   0x00000002   PAD
-    0x00000388   0x00000034   Code   RO         2642    .emb_text           c_w.l(rand.o)
-    0x000003bc   0x00000018   Code   RO          780    .text               startup_rvmdk.o
-    0x000003d4   0x00000002   Code   RO         2597    .text               c_w.l(use_no_semi.o)
+    0x00000388   0x00000034   Code   RO         2754    .emb_text           c_w.l(rand.o)
+    0x000003bc   0x00000018   Code   RO          892    .text               startup_rvmdk.o
+    0x000003d4   0x00000002   Code   RO         2709    .text               c_w.l(use_no_semi.o)
     0x000003d6   0x00000002   PAD
-    0x000003d8   0x00000018   Code   RO         2601    .text               c_w.l(noretval__2printf.o)
-    0x000003f0   0x00000052   Code   RO         2605    .text               c_w.l(_printf_str.o)
+    0x000003d8   0x00000018   Code   RO         2713    .text               c_w.l(noretval__2printf.o)
+    0x000003f0   0x00000052   Code   RO         2717    .text               c_w.l(_printf_str.o)
     0x00000442   0x00000002   PAD
-    0x00000444   0x00000074   Code   RO         2607    .text               c_w.l(_printf_dec.o)
-    0x000004b8   0x000000b8   Code   RO         2612    .text               c_w.l(__printf_ss.o)
-    0x00000570   0x00000004   Code   RO         2638    .text               c_w.l(getc.o)
-    0x00000574   0x0000002c   Code   RO         2640    .text               c_w.l(puts.o)
-    0x000005a0   0x0000003c   Code   RO         2643    .text               c_w.l(rand.o)
-    0x000005dc   0x00000006   Code   RO         2647    .text               c_w.l(heapauxi.o)
-    0x000005e2   0x000000b2   Code   RO         2682    .text               c_w.l(_printf_intcommon.o)
-    0x00000694   0x00000416   Code   RO         2684    .text               c_w.l(_printf_fp_dec.o)
-    0x00000aaa   0x0000002c   Code   RO         2686    .text               c_w.l(_printf_char.o)
+    0x00000444   0x00000074   Code   RO         2719    .text               c_w.l(_printf_dec.o)
+    0x000004b8   0x000000b8   Code   RO         2724    .text               c_w.l(__printf_ss.o)
+    0x00000570   0x00000004   Code   RO         2750    .text               c_w.l(getc.o)
+    0x00000574   0x0000002c   Code   RO         2752    .text               c_w.l(puts.o)
+    0x000005a0   0x0000003c   Code   RO         2755    .text               c_w.l(rand.o)
+    0x000005dc   0x00000006   Code   RO         2759    .text               c_w.l(heapauxi.o)
+    0x000005e2   0x000000b2   Code   RO         2794    .text               c_w.l(_printf_intcommon.o)
+    0x00000694   0x00000416   Code   RO         2796    .text               c_w.l(_printf_fp_dec.o)
+    0x00000aaa   0x0000002c   Code   RO         2798    .text               c_w.l(_printf_char.o)
     0x00000ad6   0x00000002   PAD
-    0x00000ad8   0x00000024   Code   RO         2688    .text               c_w.l(_printf_char_file.o)
-    0x00000afc   0x00000008   Code   RO         2763    .text               c_w.l(rt_locale_intlibspace.o)
-    0x00000b04   0x0000008a   Code   RO         2765    .text               c_w.l(lludiv10.o)
+    0x00000ad8   0x00000024   Code   RO         2800    .text               c_w.l(_printf_char_file.o)
+    0x00000afc   0x00000008   Code   RO         2875    .text               c_w.l(rt_locale_intlibspace.o)
+    0x00000b04   0x0000008a   Code   RO         2877    .text               c_w.l(lludiv10.o)
     0x00000b8e   0x00000002   PAD
-    0x00000b90   0x00000030   Code   RO         2767    .text               c_w.l(_printf_char_common.o)
-    0x00000bc0   0x00000080   Code   RO         2769    .text               c_w.l(_printf_fp_infnan.o)
-    0x00000c40   0x000000d8   Code   RO         2773    .text               c_w.l(bigflt0.o)
-    0x00000d18   0x00000008   Code   RO         2813    .text               c_w.l(libspace.o)
-    0x00000d20   0x0000004a   Code   RO         2816    .text               c_w.l(sys_stackheap_outer.o)
-    0x00000d6a   0x0000000c   Code   RO         2826    .text               c_w.l(exit.o)
+    0x00000b90   0x00000030   Code   RO         2879    .text               c_w.l(_printf_char_common.o)
+    0x00000bc0   0x00000080   Code   RO         2881    .text               c_w.l(_printf_fp_infnan.o)
+    0x00000c40   0x000000d8   Code   RO         2885    .text               c_w.l(bigflt0.o)
+    0x00000d18   0x00000008   Code   RO         2925    .text               c_w.l(libspace.o)
+    0x00000d20   0x0000004a   Code   RO         2928    .text               c_w.l(sys_stackheap_outer.o)
+    0x00000d6a   0x0000000c   Code   RO         2938    .text               c_w.l(exit.o)
     0x00000d76   0x00000002   PAD
-    0x00000d78   0x00000080   Code   RO         2828    .text               c_w.l(strcmpv7m.o)
-    0x00000df8   0x0000003e   Code   RO         2776    CL$$btod_d2e        c_w.l(btod.o)
-    0x00000e36   0x00000046   Code   RO         2778    CL$$btod_d2e_denorm_low  c_w.l(btod.o)
-    0x00000e7c   0x00000060   Code   RO         2777    CL$$btod_d2e_norm_op1  c_w.l(btod.o)
-    0x00000edc   0x00000338   Code   RO         2786    CL$$btod_div_common  c_w.l(btod.o)
-    0x00001214   0x000000c6   Code   RO         2783    CL$$btod_e2e        c_w.l(btod.o)
-    0x000012da   0x00000028   Code   RO         2780    CL$$btod_ediv       c_w.l(btod.o)
-    0x00001302   0x00000028   Code   RO         2779    CL$$btod_emul       c_w.l(btod.o)
-    0x0000132a   0x00000244   Code   RO         2785    CL$$btod_mult_common  c_w.l(btod.o)
+    0x00000d78   0x00000080   Code   RO         2940    .text               c_w.l(strcmpv7m.o)
+    0x00000df8   0x0000003e   Code   RO         2888    CL$$btod_d2e        c_w.l(btod.o)
+    0x00000e36   0x00000046   Code   RO         2890    CL$$btod_d2e_denorm_low  c_w.l(btod.o)
+    0x00000e7c   0x00000060   Code   RO         2889    CL$$btod_d2e_norm_op1  c_w.l(btod.o)
+    0x00000edc   0x00000338   Code   RO         2898    CL$$btod_div_common  c_w.l(btod.o)
+    0x00001214   0x000000c6   Code   RO         2895    CL$$btod_e2e        c_w.l(btod.o)
+    0x000012da   0x00000028   Code   RO         2892    CL$$btod_ediv       c_w.l(btod.o)
+    0x00001302   0x00000028   Code   RO         2891    CL$$btod_emul       c_w.l(btod.o)
+    0x0000132a   0x00000244   Code   RO         2897    CL$$btod_mult_common  c_w.l(btod.o)
     0x0000156e   0x00000002   PAD
-    0x00001570   0x0000001c   Code   RO          387    i.ADC0_InSeq3       adcswtrigger.o
-    0x0000158c   0x000002e0   Code   RO          389    i.ADC0_InitSWTriggerSeq3  adcswtrigger.o
-    0x0000186c   0x00000008   Code   RO          915    i.CPUgetPRIMASK_cpsid  es_port.o
-    0x00001874   0x00000006   Code   RO          921    i.CPUsetPRIMASK     es_port.o
-    0x0000187a   0x00000002   PAD
-    0x0000187c   0x00000060   Code   RO           86    i.Check4Keystroke   eventcheckers.o
-    0x000018dc   0x00000054   Code   RO          633    i.CheckForKeyPadButtonPress  keypadfsm.o
-    0x00001930   0x00000184   Code   RO           87    i.CheckPot          eventcheckers.o
-    0x00001ab4   0x00000040   Code   RO           89    i.CheckTapeSensor   eventcheckers.o
-    0x00001af4   0x00000028   Code   RO          786    i.ES_CheckUserEvents  es_checkevents.o
-    0x00001b1c   0x00000054   Code   RO          973    i.ES_DeQueue        es_queue.o
-    0x00001b70   0x00000048   Code   RO          974    i.ES_EnQueueFIFO    es_queue.o
-    0x00001bb8   0x00000034   Code   RO          864    i.ES_GetMSBitSet    es_lookuptables.o
-    0x00001bec   0x00000010   Code   RO          976    i.ES_InitQueue      es_queue.o
-    0x00001bfc   0x0000004c   Code   RO          818    i.ES_Initialize     es_framework.o
-    0x00001c48   0x00000038   Code   RO          820    i.ES_PostToService  es_framework.o
-    0x00001c80   0x00000060   Code   RO          822    i.ES_Run            es_framework.o
-    0x00001ce0   0x00000004   Code   RO         1016    i.ES_Timer_GetTime  es_timers.o
-    0x00001ce4   0x00000004   Code   RO         1017    i.ES_Timer_Init     es_timers.o
-    0x00001ce8   0x0000003c   Code   RO         1018    i.ES_Timer_InitTimer  es_timers.o
-    0x00001d24   0x00000030   Code   RO         1020    i.ES_Timer_StartTimer  es_timers.o
-    0x00001d54   0x0000006c   Code   RO         1022    i.ES_Timer_Tick_Resp  es_timers.o
-    0x00001dc0   0x00000028   Code   RO         1221    i.GPIODirModeSet    driverlib.lib(gpio.o)
-    0x00001de8   0x0000013a   Code   RO         1231    i.GPIOPadConfigSet  driverlib.lib(gpio.o)
-    0x00001f22   0x00000002   PAD
-    0x00001f24   0x00000048   Code   RO         1232    i.GPIOPinConfigure  driverlib.lib(gpio.o)
-    0x00001f6c   0x0000001c   Code   RO         1241    i.GPIOPinTypeGPIOInput  driverlib.lib(gpio.o)
-    0x00001f88   0x0000001c   Code   RO         1253    i.GPIOPinTypePWM    driverlib.lib(gpio.o)
-    0x00001fa4   0x0000001c   Code   RO         1257    i.GPIOPinTypeUART   driverlib.lib(gpio.o)
-    0x00001fc0   0x0000003c   Code   RO          147    i.InitDisarmFSM     disarmfsm.o
-    0x00001ffc   0x00000040   Code   RO          634    i.InitKeyPadFSM     keypadfsm.o
-    0x0000203c   0x000000b4   Code   RO          635    i.InitKeyPadPortLines  keypadfsm.o
-    0x000020f0   0x0000000e   Code   RO         1546    i.IntMasterEnable   driverlib.lib(interrupt.o)
-    0x000020fe   0x00000002   PAD
-    0x00002100   0x00000124   Code   RO          554    i.LCDInit           lcd.o
-    0x00002224   0x000000c8   Code   RO          555    i.LCDputchar        lcd.o
-    0x000022ec   0x00000058   Code   RO          474    i.LEDShiftRegInit   leds.o
-    0x00002344   0x00000026   Code   RO         1666    i.PWMGenConfigure   driverlib.lib(pwm.o)
-    0x0000236a   0x0000000a   Code   RO         1668    i.PWMGenEnable      driverlib.lib(pwm.o)
-    0x00002374   0x00000012   Code   RO         1681    i.PWMGenPeriodSet   driverlib.lib(pwm.o)
-    0x00002386   0x00000010   Code   RO         1688    i.PWMOutputState    driverlib.lib(pwm.o)
-    0x00002396   0x00000020   Code   RO         1691    i.PWMPulseWidthSet  driverlib.lib(pwm.o)
-    0x000023b6   0x00000002   PAD
-    0x000023b8   0x000000d4   Code   RO          212    i.PWM_TIVA_Init     pwmtiva.o
-    0x0000248c   0x0000005c   Code   RO          213    i.PWM_TIVA_SetDuty  pwmtiva.o
-    0x000024e8   0x00000064   Code   RO          214    i.PWM_TIVA_SetFreq  pwmtiva.o
-    0x0000254c   0x00000050   Code   RO          216    i.PWM_TIVA_SetPulseWidth  pwmtiva.o
-    0x0000259c   0x000000a0   Code   RO          197    i.PortFunctionInit  enablepa25_pb23_pd7_pf0.o
-    0x0000263c   0x00000010   Code   RO          148    i.PostDisarmFSM     disarmfsm.o
-    0x0000264c   0x00000010   Code   RO          636    i.PostKeyPadFSM     keypadfsm.o
-    0x0000265c   0x00000026   Code   RO          475    i.RCKPulse          leds.o
-    0x00002682   0x00000002   PAD
-    0x00002684   0x00000030   Code   RO          556    i.RCKPulseLCD       lcd.o
-    0x000026b4   0x00000954   Code   RO          150    i.RunDisarmFSM      disarmfsm.o
-    0x00003008   0x000000b4   Code   RO          638    i.RunKeyPadFSM      keypadfsm.o
-    0x000030bc   0x00000026   Code   RO          476    i.SCKPulse          leds.o
-    0x000030e2   0x00000002   PAD
-    0x000030e4   0x00000030   Code   RO          557    i.SCKPulseLCD       lcd.o
-    0x00003114   0x00000164   Code   RO         1894    i.SysCtlClockGet    driverlib.lib(sysctl.o)
-    0x00003278   0x00000120   Code   RO         1896    i.SysCtlClockSet    driverlib.lib(sysctl.o)
-    0x00003398   0x00000014   Code   RO         1920    i.SysCtlPWMClockSet  driverlib.lib(sysctl.o)
-    0x000033ac   0x00000028   Code   RO         1925    i.SysCtlPeripheralEnable  driverlib.lib(sysctl.o)
-    0x000033d4   0x0000000e   Code   RO         2234    i.SysTickEnable     driverlib.lib(systick.o)
-    0x000033e2   0x0000000e   Code   RO         2236    i.SysTickIntEnable  driverlib.lib(systick.o)
-    0x000033f0   0x00000014   Code   RO          881    i.SysTickIntHandler  es_port.o
-    0x00003404   0x0000000a   Code   RO         2240    i.SysTickPeriodSet  driverlib.lib(systick.o)
-    0x0000340e   0x00000004   Code   RO         1118    i.TERMIO_GetChar    termio.o
-    0x00003412   0x00000002   PAD
-    0x00003414   0x00000050   Code   RO         1119    i.TERMIO_Init       termio.o
-    0x00003464   0x0000000c   Code   RO         1120    i.TERMIO_PutChar    termio.o
-    0x00003470   0x0000000c   Code   RO         2304    i.UARTCharPut       driverlib.lib(uart.o)
-    0x0000347c   0x00000006   Code   RO         2308    i.UARTClockSourceSet  driverlib.lib(uart.o)
-    0x00003482   0x00000002   PAD
-    0x00003484   0x0000005c   Code   RO         1161    i.UARTStdioConfig   uartstdio.o
-    0x000034e0   0x00000018   Code   RO         1162    i.UARTgetc          uartstdio.o
-    0x000034f8   0x0000000c   Code   RO          882    i._HW_GetTickCount  es_port.o
-    0x00003504   0x00000020   Code   RO          883    i._HW_Process_Pending_Ints  es_port.o
-    0x00003524   0x00000016   Code   RO          884    i._HW_Timer_Init    es_port.o
-    0x0000353a   0x00000030   Code   RO         2811    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
-    0x0000356a   0x00000002   Code   RO         1068    i._sys_exit         retarget.o
-    0x0000356c   0x00000048   Code   RO          730    i.checkPassword     passwordgenerator.o
-    0x000035b4   0x00000028   Code   RO          558    i.clearLCD          lcd.o
-    0x000035dc   0x0000001c   Code   RO          731    i.compareIntArrays  passwordgenerator.o
-    0x000035f8   0x00000006   Code   RO         1070    i.ferror            retarget.o
-    0x000035fe   0x00000004   Code   RO         1071    i.fgetc             retarget.o
-    0x00003602   0x00000002   PAD
-    0x00003604   0x00000028   Code   RO          641    i.findNum           keypadfsm.o
-    0x0000362c   0x0000000e   Code   RO         1072    i.fputc             retarget.o
-    0x0000363a   0x00000020   Code   RO          732    i.generateRandomPassword  passwordgenerator.o
-    0x0000365a   0x00000002   PAD
-    0x0000365c   0x00000030   Code   RO          733    i.getPassword       passwordgenerator.o
-    0x0000368c   0x0000002c   Code   RO          253    i.getPotValue       servos.o
-    0x000036b8   0x0000000c   Code   RO          254    i.getPotZero        servos.o
-    0x000036c4   0x0000000c   Code   RO          255    i.getVictory        servos.o
-    0x000036d0   0x00000044   Code   RO          421    i.initMotors        dcmotors.o
-    0x00003714   0x00000020   Code   RO          369    i.initTapeSensors   tapesensor.o
-    0x00003734   0x00000058   Code   RO          256    i.initializeServos  servos.o
-    0x0000378c   0x00000014   Code   RO         1121    i.kbhit             termio.o
-    0x000037a0   0x0000000a   Code   RO          257    i.lockKeys          servos.o
-    0x000037aa   0x0000000a   Code   RO          258    i.lowerFlag         servos.o
-    0x000037b4   0x00000270   Code   RO            1    i.main              main.o
-    0x00003a24   0x0000018c   Code   RO          259    i.moveTower         servos.o
-    0x00003bb0   0x0000006a   Code   RO          559    i.printArmedMessage  lcd.o
-    0x00003c1a   0x0000005e   Code   RO          560    i.printAuthorizedMessage  lcd.o
-    0x00003c78   0x0000004c   Code   RO          642    i.printCurrentInput  keypadfsm.o
-    0x00003cc4   0x00000052   Code   RO          561    i.printIncorrectMessage  lcd.o
-    0x00003d16   0x00000002   PAD
-    0x00003d18   0x00000308   Code   RO          562    i.printLCDmessage   lcd.o
-    0x00004020   0x0000000a   Code   RO          260    i.raiseFlag         servos.o
-    0x0000402a   0x00000002   PAD
-    0x0000402c   0x00000048   Code   RO          735    i.randomizePasswords  passwordgenerator.o
-    0x00004074   0x0000004c   Code   RO          643    i.readRow           keypadfsm.o
-    0x000040c0   0x0000000c   Code   RO          563    i.resetLCDmessage   lcd.o
-    0x000040cc   0x00000048   Code   RO          261    i.rotateServo       servos.o
-    0x00004114   0x00000024   Code   RO          564    i.sendToLCD         lcd.o
-    0x00004138   0x000000a0   Code   RO          565    i.sendToShiftReg    lcd.o
-    0x000041d8   0x0000005c   Code   RO          644    i.setCol            keypadfsm.o
-    0x00004234   0x00000014   Code   RO          645    i.setColsHigh       keypadfsm.o
-    0x00004248   0x0000006c   Code   RO          477    i.setLED            leds.o
-    0x000042b4   0x00000054   Code   RO          423    i.setMotor          dcmotors.o
-    0x00004308   0x00000018   Code   RO          267    i.setPotZero        servos.o
-    0x00004320   0x0000000a   Code   RO          268    i.setTowerToZero    servos.o
-    0x0000432a   0x00000002   PAD
-    0x0000432c   0x0000000c   Code   RO          269    i.setVictory        servos.o
-    0x00004338   0x00000014   Code   RO          370    i.tapeSensorsCovered  tapesensor.o
-    0x0000434c   0x0000000a   Code   RO          270    i.unlockKeys        servos.o
-    0x00004356   0x00000016   Code   RO          425    i.unwindTimingMotor  dcmotors.o
-    0x0000436c   0x00000008   Code   RO          426    i.vibrationMotorOff  dcmotors.o
-    0x00004374   0x00000008   Code   RO          427    i.vibrationMotorOn  dcmotors.o
-    0x0000437c   0x00000024   Code   RO          718    i.wait              helperfunctions.o
-    0x000043a0   0x0000002c   Code   RO         2803    locale$$code        c_w.l(lc_numeric_c.o)
-    0x000043cc   0x00000150   Code   RO         2651    x$fpl$dadd          fz_wm.l(daddsub_clz.o)
-    0x0000451c   0x00000018   Code   RO         2738    x$fpl$dcmpinf       fz_wm.l(dcmpi.o)
-    0x00004534   0x000002b0   Code   RO         2658    x$fpl$ddiv          fz_wm.l(ddiv.o)
-    0x000047e4   0x00000078   Code   RO         2661    x$fpl$deqf          fz_wm.l(deqf.o)
-    0x0000485c   0x0000005a   Code   RO         2663    x$fpl$dfixu         fz_wm.l(dfixu.o)
-    0x000048b6   0x00000026   Code   RO         2667    x$fpl$dfltu         fz_wm.l(dflt_clz.o)
-    0x000048dc   0x00000078   Code   RO         2673    x$fpl$dleqf         fz_wm.l(dleqf.o)
-    0x00004954   0x00000154   Code   RO         2675    x$fpl$dmul          fz_wm.l(dmul.o)
-    0x00004aa8   0x0000009c   Code   RO         2740    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
-    0x00004b44   0x0000000c   Code   RO         2742    x$fpl$dretinf       fz_wm.l(dretinf.o)
-    0x00004b50   0x0000006c   Code   RO         2677    x$fpl$drleqf        fz_wm.l(drleqf.o)
-    0x00004bbc   0x00000016   Code   RO         2652    x$fpl$drsb          fz_wm.l(daddsub_clz.o)
-    0x00004bd2   0x00000002   PAD
-    0x00004bd4   0x000001d4   Code   RO         2653    x$fpl$dsub          fz_wm.l(daddsub_clz.o)
-    0x00004da8   0x0000000a   Code   RO         2807    x$fpl$fpinit        fz_wm.l(fpinit.o)
-    0x00004db2   0x00000004   Code   RO         2679    x$fpl$printf1       fz_wm.l(printf1.o)
-    0x00004db6   0x00000000   Code   RO         2744    x$fpl$usenofp       fz_wm.l(usenofp.o)
-    0x00004db6   0x00000002   PAD
-    0x00004db8   0x00000010   Data   RO          787    .constdata          es_checkevents.o
-    0x00004dc8   0x00000020   Data   RO          825    .constdata          es_framework.o
-    0x00004de8   0x00000020   Data   RO          865    .constdata          es_lookuptables.o
-    0x00004e08   0x0000000f   Data   RO          866    .constdata          es_lookuptables.o
-    0x00004e17   0x00000001   PAD
-    0x00004e18   0x00000040   Data   RO         1024    .constdata          es_timers.o
-    0x00004e58   0x0000001c   Data   RO         1167    .constdata          uartstdio.o
-    0x00004e74   0x00000210   Data   RO         1264    .constdata          driverlib.lib(gpio.o)
-    0x00005084   0x000001c4   Data   RO         1946    .constdata          driverlib.lib(sysctl.o)
-    0x00005248   0x00000094   Data   RO         2774    .constdata          c_w.l(bigflt0.o)
-    0x000052dc   0x00000041   Data   RO          478    .conststring        leds.o
-    0x0000531d   0x00000003   PAD
-    0x00005320   0x00000011   Data   RO         1168    .conststring        uartstdio.o
-    0x00005331   0x00000003   PAD
-    0x00005334   0x00000020   Data   RO         2909    Region$$Table       anon$$obj.o
-    0x00005354   0x0000001c   Data   RO         2802    locale$$data        c_w.l(lc_numeric_c.o)
+    0x00001570   0x0000001c   Code   RO          393    i.ADC0_InSeq3       adcswtrigger.o
+    0x0000158c   0x000002e0   Code   RO          395    i.ADC0_InitSWTriggerSeq3  adcswtrigger.o
+    0x0000186c   0x0000002c   Code   RO          788    i.AudioInit         audiocontrol.o
+    0x00001898   0x00000008   Code   RO         1027    i.CPUgetPRIMASK_cpsid  es_port.o
+    0x000018a0   0x00000006   Code   RO         1033    i.CPUsetPRIMASK     es_port.o
+    0x000018a6   0x00000002   PAD
+    0x000018a8   0x00000060   Code   RO           86    i.Check4Keystroke   eventcheckers.o
+    0x00001908   0x00000054   Code   RO          644    i.CheckForKeyPadButtonPress  keypadfsm.o
+    0x0000195c   0x00000184   Code   RO           87    i.CheckPot          eventcheckers.o
+    0x00001ae0   0x000000b0   Code   RO           88    i.CheckSlotDetector  eventcheckers.o
+    0x00001b90   0x00000040   Code   RO           89    i.CheckTapeSensor   eventcheckers.o
+    0x00001bd0   0x00000028   Code   RO          898    i.ES_CheckUserEvents  es_checkevents.o
+    0x00001bf8   0x00000054   Code   RO         1085    i.ES_DeQueue        es_queue.o
+    0x00001c4c   0x00000048   Code   RO         1086    i.ES_EnQueueFIFO    es_queue.o
+    0x00001c94   0x00000034   Code   RO          976    i.ES_GetMSBitSet    es_lookuptables.o
+    0x00001cc8   0x00000010   Code   RO         1088    i.ES_InitQueue      es_queue.o
+    0x00001cd8   0x0000004c   Code   RO          930    i.ES_Initialize     es_framework.o
+    0x00001d24   0x00000038   Code   RO          932    i.ES_PostToService  es_framework.o
+    0x00001d5c   0x00000060   Code   RO          934    i.ES_Run            es_framework.o
+    0x00001dbc   0x00000004   Code   RO         1128    i.ES_Timer_GetTime  es_timers.o
+    0x00001dc0   0x00000004   Code   RO         1129    i.ES_Timer_Init     es_timers.o
+    0x00001dc4   0x0000003c   Code   RO         1130    i.ES_Timer_InitTimer  es_timers.o
+    0x00001e00   0x00000030   Code   RO         1132    i.ES_Timer_StartTimer  es_timers.o
+    0x00001e30   0x0000006c   Code   RO         1134    i.ES_Timer_Tick_Resp  es_timers.o
+    0x00001e9c   0x00000028   Code   RO         1333    i.GPIODirModeSet    driverlib.lib(gpio.o)
+    0x00001ec4   0x0000013a   Code   RO         1343    i.GPIOPadConfigSet  driverlib.lib(gpio.o)
+    0x00001ffe   0x00000002   PAD
+    0x00002000   0x00000048   Code   RO         1344    i.GPIOPinConfigure  driverlib.lib(gpio.o)
+    0x00002048   0x0000001c   Code   RO         1353    i.GPIOPinTypeGPIOInput  driverlib.lib(gpio.o)
+    0x00002064   0x0000001c   Code   RO         1365    i.GPIOPinTypePWM    driverlib.lib(gpio.o)
+    0x00002080   0x0000001c   Code   RO         1369    i.GPIOPinTypeUART   driverlib.lib(gpio.o)
+    0x0000209c   0x00000038   Code   RO          789    i.InitAudioPortLine  audiocontrol.o
+    0x000020d4   0x0000004c   Code   RO          147    i.InitDisarmFSM     disarmfsm.o
+    0x00002120   0x00000040   Code   RO          645    i.InitKeyPadFSM     keypadfsm.o
+    0x00002160   0x000000b4   Code   RO          646    i.InitKeyPadPortLines  keypadfsm.o
+    0x00002214   0x0000000e   Code   RO         1658    i.IntMasterEnable   driverlib.lib(interrupt.o)
+    0x00002222   0x00000002   PAD
+    0x00002224   0x00000128   Code   RO          559    i.LCDInit           lcd.o
+    0x0000234c   0x000000c8   Code   RO          560    i.LCDputchar        lcd.o
+    0x00002414   0x00000054   Code   RO          480    i.LEDShiftRegInit   leds.o
+    0x00002468   0x00000026   Code   RO         1778    i.PWMGenConfigure   driverlib.lib(pwm.o)
+    0x0000248e   0x0000000a   Code   RO         1780    i.PWMGenEnable      driverlib.lib(pwm.o)
+    0x00002498   0x00000012   Code   RO         1793    i.PWMGenPeriodSet   driverlib.lib(pwm.o)
+    0x000024aa   0x00000010   Code   RO         1800    i.PWMOutputState    driverlib.lib(pwm.o)
+    0x000024ba   0x00000020   Code   RO         1803    i.PWMPulseWidthSet  driverlib.lib(pwm.o)
+    0x000024da   0x00000002   PAD
+    0x000024dc   0x000000d4   Code   RO          218    i.PWM_TIVA_Init     pwmtiva.o
+    0x000025b0   0x0000005c   Code   RO          219    i.PWM_TIVA_SetDuty  pwmtiva.o
+    0x0000260c   0x00000064   Code   RO          220    i.PWM_TIVA_SetFreq  pwmtiva.o
+    0x00002670   0x00000050   Code   RO          222    i.PWM_TIVA_SetPulseWidth  pwmtiva.o
+    0x000026c0   0x00000034   Code   RO          791    i.PlayGameOver      audiocontrol.o
+    0x000026f4   0x00000034   Code   RO          793    i.PlaySuccessFinish  audiocontrol.o
+    0x00002728   0x00000030   Code   RO          794    i.PlayWohoo         audiocontrol.o
+    0x00002758   0x000000a0   Code   RO          203    i.PortFunctionInit  enablepa25_pb23_pd7_pf0.o
+    0x000027f8   0x00000010   Code   RO          148    i.PostDisarmFSM     disarmfsm.o
+    0x00002808   0x00000010   Code   RO          647    i.PostKeyPadFSM     keypadfsm.o
+    0x00002818   0x00000026   Code   RO          481    i.RCKPulse          leds.o
+    0x0000283e   0x00000002   PAD
+    0x00002840   0x00000030   Code   RO          561    i.RCKPulseLCD       lcd.o
+    0x00002870   0x000009c8   Code   RO          150    i.RunDisarmFSM      disarmfsm.o
+    0x00003238   0x000000b4   Code   RO          649    i.RunKeyPadFSM      keypadfsm.o
+    0x000032ec   0x00000026   Code   RO          482    i.SCKPulse          leds.o
+    0x00003312   0x00000002   PAD
+    0x00003314   0x00000030   Code   RO          562    i.SCKPulseLCD       lcd.o
+    0x00003344   0x00000164   Code   RO         2006    i.SysCtlClockGet    driverlib.lib(sysctl.o)
+    0x000034a8   0x00000120   Code   RO         2008    i.SysCtlClockSet    driverlib.lib(sysctl.o)
+    0x000035c8   0x00000014   Code   RO         2032    i.SysCtlPWMClockSet  driverlib.lib(sysctl.o)
+    0x000035dc   0x00000028   Code   RO         2037    i.SysCtlPeripheralEnable  driverlib.lib(sysctl.o)
+    0x00003604   0x0000000e   Code   RO         2346    i.SysTickEnable     driverlib.lib(systick.o)
+    0x00003612   0x0000000e   Code   RO         2348    i.SysTickIntEnable  driverlib.lib(systick.o)
+    0x00003620   0x00000014   Code   RO          993    i.SysTickIntHandler  es_port.o
+    0x00003634   0x0000000a   Code   RO         2352    i.SysTickPeriodSet  driverlib.lib(systick.o)
+    0x0000363e   0x00000004   Code   RO         1230    i.TERMIO_GetChar    termio.o
+    0x00003642   0x00000002   PAD
+    0x00003644   0x00000050   Code   RO         1231    i.TERMIO_Init       termio.o
+    0x00003694   0x0000000c   Code   RO         1232    i.TERMIO_PutChar    termio.o
+    0x000036a0   0x0000000c   Code   RO         2416    i.UARTCharPut       driverlib.lib(uart.o)
+    0x000036ac   0x00000006   Code   RO         2420    i.UARTClockSourceSet  driverlib.lib(uart.o)
+    0x000036b2   0x00000002   PAD
+    0x000036b4   0x0000005c   Code   RO         1273    i.UARTStdioConfig   uartstdio.o
+    0x00003710   0x00000018   Code   RO         1274    i.UARTgetc          uartstdio.o
+    0x00003728   0x0000000c   Code   RO          994    i._HW_GetTickCount  es_port.o
+    0x00003734   0x00000020   Code   RO          995    i._HW_Process_Pending_Ints  es_port.o
+    0x00003754   0x00000016   Code   RO          996    i._HW_Timer_Init    es_port.o
+    0x0000376a   0x00000030   Code   RO         2923    i.__ARM_fpclassify  m_wm.l(fpclassify.o)
+    0x0000379a   0x00000002   Code   RO         1180    i._sys_exit         retarget.o
+    0x0000379c   0x00000048   Code   RO          741    i.checkPassword     passwordgenerator.o
+    0x000037e4   0x00000028   Code   RO          563    i.clearLCD          lcd.o
+    0x0000380c   0x0000001c   Code   RO          742    i.compareIntArrays  passwordgenerator.o
+    0x00003828   0x00000020   Code   RO          795    i.delayLongAudio    audiocontrol.o
+    0x00003848   0x00000006   Code   RO         1182    i.ferror            retarget.o
+    0x0000384e   0x00000004   Code   RO         1183    i.fgetc             retarget.o
+    0x00003852   0x00000002   PAD
+    0x00003854   0x00000028   Code   RO          652    i.findNum           keypadfsm.o
+    0x0000387c   0x0000000e   Code   RO         1184    i.fputc             retarget.o
+    0x0000388a   0x00000020   Code   RO          743    i.generateRandomPassword  passwordgenerator.o
+    0x000038aa   0x00000002   PAD
+    0x000038ac   0x0000000c   Code   RO          513    i.getKeyInSlotDefault  slotdetector.o
+    0x000038b8   0x00000030   Code   RO          744    i.getPassword       passwordgenerator.o
+    0x000038e8   0x0000002c   Code   RO          259    i.getPotValue       servos.o
+    0x00003914   0x0000000c   Code   RO          260    i.getPotZero        servos.o
+    0x00003920   0x0000000c   Code   RO          261    i.getVictory        servos.o
+    0x0000392c   0x0000002c   Code   RO          865    i.initArmedLine     armedline.o
+    0x00003958   0x00000044   Code   RO          427    i.initMotors        dcmotors.o
+    0x0000399c   0x00000020   Code   RO          514    i.initPhototransistor  slotdetector.o
+    0x000039bc   0x00000020   Code   RO          375    i.initTapeSensors   tapesensor.o
+    0x000039dc   0x00000058   Code   RO          262    i.initializeServos  servos.o
+    0x00003a34   0x00000010   Code   RO          515    i.isKeyInSlot       slotdetector.o
+    0x00003a44   0x00000014   Code   RO         1233    i.kbhit             termio.o
+    0x00003a58   0x0000000a   Code   RO          263    i.lockKeys          servos.o
+    0x00003a62   0x0000000a   Code   RO          264    i.lowerFlag         servos.o
+    0x00003a6c   0x00000270   Code   RO            1    i.main              main.o
+    0x00003cdc   0x0000001e   Code   RO          796    i.moveBackward      audiocontrol.o
+    0x00003cfa   0x00000014   Code   RO          797    i.moveForward       audiocontrol.o
+    0x00003d0e   0x00000002   PAD
+    0x00003d10   0x000000b0   Code   RO          798    i.moveToTrack       audiocontrol.o
+    0x00003dc0   0x0000018c   Code   RO          265    i.moveTower         servos.o
+    0x00003f4c   0x0000006a   Code   RO          564    i.printArmedMessage  lcd.o
+    0x00003fb6   0x00000076   Code   RO          565    i.printAuthorizedMessage  lcd.o
+    0x0000402c   0x0000004c   Code   RO          653    i.printCurrentInput  keypadfsm.o
+    0x00004078   0x00000076   Code   RO          566    i.printIncorrectMessage  lcd.o
+    0x000040ee   0x00000002   PAD
+    0x000040f0   0x00000398   Code   RO          567    i.printLCDmessage   lcd.o
+    0x00004488   0x00000076   Code   RO          568    i.printTimeUp       lcd.o
+    0x000044fe   0x00000002   PAD
+    0x00004500   0x00000028   Code   RO          799    i.pulse             audiocontrol.o
+    0x00004528   0x0000000a   Code   RO          266    i.raiseFlag         servos.o
+    0x00004532   0x00000002   PAD
+    0x00004534   0x00000048   Code   RO          746    i.randomizePasswords  passwordgenerator.o
+    0x0000457c   0x0000004c   Code   RO          654    i.readRow           keypadfsm.o
+    0x000045c8   0x0000000c   Code   RO          569    i.resetLCDmessage   lcd.o
+    0x000045d4   0x00000016   Code   RO          428    i.rewindTimingMotor  dcmotors.o
+    0x000045ea   0x00000002   PAD
+    0x000045ec   0x00000048   Code   RO          267    i.rotateServo       servos.o
+    0x00004634   0x00000024   Code   RO          570    i.sendToLCD         lcd.o
+    0x00004658   0x000000a0   Code   RO          571    i.sendToShiftReg    lcd.o
+    0x000046f8   0x00000014   Code   RO          866    i.setArmed          armedline.o
+    0x0000470c   0x0000005c   Code   RO          655    i.setCol            keypadfsm.o
+    0x00004768   0x00000014   Code   RO          656    i.setColsHigh       keypadfsm.o
+    0x0000477c   0x00000010   Code   RO          516    i.setKeyInSlotDefault  slotdetector.o
+    0x0000478c   0x0000006c   Code   RO          483    i.setLED            leds.o
+    0x000047f8   0x00000054   Code   RO          429    i.setMotor          dcmotors.o
+    0x0000484c   0x00000018   Code   RO          273    i.setPotZero        servos.o
+    0x00004864   0x0000000a   Code   RO          274    i.setTowerToZero    servos.o
+    0x0000486e   0x00000002   PAD
+    0x00004870   0x00000014   Code   RO          867    i.setUnarmed        armedline.o
+    0x00004884   0x0000000c   Code   RO          275    i.setVictory        servos.o
+    0x00004890   0x00000014   Code   RO          376    i.tapeSensorsCovered  tapesensor.o
+    0x000048a4   0x0000000a   Code   RO          276    i.unlockKeys        servos.o
+    0x000048ae   0x00000016   Code   RO          431    i.unwindTimingMotor  dcmotors.o
+    0x000048c4   0x00000008   Code   RO          432    i.vibrationMotorOff  dcmotors.o
+    0x000048cc   0x00000008   Code   RO          433    i.vibrationMotorOn  dcmotors.o
+    0x000048d4   0x00000024   Code   RO          729    i.wait              helperfunctions.o
+    0x000048f8   0x0000002c   Code   RO         2915    locale$$code        c_w.l(lc_numeric_c.o)
+    0x00004924   0x00000150   Code   RO         2763    x$fpl$dadd          fz_wm.l(daddsub_clz.o)
+    0x00004a74   0x00000018   Code   RO         2850    x$fpl$dcmpinf       fz_wm.l(dcmpi.o)
+    0x00004a8c   0x000002b0   Code   RO         2770    x$fpl$ddiv          fz_wm.l(ddiv.o)
+    0x00004d3c   0x00000078   Code   RO         2773    x$fpl$deqf          fz_wm.l(deqf.o)
+    0x00004db4   0x0000005a   Code   RO         2775    x$fpl$dfixu         fz_wm.l(dfixu.o)
+    0x00004e0e   0x00000026   Code   RO         2779    x$fpl$dfltu         fz_wm.l(dflt_clz.o)
+    0x00004e34   0x00000078   Code   RO         2785    x$fpl$dleqf         fz_wm.l(dleqf.o)
+    0x00004eac   0x00000154   Code   RO         2787    x$fpl$dmul          fz_wm.l(dmul.o)
+    0x00005000   0x0000009c   Code   RO         2852    x$fpl$dnaninf       fz_wm.l(dnaninf.o)
+    0x0000509c   0x0000000c   Code   RO         2854    x$fpl$dretinf       fz_wm.l(dretinf.o)
+    0x000050a8   0x0000006c   Code   RO         2789    x$fpl$drleqf        fz_wm.l(drleqf.o)
+    0x00005114   0x00000016   Code   RO         2764    x$fpl$drsb          fz_wm.l(daddsub_clz.o)
+    0x0000512a   0x00000002   PAD
+    0x0000512c   0x000001d4   Code   RO         2765    x$fpl$dsub          fz_wm.l(daddsub_clz.o)
+    0x00005300   0x0000000a   Code   RO         2919    x$fpl$fpinit        fz_wm.l(fpinit.o)
+    0x0000530a   0x00000004   Code   RO         2791    x$fpl$printf1       fz_wm.l(printf1.o)
+    0x0000530e   0x00000000   Code   RO         2856    x$fpl$usenofp       fz_wm.l(usenofp.o)
+    0x0000530e   0x00000002   PAD
+    0x00005310   0x00000014   Data   RO          899    .constdata          es_checkevents.o
+    0x00005324   0x00000020   Data   RO          937    .constdata          es_framework.o
+    0x00005344   0x00000020   Data   RO          977    .constdata          es_lookuptables.o
+    0x00005364   0x0000000f   Data   RO          978    .constdata          es_lookuptables.o
+    0x00005373   0x00000001   PAD
+    0x00005374   0x00000040   Data   RO         1136    .constdata          es_timers.o
+    0x000053b4   0x0000001c   Data   RO         1279    .constdata          uartstdio.o
+    0x000053d0   0x00000210   Data   RO         1376    .constdata          driverlib.lib(gpio.o)
+    0x000055e0   0x000001c4   Data   RO         2058    .constdata          driverlib.lib(sysctl.o)
+    0x000057a4   0x00000094   Data   RO         2886    .constdata          c_w.l(bigflt0.o)
+    0x00005838   0x00000041   Data   RO          484    .conststring        leds.o
+    0x00005879   0x00000003   PAD
+    0x0000587c   0x00000011   Data   RO         1280    .conststring        uartstdio.o
+    0x0000588d   0x00000003   PAD
+    0x00005890   0x00000020   Data   RO         3021    Region$$Table       anon$$obj.o
+    0x000058b0   0x0000001c   Data   RO         2914    locale$$data        c_w.l(lc_numeric_c.o)
 
 
-    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000a28, Max: 0x00008000, ABSOLUTE)
+    Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x00000a38, Max: 0x00008000, ABSOLUTE)
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x20000000   0x00000010   Data   RW           90    .data               eventcheckers.o
-    0x20000010   0x00000008   Data   RW          151    .data               disarmfsm.o
-    0x20000018   0x0000000c   Data   RW          217    .data               pwmtiva.o
-    0x20000024   0x00000004   PAD
-    0x20000028   0x00000020   Data   RW          271    .data               servos.o
-    0x20000048   0x00000002   Data   RW          566    .data               lcd.o
-    0x2000004a   0x0000000b   Data   RW          646    .data               keypadfsm.o
-    0x20000055   0x00000015   Data   RW          736    .data               passwordgenerator.o
-    0x2000006a   0x00000006   Data   RW          826    .data               es_framework.o
-    0x20000070   0x00000004   Data   RW          885    .data               es_port.o
-    0x20000074   0x00000004   Data   RW          978    .data               es_queue.o
-    0x20000078   0x0000000a   Data   RW         1025    .data               es_timers.o
+    0x20000010   0x00000010   Data   RW          151    .data               disarmfsm.o
+    0x20000020   0x0000000c   Data   RW          223    .data               pwmtiva.o
+    0x2000002c   0x00000004   PAD
+    0x20000030   0x00000020   Data   RW          277    .data               servos.o
+    0x20000050   0x00000004   Data   RW          517    .data               slotdetector.o
+    0x20000054   0x00000002   Data   RW          572    .data               lcd.o
+    0x20000056   0x0000000b   Data   RW          657    .data               keypadfsm.o
+    0x20000061   0x00000015   Data   RW          747    .data               passwordgenerator.o
+    0x20000076   0x00000001   Data   RW          800    .data               audiocontrol.o
+    0x20000077   0x00000001   PAD
+    0x20000078   0x00000006   Data   RW          938    .data               es_framework.o
+    0x2000007e   0x00000004   Data   RW          997    .data               es_port.o
     0x20000082   0x00000002   PAD
-    0x20000084   0x00000004   Data   RW         1073    .data               retarget.o
-    0x20000088   0x00000004   Data   RW         1074    .data               retarget.o
-    0x2000008c   0x00000008   Data   RW         1169    .data               uartstdio.o
-    0x20000094   0x00000018   Zero   RW          823    .bss                es_framework.o
-    0x200000ac   0x00000018   Zero   RW          824    .bss                es_framework.o
-    0x200000c4   0x00000020   Zero   RW         1023    .bss                es_timers.o
-    0x200000e4   0x000000e4   Zero   RW         2644    .bss                c_w.l(rand.o)
-    0x200001c8   0x00000060   Zero   RW         2814    .bss                c_w.l(libspace.o)
-    0x20000228   0x00000000   Zero   RW          778    HEAP                startup_rvmdk.o
-    0x20000228   0x00000800   Zero   RW          777    STACK               startup_rvmdk.o
+    0x20000084   0x00000004   Data   RW         1090    .data               es_queue.o
+    0x20000088   0x0000000a   Data   RW         1137    .data               es_timers.o
+    0x20000092   0x00000002   PAD
+    0x20000094   0x00000004   Data   RW         1185    .data               retarget.o
+    0x20000098   0x00000004   Data   RW         1186    .data               retarget.o
+    0x2000009c   0x00000008   Data   RW         1281    .data               uartstdio.o
+    0x200000a4   0x00000018   Zero   RW          935    .bss                es_framework.o
+    0x200000bc   0x00000018   Zero   RW          936    .bss                es_framework.o
+    0x200000d4   0x00000020   Zero   RW         1135    .bss                es_timers.o
+    0x200000f4   0x000000e4   Zero   RW         2756    .bss                c_w.l(rand.o)
+    0x200001d8   0x00000060   Zero   RW         2926    .bss                c_w.l(libspace.o)
+    0x20000238   0x00000000   Zero   RW          890    HEAP                startup_rvmdk.o
+    0x20000238   0x00000800   Zero   RW          889    STACK               startup_rvmdk.o
 
 
 ==============================================================================
@@ -2083,35 +2203,38 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   Object Name
 
-       764         68          0          0          0       1879   adcswtrigger.o
-       190         22          0          0          0       2471   dcmotors.o
-      2464       1598          0          8          0       3135   disarmfsm.o
-       160         28          0          0          0        595   enablepa25_pb23_pd7_pf0.o
-        40          6         16          0          0       1193   es_checkevents.o
-       228         30         32          6         48       2924   es_framework.o
-        52          4         47          0          0       1302   es_lookuptables.o
-       100         16          0          4          0       3929   es_port.o
-       172         10          0          4          0       2457   es_queue.o
-       224         46         64         10         32       3475   es_timers.o
-       548         90          0         16          0       2995   eventcheckers.o
-        36          4          0          0          0        571   helperfunctions.o
-       828        202          0         11          0       7286   keypadfsm.o
-      1894        160          0          2          0       8322   lcd.o
-       272         36         65          0          0       2511   leds.o
-       624        504          0          0          0       9541   main.o
-       252         16          0         21          0       3825   passwordgenerator.o
-       484         66          0         12          0       2719   pwmtiva.o
-        26          0          0          8          0       3687   retarget.o
-       710        202          0         32          0       7504   servos.o
-       672        636          0          0       2048        564   startup_rvmdk.o
-        52         16          0          0          0        963   tapesensor.o
-       116         26          0          0          0       1980   termio.o
-       116         14         45          8          0       2756   uartstdio.o
+       764         68          0          0          0       1839   adcswtrigger.o
+        84         20          0          0          0       1324   armedline.o
+       550        132          0          1          0       6509   audiocontrol.o
+       212         22          0          0          0       2903   dcmotors.o
+      2596       1636          0         16          0       3239   disarmfsm.o
+       160         28          0          0          0        579   enablepa25_pb23_pd7_pf0.o
+        40          6         20          0          0       1153   es_checkevents.o
+       228         30         32          6         48       2856   es_framework.o
+        52          4         47          0          0       1262   es_lookuptables.o
+       100         16          0          4          0       3817   es_port.o
+       172         10          0          4          0       2397   es_queue.o
+       224         46         64         10         32       3379   es_timers.o
+       724        174          0         16          0       3691   eventcheckers.o
+        36          4          0          0          0        555   helperfunctions.o
+       828        202          0         11          0       7126   keypadfsm.o
+      2220        164          0          2          0       8804   lcd.o
+       268         36         65          0          0       2431   leds.o
+       624        504          0          0          0       9457   main.o
+       252         16          0         21          0       3733   passwordgenerator.o
+       484         66          0         12          0       2659   pwmtiva.o
+        26          0          0          8          0       3611   retarget.o
+       710        202          0         32          0       7316   servos.o
+        76         24          0          4          0       2536   slotdetector.o
+       672        636          0          0       2048        540   startup_rvmdk.o
+        52         16          0          0          0        939   tapesensor.o
+       116         26          0          0          0       1928   termio.o
+       116         14         45          8          0       2688   uartstdio.o
 
     ----------------------------------------------------------------------
-     11042       3800        308        148       2128      78584   Object Totals
+     12410       4102        312        164       2128      89271   Object Totals
          0          0         32          0          0          0   (incl. Generated)
-        18          0          7          6          0          0   (incl. Padding)
+        24          0          7          9          0          0   (incl. Padding)
 
     ----------------------------------------------------------------------
 
@@ -2206,15 +2329,15 @@ Image component sizes
 
       Code (inc. data)   RO Data    RW Data    ZI Data      Debug   
 
-     19896       4288       1464        148       2452      86422   Grand Totals
-     19896       4288       1464        148       2452      86422   ELF Image Totals
-     19896       4288       1464        148          0          0   ROM Totals
+     21264       4590       1468        164       2452      95209   Grand Totals
+     21264       4590       1468        164       2452      95209   ELF Image Totals
+     21264       4590       1468        164          0          0   ROM Totals
 
 ==============================================================================
 
-    Total RO  Size (Code + RO Data)                21360 (  20.86kB)
-    Total RW  Size (RW Data + ZI Data)              2600 (   2.54kB)
-    Total ROM Size (Code + RO Data + RW Data)      21508 (  21.00kB)
+    Total RO  Size (Code + RO Data)                22732 (  22.20kB)
+    Total RW  Size (RW Data + ZI Data)              2616 (   2.55kB)
+    Total ROM Size (Code + RO Data + RW Data)      22896 (  22.36kB)
 
 ==============================================================================
 

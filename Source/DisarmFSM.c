@@ -33,19 +33,22 @@
 #include "LCD.h"
 #include "passwordGenerator.h"
 #include "ES_Timers.h"
+#include "AudioControl.h"
+#include "SlotDetector.h"
+#include "ArmedLine.h"
 
 /*----------------------------- Module Defines ----------------------------*/
 #define ON 1
 #define OFF 0
 
 //LEDS
-#define Tier1 1
-#define Tier2 2
-#define Tier3 3
-#define Tier4 4
-#define Tier5 5
-#define Tier6 6
-#define pot 7
+#define Tier1 2
+#define Tier2 0
+#define Tier3 7
+#define Tier4 1
+#define Tier5 4
+#define Tier6 5
+#define pot 3
 
 
 /*---------------------------- Module Functions ---------------------------*/
@@ -86,11 +89,15 @@ bool InitDisarmFSM ( uint8_t Priority )
   ES_Event ThisEvent;
 	
 	// Initialize the Tape Sensors
+	PortFunctionInit(); // seems to initialize all the pins PA2-5, PB2-3, PD7, PF0 as GPIO
 	initTapeSensors();
+	initPhototransistor();
 	initMotors();
 	initializeServos();
 	LEDShiftRegInit();
 	LCDInit();
+	AudioInit();
+	initArmedLine();
 	
   MyPriority = Priority;
   CurrentState = Armed;
@@ -148,7 +155,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
   ES_Event ReturnEvent;
   ReturnEvent.EventType = ES_NO_EVENT; // assume no errors
 	
-	char LEDs[8] = {0,0,0,0,0,0,0,0};
+	static char LEDs[8] = {1, 1, 1, 1, 1, 1 , 1, 1};
 	
   switch ( CurrentState )
   {
@@ -156,6 +163,11 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 			switch ( ThisEvent.EventType ) {
 				case ES_INIT :
 					printf("Arming...\r\n");
+					setArmed(); // sets the armed line to +5V
+					printf(" Setting all tower LEDS off...\r\n");
+					LEDShiftRegInit();
+					setLED (LEDs);
+				
 					printf(" Generating random passwords...\r\n");
 					randomizePasswords();
 					printArmedMessage();
@@ -163,13 +175,11 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					printf(" Turning vibration motor on...\r\n");
 					vibrationMotorOn(); // turns vibration motor ON
 					
-					printf(" Setting all tower LEDS off...\r\n");
-					setLED (LEDs);
 					printf(" Lowering flag...\r\n");
 					lowerFlag();
 					printf(" Locking the keys\r\n");
 					lockKeys();
-					printf(" Raising ball and feather...\r\n");
+					printf(" Lowering ball and feather...\r\n");
 					unwindTimingMotor();
 					printf(" Setting tower to 0...\r\n\r\n");
 					setTowerToZero();
@@ -184,7 +194,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					vibrationMotorOff();
 				
 					printf(" Setting Tower Tier 1 LED on...\r\n");
-					LEDs[Tier1] = 1;
+					LEDs[Tier1] = 0;
 					setLED(LEDs);
 				
 					printf(" Begin printing LCD passcode...\r\n");
@@ -218,6 +228,8 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 				case ES_TIMEOUT :
 					if (ThisEvent.EventParam == DISARM_TIMER) {
 						printf("EVENT: Time has run out!\r\n");
+						printTimeUp();
+						PlayGameOver();
 						ThisEvent.EventType = ES_INIT;
 						PostDisarmFSM(ThisEvent);
 						CurrentState = Armed;
@@ -239,7 +251,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					printf(" Clearing the LCD screen\r\n");
 					printArmedMessage();
 					printf(" Setting Tower Tier 1 LED off...\r\n");
-					LEDs[Tier1] = 0;
+					LEDs[Tier1] = 1;
 				  setLED(LEDs);
 				
 					printf(" Transitioning to Stage1_Stagnated...\r\n\r\n");
@@ -254,11 +266,11 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					printAuthorizedMessage();
 				
 					printf(" Setting Tower Tier 2 LED on...\r\n");
-					LEDs[Tier2] = 1;
+					LEDs[Tier2] = 0;
 				  setLED(LEDs);
 				
 					printf(" Playing audio: Wahoo!...\r\n");
-				  //playWahoo();
+				  PlayWohoo();
 					printf(" Transitioning to Stage2...\r\n\r\n");
 					CurrentState = Stage2;
 					printf("STATE: Stage2\r\n\r\n");
@@ -266,11 +278,13 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 				
 				case INCORRECT_PASSWORD_ENTERED :
 					printf("EVENT: The incorrect password has been entered.\r\n");
+					printIncorrectMessage();
+					ES_Timer_InitTimer(MESSAGE_TIMER, 1000);
+					ES_Timer_StartTimer(MESSAGE_TIMER);
 					printf(" Generating vibration pulse...\r\n");
 					vibrationMotorOn();
 					ES_Timer_InitTimer(VIBRATION_TIMER, 350);
 					ES_Timer_StartTimer(VIBRATION_TIMER);
-					printIncorrectMessage();
           break;
 
         default :
@@ -284,6 +298,8 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
         case ES_TIMEOUT :
           if (ThisEvent.EventParam == DISARM_TIMER) {
 						printf("EVENT: Time has run out!\r\n");
+						PlayGameOver();
+						printTimeUp();
 						ThisEvent.EventType = ES_INIT;
 						PostDisarmFSM(ThisEvent);
 						CurrentState = Armed;
@@ -294,7 +310,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					printf("EVENT: Three hands detected.\r\n");
 				
 					printf(" Setting Tower Tier 1 LED on...\r\n");
-					LEDs[Tier1] = 1;
+					LEDs[Tier1] = 0;
 					setLED(LEDs);
 				
 					
@@ -320,6 +336,8 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
         case ES_TIMEOUT :
           if (ThisEvent.EventParam == DISARM_TIMER) {
 						printf("EVENT: Time has run out!\r\n");
+						PlayGameOver();
+						printTimeUp();
 						ThisEvent.EventType = ES_INIT;
 						PostDisarmFSM(ThisEvent);
 						CurrentState = Armed;
@@ -330,7 +348,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					printf("EVENT: Key has been inserted.\r\n");
 				
 					printf(" Setting Tower Tier 3 LED on...\r\n");
-					LEDs[Tier3] = 1;
+					LEDs[Tier3] = 0;
 					setLED(LEDs);
 				
 					printf(" Setting Dial LED on...\r\n");
@@ -338,7 +356,7 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					setLED(LEDs);
 				
 					printf(" Playing audio: Wahoo!...\r\n");
-					//playWahoo();
+					PlayWohoo();
 					printf("Initializing the pot value...\r\n");
 					setPotZero();
 					printf(" Transitioning to Stage3...\r\n\r\n");
@@ -357,6 +375,8 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
         case ES_TIMEOUT :
 					if (ThisEvent.EventParam == DISARM_TIMER) {  
 						printf("EVENT: Time has run out!\r\n");
+						PlayGameOver();
+						printTimeUp();
 						ThisEvent.EventType = ES_INIT;
 						PostDisarmFSM(ThisEvent);
 						CurrentState = Armed;
@@ -370,14 +390,14 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 				
 				case CORRECT_VALUE_DIALED :
 					printf("EVENT: The correct pot value has been dialed.\r\n");
-					
+					setUnarmed(); // Sets the armed line to 0V
 					printf(" Setting Tower Tier 4-6 LED on with delay...\r\n");
 					
 					ES_Timer_InitTimer(FAST_LEDS, 150);
 					static int i = Tier4;
 					if (i<=Tier6){
 						printf("\n\r looping for LED i + %d\n\r", i);
-						LEDs[i] = 1;
+						LEDs[i] = 0;
 						setLED(LEDs);
 						ES_Timer_StartTimer(FAST_LEDS);
 						i++;
@@ -386,9 +406,11 @@ ES_Event RunDisarmFSM( ES_Event ThisEvent )
 					printf(" Raising the flag...\r\n");
 					raiseFlag();
 					printf(" Playing audio: victory song...\r\n");
-					//playVictorySong();
+					PlaySuccessFinish();
 					printf(" Starting 30s post-disarm timer...\r\n");
 					ES_Timer_InitTimer(POST_DISARM_TIMER, 30000);
+					printf(" Raising ball and feather...\r\n");
+					rewindTimingMotor();
 					printf(" Transitioning to Stage4...\r\n\r\n");
 					CurrentState = Stage4;
 					printf("STATE: Stage4\r\n\r\n");

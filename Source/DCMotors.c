@@ -61,7 +61,7 @@ void initMotors(void) {
 }
 
 void rewindTimingMotor(void) {
-	setMotor(TIME_MOTOR_PIN, ON);
+	setMotor(TIME_MOTOR_PIN, OFF);
 	setMotor(TIME_MOTOR_DIRECTION_PIN, ON);
 }
 
@@ -71,8 +71,8 @@ void unwindTimingMotor(void) {
 }
 
 void stopTimingMotor(void) {
-	setMotor(TIME_MOTOR_PIN, OFF);
-	setMotor(TIME_MOTOR_DIRECTION_PIN, OFF);
+	setMotor(TIME_MOTOR_PIN, ON);
+	setMotor(TIME_MOTOR_DIRECTION_PIN, ON);
 }
 
 void vibrationMotorOn(void) {

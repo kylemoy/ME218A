@@ -28,8 +28,7 @@ void LEDShiftRegInit (void) {
 	_HW_Timer_Init(ES_Timer_RATE_1mS);
 	
 	// pin initialization to foolow
-	PortFunctionInit(); // seems to initialize all the pins PA2-5, PB2-3, PD7, PF0 as GPIO
-	
+
 	//initialization - should be moved to main code later
 	HWREG(SYSCTL_RCGCGPIO) |= (SHIFT_PORT_DEC); // enable port A
 	HWREG(SHIFT_PORT + GPIO_O_DEN) |= (SHIFT_DATA | SHIFT_SCK | SHIFT_RCK); //enables pins
@@ -91,13 +90,25 @@ void setLED (char LEDs[8]) {
 #ifdef TEST 
 /* test Harness for testing this module */ 
 
+#define Tier1 2
+#define Tier2 0
+#define Tier3 7
+#define Tier4 1
+#define Tier5 4
+#define Tier6 5
+#define pot 3
+
 int main(void) 
 { 
 	TERMIO_Init(); 
 	puts("\n\r in test harness for shift register\r\n");
 	
-	char test[8] =  {0,1,0,1,0,1,0,1};
+	// 0 is On, 1 is Off
 
+	// Array index 6 is empty (no LED)
+	char test[8] =  {1,1,1,1,1,1,1,1};
+	test[Tier1] = 0;
+	test[pot] = 0;
 	LEDShiftRegInit();
 	setLED (test);
 }

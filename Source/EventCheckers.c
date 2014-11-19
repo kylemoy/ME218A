@@ -100,7 +100,7 @@ bool Check4Keystroke(void)
 
 
 bool CheckTapeSensor(void) {
-	static bool lastState = false;
+	static bool lastState = true;
 	if (tapeSensorsCovered() && (lastState == false)) {
 		ES_Event ThisEvent;
     ThisEvent.EventType = THREE_HANDS_ON ;
@@ -119,23 +119,49 @@ bool CheckTapeSensor(void) {
 
 bool CheckSlotDetector(void) {
 	int keyInSlotDefault = getKeyInSlotDefault();
-	if (keyInSlotDefault == 0)
+	if (keyInSlotDefault == -1) {
+		printf("Setting key in slot default.\r\n");
 		setKeyInSlotDefault();
+	}
 
-	bool lastState = false;
+	static bool lastState = false;
 	bool keyInSlot = isKeyInSlot();
 
 	if (keyInSlot && (lastState == false)) {
-		printf("Key has been placed.");
+		printf("Key has been placed.\r\n");
 		lastState = true;
+		ES_Event ThisEvent;
+    ThisEvent.EventType = KEY_INSERTED ;
+    PostDisarmFSM( ThisEvent );
 		return true;
 
 	} else if (!keyInSlot && (lastState == true)) {
-		printf("Key has been removed.");
+		printf("Key has been removed.\r\n");
+		ES_Event ThisEvent;
+    ThisEvent.EventType = KEY_INSERTED ;
+    PostDisarmFSM( ThisEvent );
 		lastState = false;
 		return true;
 	}
 	return false;
+//	bool lastState = false;
+//	bool keyRemoved = isKeyRemoved();
+
+//	if (keyRemoved && (lastState == false)) {
+//		printf("Key has been removed.");
+//		lastState = true;
+//		return true;
+
+//	} else if (!keyRemoved && (lastState == true)) {
+//		printf("Key has been placed.");
+//		ES_Event ThisEvent;
+//    ThisEvent.EventType = KEY_INSERTED ;
+//    PostDisarmFSM( ThisEvent );
+//		lastState = false;
+//		return true;
+//	}
+//	return false;
+//
 }
 
 bool CheckPot(void) {

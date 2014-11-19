@@ -13,4 +13,5 @@ void clearLCD(void);
 void printAuthorizedMessage(void);
 void printIncorrectMessage(void);
 void printArmedMessage(void);
+void printTimeUp(void);
 #endif

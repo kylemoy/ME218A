@@ -418,7 +418,7 @@
                   <RVCTZI>0</RVCTZI>
                   <RVCTOtherData>0</RVCTOtherData>
                   <ModuleSelection>0</ModuleSelection>
-                  <IncludeInBuild>0</IncludeInBuild>
+                  <IncludeInBuild>1</IncludeInBuild>
                   <AlwaysBuild>2</AlwaysBuild>
                   <GenerateAssemblyFile>2</GenerateAssemblyFile>
                   <AssembleAssemblyFile>2</AssembleAssemblyFile>
@@ -572,6 +572,11 @@
               <FileName>helperFunctions.c</FileName>
               <FileType>1</FileType>
               <FilePath>.\Source\helperFunctions.c</FilePath>
+            </File>
+            <File>
+              <FileName>passwordGenerator.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>.\Source\passwordGenerator.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -727,6 +732,11 @@
               <FileName>KeyPadFSM.h</FileName>
               <FileType>5</FileType>
               <FilePath>.\Headers\KeyPadFSM.h</FilePath>
+            </File>
+            <File>
+              <FileName>passwordGenerator.h</FileName>
+              <FileType>5</FileType>
+              <FilePath>.\Headers\passwordGenerator.h</FilePath>
             </File>
           </Files>
         </Group>

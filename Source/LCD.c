@@ -52,7 +52,7 @@
 
 #define BIT(x) (1<<(x))
 
-//the order goes: D4-D5-D6-D7-RS-RW-E-empty
+//the1 order goes: D4-D5-D6-D7-RS-RW-E-empty
 //on the shift register: QB-QC-QD-QE-QF-QG-QH
 //bit numbering goes:7-6-5-4-3-2-1-0
 // so bit 0 is alwasys uselss (empty)
@@ -142,7 +142,7 @@ void LCDInit (void) {
 	HWREG(LCD_PORT + GPIO_O_DIR) |= (LCD_DATA | LCD_SCK | LCD_RCK);
 	
 	/* initialize timer */
-	_HW_Timer_Init(ES_Timer_RATE_1mS);
+	_HW_Timer_Init(ES_Timer_RATE_2mS);
 	
 	/*
 	 LCD Initialization begins
@@ -182,8 +182,8 @@ void LCDInit (void) {
 	 * N is on DB7, 0 for one line
 	 * F is on DB6, 1 for bigger font
 	 */
-	LCD &= D7_LO;
-	LCD |= D6_HI;
+	LCD |= D7_HI; // 0, one line
+	LCD &= D6_LO;
 	sendToLCD(LCD);
 	wait (1);
 	
@@ -202,12 +202,14 @@ void LCDInit (void) {
 	/*
 	 * Display clear
 	*/
-	//sending 000000
+	//sending 0000
 	LCD &= D7_LO;
+	//printf("%x\r\n", LCD);
 	sendToLCD(LCD);
 	//wait (2);
 	//sending 0001
 	LCD |= D4_HI;
+	//printf("%x\r\n", LCD);
 	sendToLCD(LCD);
 	wait (1);
 	
@@ -376,9 +378,13 @@ void printLCDmessage(void) {
 			LCDputchar('d');
 			LCDputchar('e');
 			LCDputchar('s');
-			LCDputchar('.');
-			LCDputchar('.');
-			LCDputchar('.');
+			LCDputchar(':');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
 			LCDputchar(' ');
 			LCDputchar(' ');
 			LCDputchar(' ');
@@ -394,6 +400,10 @@ void printLCDmessage(void) {
 			LCDputchar( c[getPassword(1)[2]]);
 			LCDputchar( c[getPassword(1)[3]]);
 			LCDputchar( c[getPassword(1)[4]]);
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
 			LCDputchar(' ');
 			LCDputchar(' ');
 			LCDputchar(' ');
@@ -420,6 +430,10 @@ void printLCDmessage(void) {
 			LCDputchar(' ');
 			LCDputchar(' ');
 			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
 			messageNumber = 5;
 			break;
 		
@@ -438,6 +452,12 @@ void printLCDmessage(void) {
 			LCDputchar(' ');
 			LCDputchar(' ');
 			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
 			messageNumber = 6;
 			break;
 			
@@ -448,6 +468,12 @@ void printLCDmessage(void) {
 			LCDputchar( c[getPassword(4)[2]]);
 			LCDputchar( c[getPassword(4)[3]]);
 			LCDputchar( c[getPassword(4)[4]]);
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
 			LCDputchar(' ');
 			LCDputchar(' ');
 			LCDputchar(' ');
@@ -477,8 +503,34 @@ void printAuthorizedMessage(void) {
 			LCDputchar(' ');
 			LCDputchar(' ');
 			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
+			LCDputchar(' ');
 }
 
+void printTimeUp(void) {
+			clearLCD();
+			LCDputchar('Y');
+			LCDputchar('o');
+			LCDputchar('u');
+			LCDputchar('r');
+			LCDputchar(' ');
+			LCDputchar('T');
+			LCDputchar('i');
+			LCDputchar('m');
+			LCDputchar('e');
+			LCDputchar(' ');
+			LCDputchar('I');
+			LCDputchar('s');
+			LCDputchar(' ');
+			LCDputchar('U');
+			LCDputchar('p');
+			LCDputchar('!');
+			LCDputchar(' ');
+			LCDputchar(' ');
+	
+}
 
 void printIncorrectMessage(void) {
 			clearLCD();
@@ -491,9 +543,16 @@ void printIncorrectMessage(void) {
 			LCDputchar('e');
 			LCDputchar('c');
 			LCDputchar('t');
-			LCDputchar('.');
-			LCDputchar('.');
-			LCDputchar('.');
+			LCDputchar(' ');
+			LCDputchar('P');
+			LCDputchar('a');
+			LCDputchar('s');
+			LCDputchar('s');
+			LCDputchar('w');
+			LCDputchar('o');
+			LCDputchar('r');
+			LCDputchar('d');
+	
 }
 
 void printArmedMessage(void) {
