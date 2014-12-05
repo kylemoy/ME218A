@@ -6,9 +6,9 @@
    This file contains the functions that will be needed to initialize the LCD
 	 and to write to the LCD
 	 
-	 Currently, I will try to send all the information (like RS, D0, etc. pins),
-	 pulse the shift register to send this to the LCD, then pulse the shift
-	 reigster again, in quick succession with E being set low and hi.
+	 It sends all the information (like RS, D0, etc. pins), pulses the shift 
+	 register to send to the LCD, then pulses the shift reigster again, 
+	 in quick succession with E being set low and hi.
 ****************************************************************************/
 //#define TEST
 
@@ -25,16 +25,15 @@
 #include "ES_Timers.h"
 #include "termio.h"
 #include "LCD.h"
-#include "passwordGenerator.h"
-
-// not as sure if these are absolutley needed
+#include "passwordGenerator.h" // random passcode gets called
 #include "driverlib/gpio.h"
-//#include "driverlib/interrupt.h"
-//#include "utils/uartstdio.h"
 
 #define ALL_BITS (0xff <<2)
 
-// definitions for array bit numbers
+/* definitions for array bit numbers
+	 Basically E_HI will set the bit connected to E HI
+	 and E_LO does the opposite, and so on for all other connections
+*/
 #define E_HI BIT1HI
 #define E_LO BIT1LO
 #define RW_HI BIT2HI 
@@ -52,58 +51,113 @@
 
 #define BIT(x) (1<<(x))
 
-//the1 order goes: D4-D5-D6-D7-RS-RW-E-empty
+//the order goes: LCD = D4-D5-D6-D7-RS-RW-E-empty
 //on the shift register: QB-QC-QD-QE-QF-QG-QH
 //bit numbering goes:7-6-5-4-3-2-1-0
-// so bit 0 is alwasys uselss (empty)
+// so bit 0 is always empty
 /****************************************************************************
   Change these values if ports C4 (data), C5 (SCK), C6 (RCK) are
 	not being used for the shift register
 ****************************************************************************/
-// CHANGE THE PORTS IF NECESSARY
 #define LCD_PORT_DEC SYSCTL_RCGCGPIO_R2 //port C
 #define LCD_PORT GPIO_PORTC_BASE // port C base
 #define LCD_DATA GPIO_PIN_4 // pin 4
 #define LCD_SCK GPIO_PIN_5 // pin 5
 #define LCD_RCK GPIO_PIN_6 // pin 6
 
+/* Module level variables */
 char LCD;
 static uint8_t messageNumber = 0;
 
-// shift register functions
-// probably want to make SCKPulse and RCKPulse take an input of
-// LED or LCD so that we only need to write the function once
-//void ShiftRegLCD (char LCD[8]);
-void SCKPulseLCD (void); // transfer bit to shift register
-void RCKPulseLCD (void); // transfer bits to the world
-void sendToLCD (char Data); // takes 8 bit input and pulses E to input into LCD
-void sendToShiftReg (char Data); // sends the 8 bit input to shift register
+/* Prviate Function Prototypes */
 
-void LCDInit (void); //initializes LP and then 4 bit mode of LCD
+// transfer bit to shift register
+void SCKPulseLCD (void); 
+
+// transfers 8 bits to the world
+void RCKPulseLCD (void); 
+
+// sends an 8 bit input to shift register - doesn't pulse LCD pin E
+void sendToShiftReg (char Data);
+
+// takes 8 bit input and pulses E to input into LCD, uses the sendToShiftReg function
+void sendToLCD (char Data); 
+
+// using the sendToLCD function, it writes a specific letter to the LCD
 void LCDputchar (char letter);
+/****************************************************************************
+ Function
+     SCKPulseLCD
 
+ Parameters
+     none
 
+ Returns
+     none
+
+ Description
+     pulses the pin connected the SCK by writing it HI, then back to LO again
+ Notes
+
+****************************************************************************/
 void SCKPulseLCD (void) {
 	// pulses SCK pin HI
 	HWREG(LCD_PORT+(GPIO_O_DATA + ALL_BITS)) |= LCD_SCK; 
-	//kill time
+	
+	// kill time
 	for (int i = 1; i < 50; i ++){
 		HWREG(SYSCTL_RCGCGPIO);
 	}
+	
 	// pulses SCK pin LO
 	HWREG(LCD_PORT+(GPIO_O_DATA + ALL_BITS)) &= ~LCD_SCK; 
 }
 
+/****************************************************************************
+ Function
+     RCKPulseLCD
+
+ Parameters
+     none
+
+ Returns
+     none
+
+ Description
+     pulses the pin connected the RCK by writing it HI, then back to LO again
+ Notes
+
+****************************************************************************/
 void RCKPulseLCD (void) {
 	// pulses RCK pin HI
 	HWREG(LCD_PORT+(GPIO_O_DATA + ALL_BITS)) |= LCD_RCK; 
+	
+	// kill time
 	for (int i = 1; i < 50; i ++){
 		HWREG(SYSCTL_RCGCGPIO);
 	}
-	// pulses SCK pin LO
+	
+	// pulses RCK pin LO
 	HWREG(LCD_PORT+(GPIO_O_DATA + ALL_BITS)) &= ~LCD_RCK; 	
 }
 
+/****************************************************************************
+ Function
+     sendToShiftReg
+
+ Parameters
+     char
+
+ Returns
+     none
+
+ Description
+     takes in a char and send it to the shift register so that it can write to the LCD
+		 pins however, the E pin on the LCD itself is not pulsed, and therefore the LCD
+		 would NOT have registered the changes yet.
+ Notes
+		 this function is a PRIVATE function
+****************************************************************************/
 void sendToShiftReg (char Data) {
 	char send = 0;
 	for (int i= 0; i <8; i ++) {
@@ -114,24 +168,65 @@ void sendToShiftReg (char Data) {
 		else if (send == 0) {
 			HWREG(LCD_PORT + GPIO_O_DATA + ALL_BITS) &= ~(LCD_DATA);
 		}
-		else {
-			puts ("entered if send is neither 1 nor 0");
-			puts("\n\r sendToShiftReg send value not 0 or 1 \r\n");
+		else { // for debugging only
+			//puts ("entered neither 1 nor 0");
+			//puts("\n\r sendToShiftReg send value not 0 or 1 \r\n");
 		}
+		// pulses SCK to send the single bit to shift register
 		SCKPulseLCD();
 	}
+	
+	/* leaving the loop means it has gone through all 8 bits, so
+	   the shfit register is ready to write it to LCD
+	*/
 	RCKPulseLCD();
 }
 
+/****************************************************************************
+ Function
+     sendToLCD
+
+ Parameters
+     char
+
+ Returns
+     none
+
+ Description
+     takes in a char and send it to the LCD screen and pulses the E line so that
+		 the LCD also sees this change has occured
+ Notes
+		 this function utilizes the sendToShiftReg function to keep it short and simple
+		 it basically writes the parameter on to the pins on the LCD, pulses E HI,
+		 writes the input parameter onto the pins again (to make sure that the data
+		 isn't lost) and then writes E back LO. effectively, it is pulsing E so that
+     the LCD sees what is being fed into it.
+
+		 this function is also a PRIVATE function
+****************************************************************************/
 void sendToLCD (char Data) {
 	sendToShiftReg(Data);
 	Data |= E_HI;
 	sendToShiftReg(Data);
 	wait(1);
 	Data &= E_LO;
-	sendToShiftReg(Data);
 }
 
+/****************************************************************************
+ Function
+     LCDInit
+
+ Parameters
+     none
+
+ Returns
+     none
+
+ Description
+     goes through the LCD initialization sequence
+ Notes
+
+****************************************************************************/
 void LCDInit (void) {
 	/* LaunchPad init for ports C 4, 5 and 6 and 7*/
 	HWREG(SYSCTL_RCGCGPIO) |= LCD_PORT_DEC;
@@ -151,13 +246,13 @@ void LCDInit (void) {
 	wait (110);
 	LCD = 0;
 	
-	// sends 000011 3 times, with 5mS in between each
+	// sends 000011 3 times, with at least 5mS in between each
 	for (int i = 1; i < 4; i ++) {
 		
 		LCD |= (D5_HI | D4_HI);
 		
-		sendToLCD(LCD); //pulse to send 000011 both through the shfit register and the LCD
-		wait(5); //wait 5mS between each loop
+		sendToLCD(LCD); //pulse to send 000011 both through the shift register and the LCD
+		wait(3); //wait 6mS between each loop
 	}
 	
 	/*
@@ -175,14 +270,15 @@ void LCDInit (void) {
 	 * The number of display lines and character font
 	 * can not be changed after this point.
 	 */
-	//sending 00010 
+	//sending the same value as previous step
 	sendToLCD(LCD);
-	//wait (2);
+	wait(1);
+	
 	/*sending 000NF** 
 	 * N is on DB7, 0 for one line
 	 * F is on DB6, 1 for bigger font
 	 */
-	LCD |= D7_HI; // 0, one line
+	LCD |= D7_HI;
 	LCD &= D6_LO;
 	sendToLCD(LCD);
 	wait (1);
@@ -193,7 +289,7 @@ void LCDInit (void) {
 	//sending 000000
 	LCD = 0;
 	sendToLCD(LCD);
-	//wait (2);
+	
 	//sending 001000
 	LCD |= D7_HI;
 	sendToLCD(LCD);
@@ -204,12 +300,10 @@ void LCDInit (void) {
 	*/
 	//sending 0000
 	LCD &= D7_LO;
-	//printf("%x\r\n", LCD);
 	sendToLCD(LCD);
-	//wait (2);
+	
 	//sending 0001
 	LCD |= D4_HI;
-	//printf("%x\r\n", LCD);
 	sendToLCD(LCD);
 	wait (1);
 	
@@ -219,7 +313,7 @@ void LCDInit (void) {
 	//sending 0000
 	LCD &= D4_LO;
 	sendToLCD(LCD);
-	//wait (2);
+
 	/* sending 0000(I/D)S
 	 * I/D is on DB5, 1 is to increment cursor
 	 * S is on DB4, 1 is to shift screen 
@@ -233,7 +327,6 @@ void LCDInit (void) {
 	LCD &= D4_LO;
 	LCD &= D5_LO;
 	sendToLCD(LCD);
-	//wait (2);
 	
 	LCD |= (D4_HI | D5_HI | D6_HI | D7_HI);
 	sendToLCD(LCD);
@@ -253,21 +346,24 @@ void LCDInit (void) {
 	
 	sendToLCD(LCD);
 	
-	wait(1);
-	
-	 // Sets entry mode so that the display shifts when a byte data is written
-	//sending 0000
-//	LCD &= D4_LO;
-//	sendToLCD(LCD);
-//	//sending 0111
-//	LCD |= D4_HI;
-//	LCD |= D5_HI;
-//	LCD |= D6_HI;
-//	sendToLCD(LCD);
-//	wait (1);
-	
+	wait(1);	
 }
 
+/****************************************************************************
+ Function
+     clearLCD
+
+ Parameters
+     none
+
+ Returns
+     none
+
+ Description
+     clears the LCD screen
+ Notes
+
+****************************************************************************/
 void clearLCD(void) {
 	/*
 	 * Display clear
@@ -275,29 +371,38 @@ void clearLCD(void) {
 	//sending 000000
 	LCD = 0;
 	sendToLCD(LCD);
-	//wait (2);
+
 	//sending 0001
 	LCD |= D4_HI;
 	sendToLCD(LCD);
 	wait (1);
 }
 
-// * LCD = D4-D5-D6-D7-RS-RW-E-empty
-void LCDputchar (char letter) {
-	//puts("\n\r in LCDputchar p\r\n");
-	
-	//printf("\n\r Lower Nibble is : %#x \n\r", letter & 0x0f);// & 0xF0);
-	//printf("\n\r Upper Nibble is : %#x \n\r", (letter>>4) & 0x0f);// & 0xF0);
+/****************************************************************************
+ Function
+     LCDputchar
 
+ Parameters
+     char
+
+ Returns
+     none
+
+ Description
+     writes a single letter that was at the input onto the LCD screne
+ Notes
+		 Just a reminder, LCD = D4-D5-D6-D7-RS-RW-E-empty
+		 The ordering of the char being written was reversed, so we use an array
+		 to flip the inputs accordingly
+****************************************************************************/
+void LCDputchar (char letter) {
+
+	//writes each bit of the letter into a separate array entry
 	uint8_t char_bits[8] = {0, 0, 0, 0, 0, 0 ,0 ,0};
 	for (uint8_t i = 0; i < 8; i++) {
 		if ((letter & 0x01) == 0x01)
 			char_bits[i] = 1;
 		letter = letter >> 1;
-	}
-	
-	for (uint8_t i = 0; i < 8; i++) {
-		//printf("Bit %d is %d\r\n", i, char_bits[i]);
 	}
 	
 	// Clears the data pin bits of LCD but keeps RS, RW, etc.
@@ -306,6 +411,7 @@ void LCDputchar (char letter) {
 	LCD &= D6_LO;
 	LCD &= D7_LO;
 	LCD |= RS_HI; //data mode
+	
 	// Sets upper 4 bits (in reverse order) to be sent
 	if (char_bits[4])
 		LCD |= (0x80); // Set 1000000
@@ -315,11 +421,15 @@ void LCDputchar (char letter) {
 		LCD |= (0x20); // Set 0010000
 	if (char_bits[7])
 		LCD |= (0x10); // Set 0001000
-	//printf("\n\r Upper Nibble Reversed is: %#x \n\r", LCD);// & 0xF0);
+
 	sendToLCD (LCD); //sends upper 4 bits
-	wait(1);
 	
-	// Clears the data pin bits of LCD but keeps RS, RW, etc.
+	//kills time
+	for (int i = 1; i < 50; i ++){
+		HWREG(SYSCTL_RCGCGPIO);
+	}
+	
+	// Clears the data pin bits of LCD but keeps RS, RW.
 	LCD &= D4_LO;
 	LCD &= D5_LO;
 	LCD &= D6_LO;
@@ -333,17 +443,63 @@ void LCDputchar (char letter) {
 		LCD |= (0x20); // Set 0010000
 	if (char_bits[3])
 		LCD |= (0x10); // Set 0001000
-	//printf("\n\r Lower Nibble Reversed is: %#x \n\r", LCD);// & 0xF0);
+	
 	sendToLCD (LCD); //sends upper 4 bits
-	wait(1);
+	
+	//kills time
+	for (int i = 1; i < 50; i ++){
+		HWREG(SYSCTL_RCGCGPIO);
+	}
 }
 
+/****************************************************************************
+ Function
+     resetLCDmessage
+
+ Parameters
+     none
+
+ Returns
+     none
+
+ Description
+     sets a variable "messageNumber" such that the set of messages welcoming DrEd
+		 back and showing him passcodes is starting at the beginning again
+		 (specifically, with "Welcome DrEd")
+ Notes
+		 use this function so that the next time the three tape sensors are covered again
+		 the message begins with "Welcome DrEd" instead of with a passcode or another mesasge
+****************************************************************************/
 void resetLCDmessage(void) {
 	messageNumber = 1;
 }
 
+/****************************************************************************
+ Function
+     printLCDmessage
+
+ Parameters
+     none
+
+ Returns
+     none
+
+ Description
+     this function runs through the messages, printing out
+		 "Welcome DrEd"
+		 "Passcodes:"
+		 - randomly generated passcode 1 -
+		 - randomly generated passcode 2 -
+		 - randomly generated passcode 3 -
+		 - randomly generated passcode 4 -
+
+		 The messages being printed will loop through the above 6 messages
+ Notes
+****************************************************************************/
 void printLCDmessage(void) {
+	// c gets used to translate the randomly generated passcodes into numbers to be shown on the LCD
 	char c[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
+	
 	switch (messageNumber) {
 		case 1:
 			clearLCD();
@@ -487,6 +643,22 @@ void printLCDmessage(void) {
 	}
 }
 
+/****************************************************************************
+ Function
+     printAuthorizedMessage
+
+ Parameters
+     none
+
+ Returns
+     none
+
+ Description
+     this function prints out
+		 "Autherized!"
+     to the LCD screen
+ Notes
+****************************************************************************/
 void printAuthorizedMessage(void) {
 			clearLCD();
 			LCDputchar('A');
@@ -509,6 +681,22 @@ void printAuthorizedMessage(void) {
 			LCDputchar(' ');
 }
 
+/****************************************************************************
+ Function
+     printTimeUp
+
+ Parameters
+     none
+
+ Returns
+     none
+
+ Description
+     this function prints out
+		 "Your Time is Up!"
+     to the LCD screen
+ Notes
+****************************************************************************/
 void printTimeUp(void) {
 			clearLCD();
 			LCDputchar('Y');
@@ -532,6 +720,22 @@ void printTimeUp(void) {
 	
 }
 
+/****************************************************************************
+ Function
+     printIncorrectMessage
+
+ Parameters
+     none
+
+ Returns
+     none
+
+ Description
+     this function prints out
+		 "Incorrect password"
+     to the LCD screen
+ Notes
+****************************************************************************/
 void printIncorrectMessage(void) {
 			clearLCD();
 			LCDputchar('I');
@@ -555,6 +759,22 @@ void printIncorrectMessage(void) {
 	
 }
 
+/****************************************************************************
+ Function
+     printArmedMessage
+
+ Parameters
+     none
+
+ Returns
+     none
+
+ Description
+     this function prints out
+		 "Armed"
+     to the LCD screen
+ Notes
+****************************************************************************/
 void printArmedMessage(void) {
 			clearLCD();
 			LCDputchar('A');
@@ -575,8 +795,14 @@ void printArmedMessage(void) {
 			LCDputchar(' ');
 }
 
+/****************************************************************************
+ Test Harness for LCDs module
+
+ Description
+     intializes the relevant Tiva port and prints out some characters
+ Notes
+****************************************************************************/
 #ifdef TEST 
-/* test Harness for testing this module */ 
 #include "termio.h" 
 int main(void) 
 { 
@@ -595,7 +821,6 @@ int main(void)
 	LCDputchar(' ');
 	LCDputchar('D');
 	LCDputchar('r');
-	//LCDputchar('3');
 	return 0;
 }
 #endif

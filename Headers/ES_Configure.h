@@ -29,7 +29,7 @@
 /****************************************************************************/
 // This macro determines that nuber of services that are *actually* used in
 // a particular application. It will vary in value from 1 to MAX_NUM_SERVICES
-#define NUM_SERVICES 2
+#define NUM_SERVICES 3
 
 /****************************************************************************/
 // These are the definitions for Service 0, the lowest priority service.
@@ -37,23 +37,34 @@
 // services are added in numeric sequence (1,2,3,...) with increasing 
 // priorities
 // the header file with the public function prototypes
-#define SERV_0_HEADER "DisarmFSM.h"
+#define SERV_0_HEADER "AdafruitAudioService.h"
 // the name of the Init function
-#define SERV_0_INIT InitDisarmFSM
+#define SERV_0_INIT InitAdafruitAudioService
 // the name of the run function
-#define SERV_0_RUN RunDisarmFSM
+#define SERV_0_RUN RunAdafruitAudioService
 // How big should this services Queue be?
-#define SERV_0_QUEUE_SIZE 5
+#define SERV_0_QUEUE_SIZE 10
 
 #if NUM_SERVICES > 1
-#define SERV_1_HEADER "KeyPadFSM.h"
+#define SERV_1_HEADER "DisarmFSM.h"
 // the name of the Init function
-#define SERV_1_INIT InitKeyPadFSM
+#define SERV_1_INIT InitDisarmFSM
 // the name of the run function
-#define SERV_1_RUN RunKeyPadFSM
+#define SERV_1_RUN RunDisarmFSM
 // How big should this services Queue be?
-#define SERV_1_QUEUE_SIZE 5
+#define SERV_1_QUEUE_SIZE 10
 #endif
+
+#if NUM_SERVICES > 2
+#define SERV_2_HEADER "KeyPadFSM.h"
+// the name of the Init function
+#define SERV_2_INIT InitKeyPadFSM
+// the name of the run function
+#define SERV_2_RUN RunKeyPadFSM
+// How big should this services Queue be?
+#define SERV_2_QUEUE_SIZE 10
+#endif
+
 
 
 /****************************************************************************/
@@ -71,18 +82,22 @@ typedef enum {  ES_NO_EVENT = 0,
 								INCORRECT_PASSWORD_ENTERED,
 								KEY_INSERTED,
 								CORRECT_VALUE_DIALED,
-                } ES_EventTyp_t ;
+								PLAY_TRACK,
+								} ES_EventTyp_t ;
 
 /****************************************************************************/
 // These are the definitions for the Distribution lists. Each definition
 // should be a comma separated list of post functions to indicate which
 // services are on that distribution list.
-#define NUM_DIST_LISTS 2
+#define NUM_DIST_LISTS 3
 #if NUM_DIST_LISTS > 0 
 #define DIST_LIST0 PostDisarmFSM
 #endif
 #if NUM_DIST_LISTS > 1 
 #define DIST_LIST1 PostKeyPadFSM
+#endif		
+#if NUM_DIST_LISTS > 2 
+#define DIST_LIST2 PostAdafruitAudioService
 #endif		
 
 /****************************************************************************/
@@ -105,8 +120,8 @@ typedef enum {  ES_NO_EVENT = 0,
 #define TIMER2_RESP_FUNC PostDisarmFSM
 #define TIMER3_RESP_FUNC PostDisarmFSM
 #define TIMER4_RESP_FUNC PostDisarmFSM
-#define TIMER5_RESP_FUNC TIMER_UNUSED
-#define TIMER6_RESP_FUNC TIMER_UNUSED
+#define TIMER5_RESP_FUNC PostDisarmFSM
+#define TIMER6_RESP_FUNC PostDisarmFSM
 #define TIMER7_RESP_FUNC TIMER_UNUSED
 #define TIMER8_RESP_FUNC TIMER_UNUSED
 #define TIMER9_RESP_FUNC TIMER_UNUSED
@@ -114,7 +129,7 @@ typedef enum {  ES_NO_EVENT = 0,
 #define TIMER11_RESP_FUNC TIMER_UNUSED
 #define TIMER12_RESP_FUNC TIMER_UNUSED
 #define TIMER13_RESP_FUNC TIMER_UNUSED
-#define TIMER14_RESP_FUNC TIMER_UNUSED
+#define TIMER14_RESP_FUNC PostAdafruitAudioService
 #define TIMER15_RESP_FUNC PostKeyPadFSM
 
 /****************************************************************************/
@@ -129,6 +144,9 @@ typedef enum {  ES_NO_EVENT = 0,
 #define VIBRATION_TIMER 2
 #define FAST_LEDS 3
 #define MESSAGE_TIMER 4
+#define PANIC_TIMER 5
+#define REWIND_TIMER 6
+#define AUDIO_TIMER 14
 #define KEYPAD_TIMER 15
 
 #endif /* CONFIGURE_H */

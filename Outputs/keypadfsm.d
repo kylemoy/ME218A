@@ -30,4 +30,5 @@
 .\outputs\keypadfsm.o: .\Headers\helperFunctions.h
 .\outputs\keypadfsm.o: .\Headers\passwordGenerator.h
 .\outputs\keypadfsm.o: .\Headers\ES_ServiceHeaders.h
+.\outputs\keypadfsm.o: .\Headers\AdafruitAudioService.h
 .\outputs\keypadfsm.o: .\Headers\DisarmFSM.h

@@ -1,23 +1,19 @@
 #ifndef SLOTDETECTOR_H
 #define SLOTDETECTOR_H
 
-#include <stdio.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include "inc/hw_memmap.h"
-#include "inc/hw_types.h"
-#include "inc/hw_gpio.h"
-#include "inc/hw_sysctl.h"
-#include "driverlib/sysctl.h"
-#include "termio.h"
-#include "ES_Port.h"
-#include "driverlib/gpio.h"
-#include "driverlib/interrupt.h"
-#include "utils/uartstdio.h"
+/****************************************************************************
+ Module
+   SlotDetector.h
 
-void setKeyInSlotDefault(void);
-int getKeyInSlotDefault(void);
+ Description
+   This file contains the function that will read the phototransistor output
+   to test for the presence of a key in the slot.
+****************************************************************************/
+
+// Initializes the port pins for the slot detector
 void initPhototransistor(void);
+
+// Checks if the key is in the slot
 bool isKeyInSlot(void);
 
 #endif

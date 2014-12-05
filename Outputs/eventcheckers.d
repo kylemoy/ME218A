@@ -6,6 +6,7 @@
 .\outputs\eventcheckers.o: C:\Keil_v5\ARM\ARMCC\bin\..\include\stdbool.h
 .\outputs\eventcheckers.o: .\Headers\ES_PostList.h
 .\outputs\eventcheckers.o: .\Headers\ES_ServiceHeaders.h
+.\outputs\eventcheckers.o: .\Headers\AdafruitAudioService.h
 .\outputs\eventcheckers.o: .\Headers\DisarmFSM.h
 .\outputs\eventcheckers.o: .\Headers\KeyPadFSM.h
 .\outputs\eventcheckers.o: .\Headers\ES_Port.h
@@ -29,3 +30,4 @@
 .\outputs\eventcheckers.o: .\Headers\PWMTiva.h
 .\outputs\eventcheckers.o: .\Headers\ADCSWTrigger.h
 .\outputs\eventcheckers.o: .\Headers\SlotDetector.h
+.\outputs\eventcheckers.o: .\Headers\DCmotors.h

@@ -1,27 +1,28 @@
 #ifndef DCMOTORS_H
 #define DCMOTORS_H
 
-#include <stdio.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include "inc/hw_memmap.h"
-#include "inc/hw_types.h"
-#include "inc/hw_gpio.h"
-#include "inc/hw_sysctl.h"
-#include "driverlib/sysctl.h"
-#include "termio.h"
-#include "ES_Port.h"
-#include "driverlib/gpio.h"
-#include "driverlib/interrupt.h"
-#include "utils/uartstdio.h"
+/****************************************************************************
+ Module
+   DCMotors.h
 
+ Description
+   This file contains the function that will control the DC motors for 
+	 vibration motor or feather/ball dropper.
+****************************************************************************/
+
+// Public prototypes
+
+// Initializes the port pins for the vibration and timing motors
 void initMotors(void);
+
+// Controls for the timing motor
 void rewindTimingMotor(void);
 void unwindTimingMotor(void);
 void stopTimingMotor(void);
+
+// Controls for the vibration motor
 void vibrationMotorOn(void);
 void vibrationMotorOff(void);
-void setMotor(int motor, int state);
-bool getMotorState(int motor);
+
 
 #endif

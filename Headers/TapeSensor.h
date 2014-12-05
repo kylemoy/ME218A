@@ -1,21 +1,18 @@
+/****************************************************************************
+ 
+  Header file for TapeSensor.c -- the three hands tape sensors 
+
+ ****************************************************************************/
+
 #ifndef TAPESENSOR_H
 #define TAPESENSOR_H
 
-#include <stdio.h>
-#include <stdint.h>
-#include <stdbool.h>
-#include "inc/hw_memmap.h"
-#include "inc/hw_types.h"
-#include "inc/hw_gpio.h"
-#include "inc/hw_sysctl.h"
-#include "driverlib/sysctl.h"
-#include "termio.h"
-#include "ES_Port.h"
-#include "driverlib/gpio.h"
-#include "driverlib/interrupt.h"
-#include "utils/uartstdio.h"
+// Public Function Prototypes
 
-void initTapeSensors(void);
-bool tapeSensorsCovered(void);
+//initializes port F4 to read the output from the three tape sensors 
+void initTapeSensors(void); 
+
+// returns true if all three tape sensors are covered, false otherwise
+bool tapeSensorsCovered(void); 
 
 #endif

@@ -9,30 +9,56 @@
    to test for the presence of a key in the slot.
 ****************************************************************************/
 #include "SlotDetector.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "inc/hw_memmap.h"
+#include "inc/hw_types.h"
+#include "inc/hw_gpio.h"
+#include "inc/hw_sysctl.h"
+#include "driverlib/sysctl.h"
+#include "termio.h"
+#include "ES_Port.h"
+#include "driverlib/gpio.h"
+#include "driverlib/interrupt.h"
+#include "utils/uartstdio.h"
 
+// Defines for the port pins, using B2
 #define ALL_BITS (0xff <<2)
 #define PHOTOTRANS_PORT_DEC SYSCTL_RCGCGPIO_R1 //port B
 #define PHOTOTRANS_PORT GPIO_PORTB_BASE
 #define PHOTOTRANS_PIN GPIO_PIN_2 // pin 2
 #define PHOTOTRANS_HI BIT2HI
 
-static int keyInSlotDefault = -1;
 
-
-void setKeyInSlotDefault(void) {
-	keyInSlotDefault = isKeyInSlot();
-}
-
-int getKeyInSlotDefault(void) {
-	return keyInSlotDefault;
-}
-
+/****************************************************************************
+ Function
+     initPhototransistor
+ Parameters
+     void
+ Returns
+     void
+ Description
+     Initializes the port pins for the slot detector
+ Notes
+****************************************************************************/
 void initPhototransistor(void) {
 	// Initialization of tape sensor port
 	HWREG(SYSCTL_RCGCGPIO) |= (PHOTOTRANS_PORT_DEC);
 	HWREG(PHOTOTRANS_PORT+GPIO_O_DEN) |= (PHOTOTRANS_PIN); 
 }
 
+/****************************************************************************
+ Function
+     isKeyInSlot
+ Parameters
+     void
+ Returns
+     true if key is in slot, false is key is not in the slot
+ Description
+     Checks if the key is in the slot
+ Notes
+****************************************************************************/
 bool isKeyInSlot(void) {
 	return (HWREG(PHOTOTRANS_PORT+(GPIO_O_DATA + ALL_BITS)) & PHOTOTRANS_HI);
 }

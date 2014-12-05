@@ -1,41 +1,55 @@
 #ifndef SERVOS_H
 #define SERVOS_H
-#include <stdint.h>
-#include <stdbool.h>
-#include <stdio.h>
-#include "ES_Port.h"
-#include "inc/hw_memmap.h" 
-#include "inc/hw_types.h" 
-#include "inc/hw_gpio.h" 
-#include "inc/hw_sysctl.h" 
-#include "driverlib/gpio.h" 
-#include "driverlib/sysctl.h"
-#include "termio.h"
-#include "PWMTiva.h"
-#include "ADCSWTrigger.h"
+/****************************************************************************
+ Module
+   Servos.h
 
-#define clrScrn() 	printf("\x1b[2J")
+ Description
+   This file contains the function that will control the Servo motors for 
+	 the flag, tower rotate, tower tilt, and potentiometer.
+****************************************************************************/
 
-// Public functions
+// Public function prototypes
+
+// Initialization function for the servos
+void initializeServos(void);
+
+// Controls for rotating the tower
+void rotateTowerLeft(void);
+void rotateTowerRight(void);
+void setTowerToZero(void);
+
+// Controls for the flag
 void raiseFlag(void);
 void lowerFlag(void);
+
+// Controls for the keys
 void lockKeys(void);
 void unlockKeys(void);
+
+
+/* Potentiometer Controls */
+
+// Sets the victory condition of the game (determines whether pot is enabled or not)
 void setVictory(bool state);
+
+// Returns the victory condition of the game
 bool getVictory(void);
+
+// Sets the current position of the pot to zero
+// This is needed to alternate between turning the pot left or turning the pot right for victory
 void setPotZero(void);
+
+// Gets the pot zero value
 double getPotZero(void);
+
+// Gets the current pot value
 double getPotValue(void);
-void initializeServos(void);
-void setTowerToZero(void);
+
+// Moves the tower to the corresponding pot value
 void moveTower(double potValue);
 
-// Private functions
-void rotateServo(uint8_t channel, uint16_t position);
-void rotateServoLeft(uint8_t channel);
-void rotateServoRight(uint8_t channel);
-void rotateServoToPlusNinety(uint8_t channel);
-void rotateServoToMinusNinety(uint8_t channel);
-void rotateServoToZero(uint8_t channel);
+
+
 
 #endif

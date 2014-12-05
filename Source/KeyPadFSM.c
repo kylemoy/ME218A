@@ -94,8 +94,6 @@ static uint8_t MyPriority;
      other required initialization for this state machine
  Notes
 
- Author
-     J. Edward Carryer, 10/23/11, 18:55
 ****************************************************************************/
 bool InitKeyPadFSM ( uint8_t Priority )
 {
@@ -131,30 +129,11 @@ bool InitKeyPadFSM ( uint8_t Priority )
  Description
      Posts an event to this state machine's queue
  Notes
-
- Author
-     J. Edward Carryer, 10/23/11, 19:25
+ 
 ****************************************************************************/
 bool PostKeyPadFSM( ES_Event ThisEvent )
 {
-	//puts("PostKeyPadFSM\n\r");
   return ES_PostToService( MyPriority, ThisEvent);
-}
-
-
-/*
- * For debugging.
- * Print current password input. 
- */
-void printCurrentInput(void)
-{
-	// for debugging *******************
-			printf("Current Input: [");
-			for(int i=0; i<sizeOfInput; i++) 
-			{
-			printf("%i ", passwordInput[i]);
-			}
-			printf("]\n\r");
 }
 
 /****************************************************************************
@@ -168,16 +147,19 @@ void printCurrentInput(void)
    ES_Event, ES_NO_EVENT if no error ES_ERROR otherwise
 
  Description
-   add your description here
+   If a keypad button press event is detected, this function is called to
+   process the event. It collects a series of numbers input by the user until 
+   the 'Enter' key is pressed. The function detects which key pad button was 
+   pressed, and limits the number of numbers that the user can enter before 
+   pressing 'Enter'. Once 'Enter' is pressed, the function checks whether the previous 
+   series of numbers input by the user matches the input password. The appropriate
+   events are posted to DisarmFSM.
+  
  Notes
-   uses nested switch/case to implement the machine.
- Author
-   J. Edward Carryer, 01/15/12, 15:23
+
 ****************************************************************************/
 ES_Event RunKeyPadFSM( ES_Event ThisEvent )
 {
-	//printf("RunKeyPadFSM\n\r");
-	//printf("(row, col) = (%i, %i)\n\r", Row, Col);
   ES_Event ReturnEvent;
   ReturnEvent.EventType = ES_NO_EVENT; // assume no errors
 	if ((ThisEvent.EventType == ES_TIMEOUT) && (ThisEvent.EventParam == KEYPAD_TIMER))
@@ -187,7 +169,6 @@ ES_Event RunKeyPadFSM( ES_Event ThisEvent )
 			if(sizeOfInput != 0){ 
 				
 				printf("Checking if password ");
-				printCurrentInput();
 				printf(" is correct...\n\r");
 				if (checkPassword(passwordInput)) {
 					ES_Event ThisEvent;
@@ -207,13 +188,11 @@ ES_Event RunKeyPadFSM( ES_Event ThisEvent )
 				}
 				passwordInput[MAX_PASS_SIZE - 1] = num;
 			}
-			printCurrentInput();
-			//printf("Password too long! Start Over.");
-				//sizeOfInput = 0;
 		}else if(num < 12){ // valid input
 				passwordInput[sizeOfInput] = num;
 				sizeOfInput++;
-				printCurrentInput();
+		}else{
+				ReturnEvent.EventType = ES_ERROR;
 		}
 	}
 	
@@ -246,7 +225,6 @@ KeyPadFSMState_t QueryKeyPadFSM ( void )
  */
 bool CheckForKeyPadButtonPress(void)
 {
-	//printf("CheckForKeyPadButtonPress\n\r");
 	for (int r = 1; r <= NUM_ROWS ; r++){
 		for (int c = 1; c <= NUM_COLS; c++){
 			setColsHigh();
@@ -256,13 +234,9 @@ bool CheckForKeyPadButtonPress(void)
 				if (thisRow && (prevButtonState != 1) && (prevButtonState != 255))
 				{
 					// One of the key pad buttons was pressed. 
-					//printf("Button Pressed! \n\r");
-					// Post Event ButtonPressed.
+					// Post Event ButtonPressed after time-out.
 					Row = r;
 					Col = c;
-					//ES_Event ThisEvent;
-					//ThisEvent.EventType = ButtonPressed; 
-					//PostKeyPadFSM(ThisEvent);
 					ES_Timer_InitTimer(KEYPAD_TIMER, KEYPAD_TIMER_DELAY);
 					
 					prevButtonState = thisRow;;
@@ -460,6 +434,21 @@ void delayLong(uint16_t delayTime)
 	while (currentTime != targetTime){
 			currentTime = ES_Timer_GetTime();
 	}
+}
+
+/*
+ * For debugging.
+ * Print current password input. 
+ */
+void printCurrentInput(void)
+{
+	// for debugging *******************
+			printf("Current Input: [");
+			for(int i=0; i<sizeOfInput; i++) 
+			{
+			printf("%i ", passwordInput[i]);
+			}
+			printf("]\n\r");
 }
 
 /***************************************************************************

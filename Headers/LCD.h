@@ -1,17 +1,39 @@
-#ifndef _LCD_
-#define _LCD_
+/****************************************************************************
+ 
+  Header file for LCD.c -- the LCD and its shift register 
+
+ ****************************************************************************/
+
+
+#ifndef LCD_H
+#define LCD_H
 #include <stdint.h>
 #include "helperFunctions.h"
 
-void resetLCDmessage(void);
-void printLCDmessage(void);
-void sendToLCD (char Data); // takes 8 bit input and pulses E to input into LCD
-void sendToShiftReg (char Data); // sends the 8 bit input to shift register
-void LCDInit (void); //initializes LP and then 4 bit mode of LCD
-void LCDputchar (char letter);
+// Public Function Prototypes
+
+ //initializes Tiva ports and then 4 bit mode of LCD
+void LCDInit (void);
+
+ //clears the LCD screen
 void clearLCD(void);
+
+// resets the LCD screen so that it beings at "Welcome DrEd" if LCD is activated
+void resetLCDmessage(void);
+
+// prints out sequence of LCD messages that welcome DrEd back and gives him passcodes
+void printLCDmessage(void);
+
+// prints out a message saying "Authorized!"
 void printAuthorizedMessage(void);
+
+// prints out "incorrect passcode"
 void printIncorrectMessage(void);
+
+// prints out  "Armed"
 void printArmedMessage(void);
+
+// prints out "Your Time is up!"
 void printTimeUp(void);
+
 #endif
